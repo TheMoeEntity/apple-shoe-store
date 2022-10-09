@@ -1,0 +1,116 @@
+.header {
+    width: 100%;
+    height: 60px;
+    color: black;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+
+}
+.hamburger {
+    width: 40px;
+    height: 40px;
+    /* z-index: 10000; */
+}
+.hamburger > div {
+    width: 80%;
+    background-color: black;
+    margin: 8px;
+    height: 1px;
+}
+.header > div:last-child {
+    width: 40px;
+    height: 40px;
+    position: relative;
+}
+.cartCount {
+    position: absolute;
+    background-color: orange;
+    padding: 2px;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    top: 0;
+    right: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+.sidebar {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    top: 0px;
+    left: 0;
+    z-index: 200;
+    transition: 0.35s ease;
+}
+.sidebarContent {
+    z-index: 300;
+    position: relative;
+    padding: 20px 20px;
+    top: 0;
+    width: 80%;
+    height: 100%;
+    left: -100%;
+    transition: left 0.5s;
+    overflow-y: scroll;
+    background-color: white;
+}
+.sidebarContent h2 {
+    margin-top: 0;
+}
+.sidebarContent h4 {
+    margin-top: 50px;
+}
+.sidebarContent button {
+    display: block;
+    margin: 20px 0;
+    background: none;
+}
+.sidebarContent ul {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid lightgray;
+}
+.sidebarContent ul li {
+    width: 100%;
+    margin: 10px 0;
+    height: auto;
+    padding: 10px;
+    list-style: none;
+    transition: 0.5s;
+}
+.sidebarContent ul li > div {
+    max-height: 0px;
+    height: fit-content;
+    overflow: hidden;
+    transition:0.5s ease;
+    text-align: left;
+}
+.sidebarContent ul li > div li {
+    border-bottom: 1px solid lightgray;
+}
+.closeBtn {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 20px;
+    right: 20px;
+    background-color: lightgray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ 
+}
+.closeBtn span {
+    transform: scale(1.2);
+    font-weight: bold;   
+}
