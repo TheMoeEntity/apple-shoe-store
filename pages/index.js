@@ -24,6 +24,7 @@ export default function Home() {
           <Featured heading={"Our Top sellers"} />
         </div>
       </main>
+      <Script src="https://kit.fontawesome.com/4ef8c63dd7.js" crossorigin="anonymous"></Script>
     </div>
   )
 }

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import styles from './Header.module.css'
+import Link from 'next/link'
 
 export const Sidebar = ({sidebar,set}) => {
 
@@ -19,6 +20,7 @@ export const Sidebar = ({sidebar,set}) => {
 
             <h4>Main Menu</h4>
             <ul>
+                <li><Link href={`/`}>Home</Link></li>
                 <li>
                     <span onClick={e => showDiv(e)}>Shop</span>
                     <div>
@@ -34,7 +36,7 @@ export const Sidebar = ({sidebar,set}) => {
                    Women 
                 </li>
                 <li>
-                    Men
+                    <Link href={`/men`}>Men</Link>
                 </li>
                 <li>
                     Blog
@@ -55,7 +57,7 @@ export const Sidebar = ({sidebar,set}) => {
                     </div>
                 </li>
                 <li>
-                   Men 
+                <Link href={`/men`}>Men</Link>
                 </li>
                 <li>
                     Women

@@ -1,0 +1,25 @@
+.men {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+}
+.banner {
+    width: 100%;
+    position: relative;
+    min-height: 250px;
+}
+.banner h2 {
+    position: absolute;
+    font-weight: 400;
+    padding: 15px;
+    top: 30px;
+}
+.banner h3 {
+    position: absolute;
+    font-weight: 300;
+    padding: 15px;
+    top: 110px;
+    font-size: small;
+    color: rgba(0,0,0,0.6);
+
+}

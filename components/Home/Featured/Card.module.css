@@ -38,6 +38,9 @@
     padding: 3px; 
     background-color: whitesmoke;
 }
+.like i {
+    color: rgba(254, 33, 33, 0.648);
+}
 .cart {
     position: absolute;
     bottom: 10px;

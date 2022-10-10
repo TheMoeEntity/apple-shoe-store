@@ -1,0 +1,102 @@
+.items {
+    width: 100%;
+    padding: 15px;
+}
+.items h4 {
+    margin: 10px 0;
+}
+.pagination {
+    color: lightgray;
+    font-size: small;
+}
+.items h3 {
+    margin: 20px 0;
+    font-weight: 600;
+    font-size: 25px;
+}
+.items h3:nth-child(2) {
+   font-size: medium;
+}
+
+.banner {
+    margin-top: 30px auto;
+    width: 100%;
+    position: relative;
+    min-height: 500px;
+    display: flex;
+    flex-flow: row wrap;
+    overflow-x: hidden;
+}
+
+.flex {
+    width: 100%;
+    margin:10px 0;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    height: 70px;
+}
+.flex > div {
+    flex: 15%;
+    position: relative;
+    margin: 0 7px;
+}
+.flex > div:first-child {
+    margin-left: 0;
+}
+.flex > div:last-child {
+    margin-right: 0;
+}
+.variations,.color {
+    width: 100%;
+    height: auto;
+    padding: 15px 0;
+}
+
+.variations h3, .color h3 {
+    color: rgb(163, 163, 163);
+    margin: 0;
+    font-size: 18px;
+    font-weight: 400;
+}
+.variations > div, .color > div {
+    margin-top: 10px;
+    display: flex;
+    width: 100%;
+    flex-flow: row wrap;
+}
+.variations > div span {
+    width: 40px;
+    height: 40px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid rgb(163, 163, 163);
+}
+.color > div span {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin: 10px;
+    padding: 10px;
+
+
+}
+/* .color {
+    border-bottom: 1px solid rgba(163, 163, 163, 0.495);
+} */
+.desc {
+    width: 100%;
+    padding: 15px 0;
+}
+
+.desc h4 {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    width: 100%;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(163, 163, 163, 0.495);
+}
+.desc p {
+    line-height: 1.4;
+}

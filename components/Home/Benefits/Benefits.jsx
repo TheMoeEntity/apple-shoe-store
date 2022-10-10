@@ -4,6 +4,7 @@ import { faShippingFast} from '@fortawesome/free-solid-svg-icons'
 import { faMoneyBillTransfer } from '@fortawesome/free-solid-svg-icons'
 import { faPhone } from '@fortawesome/free-solid-svg-icons'
 import { faCreditCard } from '@fortawesome/free-solid-svg-icons'
+import Link from 'next/link'
 
 
 export const Benefits = () => {
@@ -12,7 +13,7 @@ export const Benefits = () => {
         <div>
             <div className={styles.flexItems}>
                 <div>
-                <FontAwesomeIcon fontSize="40px" icon={faShippingFast}></FontAwesomeIcon>
+                <i className='fa-solid fa-shipping-fast'></i>
                 </div>
                 <div>
                     <h3>Free Shipping</h3>
@@ -21,7 +22,7 @@ export const Benefits = () => {
             </div>
             <div className={styles.flexItems}>
             <div>
-                <FontAwesomeIcon fontSize="40px" icon={faMoneyBillTransfer}></FontAwesomeIcon>
+            <i className='fa-solid fa-money-bill-transfer'></i>
             </div>
                 <div>
                     <h3>Money Guarantee</h3>
@@ -30,7 +31,7 @@ export const Benefits = () => {
             </div>
             <div className={styles.flexItems}>
             <div> 
-                <FontAwesomeIcon fontSize="40px" icon={faPhone}></FontAwesomeIcon>
+            <i className='fa-solid fa-phone'></i>
             </div>
                 <div>
                     <h3>Online Support</h3>
@@ -39,7 +40,7 @@ export const Benefits = () => {
             </div>
             <div className={styles.flexItems}>
             <div>
-                <FontAwesomeIcon fontSize="40px" icon={faCreditCard}></FontAwesomeIcon>
+            <i className='fa-solid fa-credit-card'></i>
             </div>
                 <div>
                     <h3>Flexible Payment</h3>
@@ -71,7 +72,7 @@ export const Benefits = () => {
             <div className={styles.men}>
             <div>
                     40 products 
-                    <h2>Men</h2>
+                    <Link href="/men"><h2>Men</h2></Link>
 
                     <h4>Lorem ipsum dolor sit amet consectet. consectetur</h4>
             
