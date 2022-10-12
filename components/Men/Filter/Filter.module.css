@@ -3,29 +3,43 @@
     height: 60px;
     display: flex;
     justify-content: space-between;
-    padding: 15px;
+    padding: 10px;
 }
 .sidebar {
-    position: fixed;
     width: 100%;
     height: 100%;
     background-color: rgba(0,0,0,0.7);
     top: 0px;
-    left: -100%;
-    z-index: 500;
-    transition: 0.35s ease;
+    left: 0%;
+    /* z-index: 500; */
+    overflow-y: scroll;
+    transition: 0.7s;
 }
+.flexItems {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px 0;
+}
+.filtersect {
+    width: 40%;
+}
+.mainsect {
+    width: 55%;
+}
+
 .sidebarContent {
-    z-index: 350;
+    /* z-index: 350; */
     position: relative;
     padding: 20px 20px;
     top: 0;
-    width: 80%;
+    width: 100%;
     height: 100%;
     left: 0%;
+    overflow-y: scroll;
     transition: left 0.5s;
     overflow-y: scroll;
     background-color: white;
+    transition: 1s;
 }
 .sidebarContent h2 {
     margin-top: 0;
@@ -124,9 +138,8 @@
     justify-content: space-between;
     height: auto;
     display: flex;
-    margin: 20px 0;
     min-width: 100%;
-    min-height: 330px;
+    min-height: 450px;
 }
 .flex  > div > div {
     flex: 30%;
@@ -147,8 +160,70 @@
     margin: 5px 0;
 }
 #recent > div  > div {
-    margin: 0;
+    margin: 15px;
 }
 #recent > div  > div > div {
     height:78%;
+}
+.recentlyviewed {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    height: auto;
+    padding: 30px 0;
+    position: relative;
+}
+.recentlyviewed > div {
+    flex: 23%;
+    margin: 10px;
+    position: relative;
+    min-height: 440px;
+    min-width: 200px;
+}
+.recentlyviewed > div > div > div {
+    height: 80%;
+}
+.recentlyviewed > div > div > div:nth-child(2) {
+    height: fit-content !important;
+}
+
+@media screen and (max-width:625px) {
+    .flexItems {
+        display: block;
+    }
+    .flex > div {
+        min-height: 330px;
+        margin: 15px 0;
+    }
+    .mainsect {
+        width: 100%;
+    }
+    .sidebar {
+        position:fixed;
+        z-index: 999;
+        top: 0;
+        left: -100%;
+        width: 70%;
+        height: 100%;
+        overflow-y: scroll;
+    }
+    #recent > div >div {
+        flex: 100% !important;
+    }
+    
+    #recent > div {
+        min-height: 350px;
+        margin: 20px 0; 
+    }
+    #recent > div  > div {
+        margin: 7px;
+    }
+    
+}
+
+@media screen and (min-width:1020px) {
+    .flex > div {
+        min-height: 520px;
+    }
 }

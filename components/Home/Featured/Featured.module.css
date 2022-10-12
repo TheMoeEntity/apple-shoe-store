@@ -15,17 +15,16 @@
 }
 .wrapper {
     width: 100%;
-    min-height: 40px;
+    /* min-height: 400px; */
     display: flex;
     overflow-x: scroll;
     scroll-behavior: smooth !important;
     width: 100%;
-    height: auto;
+    
 }
 .cardContainer {
     flex: 10%;
     margin: 15px;
-    background: transparent;
     border-radius: 8px;
     height: auto;
     cursor: pointer;
@@ -33,6 +32,7 @@
     min-width: 100%;
     min-height: 330px;
     position: relative;
+    overflow: hidden;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
@@ -49,7 +49,7 @@
     margin-left: 0;
 
 }
-.cardContainer > div:nth-child(2) {
+.cardContainer > div:nth-child(3) {
     margin-right: 0;
 }
 .cardContainer:nth-child(1) {
@@ -64,4 +64,53 @@
 }
 .flex > div {
     bottom: -10px;
+}
+.title {
+    display: flex;
+    flex-flow: row wrap;
+}
+.title h4, .title p {
+    flex: 100%;
+}
+
+@media screen and (min-width:750px) {
+    .featured {
+        padding: 20px;
+    }
+    .title h4, .title p {
+        flex: 30%;
+        margin:0 30px;
+    }
+    .title {
+        margin-bottom: 30px;
+    }
+    .cardContainer > div {
+        flex: 20%;
+        margin:0 15px;
+    }
+
+    
+
+    
+}
+
+@media screen and (min-width:750px) {
+
+    .wrapper {
+        min-height: 450px;
+    }
+}
+@media screen and (min-width:850px) {
+    .title p {
+        padding:20px 70px;
+    }
+    .featured {
+        padding: 30px;
+    }
+}
+@media screen and (min-width:1024px) {
+    .wrapper {
+        min-height: 650px;
+    }
+ 
 }

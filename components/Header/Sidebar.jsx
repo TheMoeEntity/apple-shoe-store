@@ -49,7 +49,7 @@ export const Sidebar = ({sidebar,set}) => {
                     <span onClick={e => showDiv(e)}>Shop</span>
                     <div>
                         <ul>
-                            <li>Men's shoes</li>
+                            <li>{`Men's`} shoes</li>
                             <li>Ashawo Shorts</li>
                             <li>Pants</li>
                             <li>Option 4</li>

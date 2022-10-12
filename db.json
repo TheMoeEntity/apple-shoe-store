@@ -1,0 +1,113 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    },
+    {
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "users": [
+    {
+      "id": 112,
+      "ref": 0
+    },
+    {
+      "id": "wWW0PQj9lI",
+      "refs": 0
+    },
+    {
+      "id": "wxWe6Qj9lI",
+      "refs": 0
+    },
+    {
+      "id": "HWOqixAZAO",
+      "refs": 0
+    },
+    {
+      "id": "dkSHpJnT5k",
+      "refs": 0
+    },
+    {
+      "id": "5haYpT8SK0",
+      "refs": 1
+    },
+    {
+      "id": "eRk6ZC0coH",
+      "refs": 1
+    },
+    {
+      "id": "0lJ4SWeLts",
+      "refs": 3
+    }
+  ],
+  "groups": [
+    {
+      "id": "shoe1",
+      "members": [
+        {
+          "id": "045_ffvw1",
+          "ts": "Wed May 11, 5:30"
+        },
+        {
+          "id": "E-1234fcs4Tg",
+          "ts": "Sun Jun 20, 1:30"
+        },
+        {
+          "id": "X6NxaBGACI",
+          "ts": "Tue Oct 11,  18:07"
+        },
+        {
+          "id": "EyzC6Ra7nS",
+          "ts": "Tue Oct 11,  18:18"
+        },
+        {
+          "id": "E65|6Ra5vX",
+          "ts": "Tue Aug 27,  18:18"
+        },
+        {
+          "id": "r55_6ga5vp",
+          "ts": "Wed Aug 27,  18:18"
+        },
+        {
+          "id": "RSKpLvSQ_z",
+          "ts": "Tue Oct 11,  20:28"
+        },
+        {
+          "id": "xrFDHjDl5N",
+          "ts": "Tue Oct 11,  20:30"
+        }
+      ]
+    },
+    {
+      "members": [],
+      "id": "shoe2"
+    },
+    {
+      "members": [
+        {
+          "id": "0d4_ffvw1",
+          "ts": "Fri Nov 11, 5:30"
+        },
+        {
+          "id": "E-1234fcs4Tg",
+          "ts": "Mon Jun 20, 1:30"
+        }
+      ],
+      "id": "shoe3"
+    }
+  ]
+}

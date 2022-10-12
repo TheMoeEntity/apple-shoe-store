@@ -1,10 +1,12 @@
 import styles from './Filter.module.css'
 import Link from 'next/link'
 
-const FilterSideBar = () => {
+const FilterSideBar = ({show,close}) => {
   return (
-    <div className={styles.sidebar}>
-    <div className={styles.sidebarContent}>
+    <div style={{
+        left: show ? "0" : "-100%"
+    }} className={styles.sidebar}>
+    <div onClick={close} className={styles.sidebarContent}>
         <h2>Apple Stores</h2>
         <div className={styles.closeBtn}>
             <span>&times;</span>

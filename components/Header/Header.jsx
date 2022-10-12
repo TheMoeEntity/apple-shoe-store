@@ -4,6 +4,7 @@ import Image from 'next/image'
 import cart from '../../public/assets/cart.png'
 import { Sidebar } from './Sidebar'
 import { useState } from 'react'
+import Link from 'next/link'
 
 export const Header = () => {
   const [sideBar,setSideBar] = useState(false)
@@ -24,10 +25,13 @@ export const Header = () => {
             <h3>Apple-Stores</h3>
         </div>
 
+        <Link href={`/cart`}>
         <div>
+          
             <Image src={cart} alt="cart image" />
             <div className={styles.cartCount}>0</div>
         </div>
+        </Link>
         
     </div>
   )

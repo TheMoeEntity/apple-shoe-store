@@ -1,6 +1,17 @@
 .items {
     width: 100%;
     padding: 15px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+
+}
+.items > div {
+    flex: 35%;
+    margin: 20px;
+}
+.items > div:nth-child(2) {
+    /* padding-top: 60px; */
 }
 .items h4 {
     margin: 10px 0;
@@ -22,7 +33,7 @@
     margin-top: 30px auto;
     width: 100%;
     position: relative;
-    min-height: 500px;
+    min-height: 800px;
     display: flex;
     flex-flow: row wrap;
     overflow-x: hidden;
@@ -34,7 +45,7 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
-    height: 70px;
+    height: 140px;
 }
 .flex > div {
     flex: 15%;
@@ -99,4 +110,20 @@
 }
 .desc p {
     line-height: 1.4;
+}
+@media screen and (max-width:700px) {
+    .items {
+        display: block !important;
+    }
+    .items > div {
+        margin: 0;
+    }
+}
+@media screen and (max-width:660px) {
+    .banner {
+        min-height: 550px;
+    }
+    .flex {
+        height: 90px;
+    }
 }

@@ -65,6 +65,7 @@
     background-image: url('/assets/blackwoman.jpeg');
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     padding: 30px;
     
 }
@@ -95,6 +96,9 @@
     margin: 10px 0;
     font-weight: 500;
     font-size: medium;
+    cursor: pointer;
+}
+.men h2 {
     cursor: pointer;
 }
 .shoesacc {
@@ -131,4 +135,53 @@
 .shoesacc  div h4 {
     margin: 5px;
     font-weight: 600;
+}
+
+.benefits ul {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+}
+ .flex {
+    flex: 100%;
+    display: flex;
+    flex-flow: row wrap;
+}
+.benefits ul li > li {
+    flex: 100%;
+}
+
+@media screen and (min-width:750px) {
+    .women {
+        height: 700px;
+    }
+    .men {
+        height: 550px;
+    }
+    .shoesacc {
+        height: 400px;
+    }
+}
+@media screen and (min-width:850px) {
+    .flexItems {
+        flex: 20%;
+    }
+    .benefits > div {
+        padding: 60px 30px;
+    }
+
+    .women {
+        height: 650px;
+    }
+    .men {
+        height: 300px;
+    }
+    .shoesacc {
+        height: 320px;
+    }
+    .flex {
+        flex: 40%;
+        margin: 0 20px;
+    }
+    
 }

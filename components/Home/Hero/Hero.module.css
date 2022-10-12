@@ -3,6 +3,11 @@
     min-height: 400px;
     position: relative;
 }
+@media screen and (min-width:850px) {
+    .hero {
+        min-height: 550px;
+    }
+}
 .caption {
     position: absolute;
     top:50%;

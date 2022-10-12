@@ -50,14 +50,12 @@ export const Benefits = () => {
         </div>
 
     <ul>
-        <li>
+        <li className={styles.flex}>
             <div className={styles.women}>
                 <div>
                     30 products 
                     <h2>Women</h2>
-
-                    <h4>Lorem ipsum dolor sit amet consectetur.dolor sit amet consectetur</h4>
-            
+                    <br />
                     <h3>Hats</h3>
                     <h3>Shoes</h3>
                     <h3>Blouses</h3>
@@ -68,25 +66,25 @@ export const Benefits = () => {
             </div>
         </li>
 
-        <li>
+
+    <ul className={styles.flex}>
+    <li>
             <div className={styles.men}>
             <div>
                     40 products 
-                    <Link href="/men"><h2>Men</h2></Link>
+                    <Link href="/men"><h2>Navigate to our {`Men's`} category</h2></Link>
 
                     <h4>Lorem ipsum dolor sit amet consectet. consectetur</h4>
-            
-                    <h3>Hats</h3>
+        
                     <h3>Shoes</h3>
-                    <h3>Trousers</h3>
+
                     <h3>Ashawo Shorts</h3>
                     <h3>Jeans</h3>
             
                 </div>
             </div>
         </li>
-
-        <li>
+    <li>
             <div className={styles.shoesacc}>
                 <div>
                     <h4>20+ products</h4>
@@ -98,10 +96,9 @@ export const Benefits = () => {
                 </div>
             </div>
         </li>
+    </ul>
 
-        <li>
 
-        </li>
     </ul>
 
     </div>

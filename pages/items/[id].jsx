@@ -12,10 +12,13 @@ import { useState } from 'react'
 const assets = [girl,shoe3,shoe3,man]
 const Items = () => {
   const [currImage,setCurrImage] = useState(girl)
+  const [currItems,setCurrItems] = useState(1)
   
-  return (
+  return ( 
     <div className={styles.items}>
-        <div className={styles.pagination}>
+
+      <div>
+      <div className={styles.pagination}>
             Home / Men / Sweatshirts and Pants
         </div>
             <h3>Oversized Hoodie</h3>
@@ -35,7 +38,12 @@ const Items = () => {
             <h4>1 review</h4>
             <h4>$324.87</h4>
             <p>Lorem ipsum, dolor sit amet consectetur adipisicing. amet consectetur. amet consectetur</p>
-            <div className={styles.variations}>
+
+      </div>
+
+
+      <div>
+      <div className={styles.variations}>
               <h3>SIZE VARIATIONS:</h3>
               <div>
                 <span> 43</span>
@@ -46,7 +54,7 @@ const Items = () => {
               </div>
               
             </div>
-            <div className={styles.color}>
+      <div className={styles.color}>
               <h3>COLOR VARIATIONS:</h3>
               <div>
                 <span style={{background:'darkred'}}></span>
@@ -64,6 +72,8 @@ const Items = () => {
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, aperiam magnam rem obcaecati ducimus, eaque odio voluptates tempora, dignissimos debitis amet at. Nemo culpa tempora saepe perspiciatis labore placeat omnis asperiores maxime laudantium magni, eveniet cum ipsam? Sapiente officia labore dolorum, minima sint voluptatum quae distinctio magni doloribus. Tenetur culpa consectetur omnis praesentium placeat magni exercitationem in dolores eaque iste.
                 </p>
             </div>
+      </div>
+           
     </div>
   )
 }
