@@ -1,11 +1,7 @@
 import styles from './Nav.module.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStore} from '@fortawesome/free-solid-svg-icons'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
-import { faUser } from '@fortawesome/free-solid-svg-icons'
-import { faHeart } from '@fortawesome/free-solid-svg-icons'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
+
 
 export const Nav = () => {
   const fsize = '22px'
@@ -22,9 +18,12 @@ export const Nav = () => {
               <div>1</div>
               <div>+</div>
           </div>
+          <Link href={`/cart`}>
           <button className={styles.toCart}>
               Add to cart
           </button>
+          </Link>
+
         </div>
      </div>
     )

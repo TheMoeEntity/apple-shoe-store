@@ -155,6 +155,7 @@
     width: 100%;
     padding-bottom: 20px;
     margin-top: 0;
+    transition: 1s;
     border-bottom: 1px solid rgba(211, 211, 211, 0.636);
 
 }

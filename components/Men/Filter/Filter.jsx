@@ -6,6 +6,8 @@ import girl from '../../../public/assets/girl.jpeg'
 import shoe1 from '../../../public/assets/shoes1.JPG'
 import man from '../../../public/assets/men.jpeg'
 import man2 from '../../../public/assets/man.png'
+import boylarge2 from '../../../public/assets/cap.jpeg'
+import shoegreen from '../../../public/assets/shoegreen.jpeg'
 import Link from 'next/link'
 import { useState } from 'react'
 
@@ -15,14 +17,16 @@ const Filter = () => {
         
         {
             one : {
-                name:"Jean Shirt",
-                img:man,
-                id: (Math.floor(Math.random()*1000))
+                name:"Oversized Hoodie",
+                img:boylarge2,
+                id: 1,
+                arr: ["boylarge2","boy","boy4","cap"]
             },
             two: {
-                name:"Leather Jacket",
-                img:man2,
-                id: (Math.floor(Math.random()*1000))
+                name:"Apple Shoes",
+                img:shoegreen,
+                id: 2,
+                arr: ["shoegreen","shoegreen2","shoegreen3","shoegreen5"]
             }
 
         },

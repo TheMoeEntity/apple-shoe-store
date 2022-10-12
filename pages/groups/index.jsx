@@ -1,14 +1,37 @@
 import React, { useEffect, useState } from 'react'
 import styles from'../cart/cart.module.css'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
-import { read_cookie } from 'sfcookies'
+import Head from 'next/head'
+import axios from 'axios'
 
-
+const mins = 30000
 const Groups = ({group}) => {
-    
+  const [allgroups,setAllGroups] = useState(group)
+ 
+ 
+  const getStatus = async ()=> {
+    const user= await axios.get("http://localhost:5000/groups/shoe1")
+    const allmembers = user.data
+    setAllGroups(allmembers)
+  }
+
+  useEffect(()=> {
+    const interval = setInterval(() => {
+      console.log("getting group members");
+      getStatus()
+    }, mins);
+  
+    return () => clearInterval(interval); 
+  },[])
+
+
   return (
     <div className={styles.cart}>
+      <Head>
+        <title>Apple stores | Group Buying</title>
+        <meta name="Apple store" content="Group buying for lower prices" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
 
       <div id={styles.one}>
       <div className={styles.title}>
@@ -37,7 +60,7 @@ const Groups = ({group}) => {
     <div className={styles.overlay}></div>
     <h3>Group members for this product</h3>
     {
-      group.members.map((item,key)=> (
+      allgroups.members.map((item,key)=> (
         <div key={key} className={styles.subtotal}>
           <span>ID: {item.id}</span>
           <span>joined {item.ts}</span>
@@ -58,9 +81,12 @@ const Groups = ({group}) => {
     <span>Total</span>
     <span>$12.300</span>
     </div>
-    <button id={group.members.length < 10 ? styles.disabled : styles.checkout}>{group.members.length < 10 ? "Unavailable":"Proceed to checkout"}</button>
+    <Link href={allgroups.members.length < 10 ? "" : `/checkout`}>
+      <button id={allgroups.members.length < 10 ? styles.disabled : styles.checkout}>{allgroups.members.length < 10 ? "Unavailable":"Proceed to checkout"}</button>
+    </Link>
+
     {
-      group.members.length < 10 && (<div className={styles.status}>You need {10-group.members.length} more members to proceed</div>)
+      allgroups.members.length < 10 ? (<div className={styles.status}>You need {10-allgroups.members.length} more members to proceed</div>) : (<div className={styles.status}>Group filled</div>)
     }
 </div>
 

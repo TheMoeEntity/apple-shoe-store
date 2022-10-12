@@ -127,3 +127,8 @@
         height: 90px;
     }
 }
+@media screen and (max-width:850px) {
+    #hide {
+        display: none;
+    }
+}

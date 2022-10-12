@@ -5,6 +5,7 @@ import { nanoid } from 'nanoid'
 import { useRouter } from 'next/router'
 import { bake_cookie,read_cookie, delete_cookie  } from 'sfcookies'
 import axios from 'axios'
+import Head from 'next/head'
 
 const Cart = ({data}) => {
   const router = useRouter()
@@ -92,6 +93,11 @@ const Cart = ({data}) => {
   
   return (
     <div className={styles.cart}>
+      <Head>
+        <title>Apple stores | Cart</title>
+        <meta name="Apple store" content="Apple store | your cart" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <div>
       <div className={styles.free}>
           Add $125.45 more and win free shipping! 

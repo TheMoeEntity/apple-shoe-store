@@ -4,14 +4,16 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { bake_cookie, read_cookie } from 'sfcookies'
 import axios from 'axios'
+import Head from 'next/head'
 
-
+const mins = 30000
 const Refer = ({data,currRefs}) => {
   const router = useRouter()
-  // const referral = router.query['id']
-  // console.log(data)
+  const referral = router.query['referrer']
+  console.log(referral === undefined)
+  console.log(referral)
   const [currRef,setCurrRef] = useState("")
-  const [allrefs,setAllRefs] = useState(0)
+  const [allrefs,setAllRefs] = useState(currRefs.refs)
 
   useEffect(()=> {
 
@@ -25,6 +27,13 @@ const Refer = ({data,currRefs}) => {
     }
     const value = JSON.parse(read_cookie("ref")).referrer
     setCurrRef(value)
+
+    const interval = setInterval(() => {
+      console.log("getting refer count");
+      getStatus()
+    }, mins);
+  
+    return () => clearInterval(interval); 
   },[])
 
   const getStatus = async ()=> {
@@ -32,14 +41,25 @@ const Refer = ({data,currRefs}) => {
     console.log(cookie)
     const id = cookie.referrer
     const user= await axios.get(`http://localhost:5000/users/${id}`)
-    const currRefs = await axios.get("http://localhost:5000/users/"+id)
     const count = user.data.refs
-    console.log(count)
     setAllRefs(count)
+  }
+
+  const getPath = () => {
+    if (referral === undefined) {
+      return ""
+    } else if (referral !== undefined) {
+      return '/checkout'
+    }
   }
     
   return (
     <div className={styles.cart}>
+      <Head>
+        <title>Apple stores | Referrals</title>
+        <meta name="Apple store" content="Refer for lower prices" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <div>
       {
         (currRef != "" && data.referrer !== currRef && allrefs < 10 ) && (<div className={styles.free}>
@@ -97,9 +117,9 @@ const Refer = ({data,currRefs}) => {
         </div>
         <div className={styles.totalpr}>
         <span>Referrals</span>
-        <span>{currRefs.refs} persons</span>
+        <span>{allrefs} persons</span>
         </div>
-        <Link href={`/checkout`}>
+        <Link href={getPath()}>
          {
          
          allrefs == 10 ?

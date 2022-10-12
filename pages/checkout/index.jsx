@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { delete_cookie, read_cookie } from 'sfcookies'
 import axios from 'axios'
+import Head from 'next/head'
 
 
 const Checkout = ({data}) => {

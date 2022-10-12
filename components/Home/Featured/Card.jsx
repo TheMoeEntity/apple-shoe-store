@@ -2,17 +2,15 @@ import React, { useEffect, useRef } from 'react'
 import styles from './Card.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
-
+import { useRouter } from 'next/router'
 
 export const Card = ({img,name,id}) => {
+  const router = useRouter()
 
-  const getPos = e => {
-    // console.log(e.clientX)
-  }
   return (
 
-    <Link href={`/items/${id}`}>
-    <div onMouseMove={e => getPos(e)} className={styles.card}>
+    <Link href={router.pathname === '/' ? "":`/items/${id}`}>
+    <div className={styles.card}>
         <div className={styles.img}>
             <Image  src={img} objectFit="cover" alt='card-image' layout="fill" />
             <div className={styles.tag}>-17%</div>

@@ -1,9 +1,4 @@
 import styles from './Benefits.module.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShippingFast} from '@fortawesome/free-solid-svg-icons'
-import { faMoneyBillTransfer } from '@fortawesome/free-solid-svg-icons'
-import { faPhone } from '@fortawesome/free-solid-svg-icons'
-import { faCreditCard } from '@fortawesome/free-solid-svg-icons'
 import Link from 'next/link'
 
 
