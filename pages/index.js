@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>Create Next App</title>
+        <title>Apple stores | Home</title>
         <meta name="Apple store" content="Your best shopping experience" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

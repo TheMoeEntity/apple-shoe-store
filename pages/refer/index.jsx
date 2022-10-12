@@ -6,7 +6,7 @@ import { bake_cookie, read_cookie } from 'sfcookies'
 import axios from 'axios'
 
 
-const Refer = ({data}) => {
+const Refer = ({data,currRefs}) => {
   const router = useRouter()
   // const referral = router.query['id']
   // console.log(data)
@@ -32,6 +32,7 @@ const Refer = ({data}) => {
     console.log(cookie)
     const id = cookie.referrer
     const user= await axios.get(`http://localhost:5000/users/${id}`)
+    const currRefs = await axios.get("http://localhost:5000/users/"+id)
     const count = user.data.refs
     console.log(count)
     setAllRefs(count)
@@ -96,7 +97,7 @@ const Refer = ({data}) => {
         </div>
         <div className={styles.totalpr}>
         <span>Referrals</span>
-        <span>{allrefs} persons</span>
+        <span>{currRefs.refs} persons</span>
         </div>
         <Link href={`/checkout`}>
          {
@@ -131,10 +132,13 @@ export const getServerSideProps = async (context) => {
   const dat = await res.json()
   const cookie = context.req.cookies['ref']
   // console.log(String(cookie).split("\\")[5].substring(1))
-  // const id = String(cookie).split("\\")[5].substring(1)
+  const undef = String(cookie).split("\\")[5] === undefined
+  const id = undef === false ?  String(cookie).split("\\")[5].substring(1) : context.query["referrer"]
   
   const refs = await axios.get("http://localhost:5000/users/")
-  const err = refs.data.find(x => x.id === cookie)
+  const currRefs = await axios.get("http://localhost:5000/users/"+id)
+
+  console.log(currRefs.data)
 
   let exists = "not"
 
@@ -153,10 +157,11 @@ export const getServerSideProps = async (context) => {
       }
     }
   }
-
+ 
   return {
      props: {
-          data:ref
+          data:ref,
+          currRefs:currRefs.data
       }
       
      }

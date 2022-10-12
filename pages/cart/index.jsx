@@ -12,26 +12,37 @@ const Cart = ({data}) => {
   const [less,setLess] = useState(false)
   
   const ProceedToRefer = async () => {
-    
-    let ref = nanoid(10)
-    const newCookie = {
-      ref:false,
-      referrer: ref 
-    }
-    bake_cookie("ref", JSON.stringify(newCookie))
 
-    const newUser = {
-      id: ref,
-      refs:0
+    const didRefer = read_cookie("ref").length != 0
+
+    if (didRefer) {
+      alert("Already generated referral link")
+      router.push("/refer")
     }
-    const res = await axios.post("http://localhost:5000/users",newUser)
+
+    if (!didRefer) {
+    
+      let ref = nanoid(10)
+      const newCookie = {
+        ref:false,
+        referrer: ref 
+      }
+      bake_cookie("ref", JSON.stringify(newCookie))
   
-    if (res.status !== 201) {
-      alert("Internal Server error")
+      const newUser = {
+        id: ref,
+        refs:0
+      }
+      const res = await axios.post("http://localhost:5000/users",newUser)
+    
+      if (res.status !== 201) {
+        alert("Internal Server error")
+      }
+      setTimeout(() => {
+        res.status === 201 && router.push("/refer")
+      }, 4000);
     }
-    setTimeout(() => {
-      res.status === 201 && router.push("/refer")
-    }, 4000);
+
     
   }
 
