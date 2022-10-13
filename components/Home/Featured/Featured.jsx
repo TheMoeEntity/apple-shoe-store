@@ -24,9 +24,6 @@ export const Featured = ({heading}) => {
         </p>
       </div>
 
-        <div className={styles.flex}>
-            <Dots count={3} />
-        </div>
 
         <div className={styles.wrapper}>
             <div className={styles.cardContainer}>

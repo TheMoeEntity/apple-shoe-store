@@ -15,7 +15,6 @@
 }
 .wrapper {
     width: 100%;
-    /* min-height: 400px; */
     display: flex;
     overflow-x: scroll;
     scroll-behavior: smooth !important;
