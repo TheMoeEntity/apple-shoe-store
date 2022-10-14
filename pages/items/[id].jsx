@@ -1,6 +1,6 @@
 import styles from './items.module.css'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import boylarge2 from '../../public/assets/boylarge2.jpeg'
 import boy from '../../public/assets/boy.jpeg'
@@ -8,15 +8,20 @@ import boy4 from '../../public/assets/boy4.jpeg'
 import jeans from '../../public/assets/jeans.jpeg'
 import Link from 'next/link'
 import NavStyles from '../../components/Nav/Nav.module.css'
-
+import { useRouter } from 'next/router'
 
 const assets = [boylarge2,boy,boy4,jeans]
 const Items = () => {
   const [id,setId] = useState(1)
+  const router = useRouter()
+  // console.log(router.query['id'])
 
   const [currImage,setCurrImage] = useState(boy)
   const [currItems,setCurrItems] = useState(1)
  
+  useEffect(()=> {
+    
+  },[])
   
   return ( 
     <div className={styles.items}>

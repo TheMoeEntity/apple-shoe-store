@@ -7,7 +7,7 @@ import { bake_cookie,read_cookie, delete_cookie  } from 'sfcookies'
 import axios from 'axios'
 import Head from 'next/head'
 
-const Cart = ({data}) => {
+const Cart = ({}) => {
   const router = useRouter()
   const [price,setprice] = useState(34000)
   const [less,setLess] = useState(false)
@@ -151,26 +151,5 @@ const Cart = ({data}) => {
     </div>
   )
 }
-export const getServerSideProps = async () => {
 
-  let url = "http://localhost:5000/referrals"
- 
-  const res = await fetch(url)
-  const dat = await res.json()
-  
-  if (dat.length===0) {
-    return {
-      redirect: {
-        destination: "404",
-        permanent: false,
-      }
-    }
-  }
-  return {
-     props: {
-          data:dat
-      }
-      
-     }
-}
 export default Cart

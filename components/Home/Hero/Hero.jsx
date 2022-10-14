@@ -14,7 +14,9 @@ export const Hero = () => {
             <button>Shop collection <i>&#10230;</i></button>
         </div>
         <div className={styles.overlay}></div>
-        <Dots count={3} />
+        {/* <Dots count={3} /> */}
+        {/* <div id={styles.left}><i className="fa-solid fa-angle-left"></i></div>
+        <div id={styles.right}><i className="fa-solid fa-angle-right"></i></div> */}
     </div>
   )
 }
