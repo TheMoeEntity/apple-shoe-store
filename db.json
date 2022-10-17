@@ -6,6 +6,70 @@
       "author": "typicode"
     }
   ],
+  "featured": [
+    {
+      "name": "Soft Jacket",
+      "reviews": 4,
+      "price": "₦7000"
+    },
+    {
+      "name": "Men's Jeans",
+      "reviews": 23,
+      "price": "₦9000"
+    },
+    {
+      "name": "Leather Jacket",
+      "reviews": 8,
+      "price": "₦10800"
+    },
+    {
+      "name": "VANS-special-ed",
+      "reviews": 2,
+      "price": "₦20000"
+    },
+    {
+      "name": "Wool Sweater",
+      "reviews": 1,
+      "price": "₦13000"
+    },
+    {
+      "name": "Nike XR-red",
+      "reviews": 20,
+      "price": "₦17000"
+    },
+    {
+      "name": "VANS",
+      "reviews": 4,
+      "price": "₦8000"
+    }
+  ],
+  "TopSellers": [
+    {
+      "name": "Men's Tshirt",
+      "reviews": 4,
+      "price": "₦4000"
+    },
+    {
+      "name": "Tank Tops",
+      "reviews": 40,
+      "price": "₦10000"
+    },
+    {
+      "name": "Ashawo shorts",
+      "reviews": 50,
+      "price": "₦15000"
+    },
+    {
+      "name": "Leather shoes",
+      "reviews": 40,
+      "price": "₦25000"
+    },
+    {
+      "name": "Sports Joggers",
+      "reviews": 3,
+      "price": "₦6000"
+    }
+  ],
   "comments": [
     {
       "id": 1,

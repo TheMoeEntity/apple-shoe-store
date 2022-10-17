@@ -136,6 +136,7 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-start;
+    cursor: pointer;
 }
 .counter {
     width: 35%;

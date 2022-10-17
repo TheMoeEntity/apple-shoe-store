@@ -14,7 +14,7 @@ const Checkout = ({data}) => {
   const [currRef,setCurrRef] = useState("")
 
   useEffect(()=> {
-    console.log(read_cookie("ref"))
+    console.log(JSON.parse(read_cookie("ref")).ref === true) 
     setCurrRef(read_cookie("ref"))
   },[])
 

@@ -10,8 +10,6 @@ const mins = 30000
 const Refer = ({data,currRefs}) => {
   const router = useRouter()
   const referral = router.query['referrer']
-  console.log(referral === undefined)
-  console.log(referral)
   const [currRef,setCurrRef] = useState("")
   const [allrefs,setAllRefs] = useState(currRefs.refs)
 
@@ -28,12 +26,12 @@ const Refer = ({data,currRefs}) => {
     const value = JSON.parse(read_cookie("ref")).referrer
     setCurrRef(value)
 
-    const interval = setInterval(() => {
-      console.log("getting refer count");
-      getStatus()
-    }, mins);
+    // const interval = setInterval(() => {
+    //   console.log("getting refer count");
+    //   getStatus()
+    // }, mins);
   
-    return () => clearInterval(interval); 
+    // return () => clearInterval(interval); 
   },[])
 
   const getStatus = async ()=> {
@@ -46,11 +44,13 @@ const Refer = ({data,currRefs}) => {
   }
 
   const getPath = () => {
-    if (referral === undefined) {
-      return ""
-    } else if (referral !== undefined) {
+    if (referral === undefined && allrefs >= 10) {
       return '/checkout'
-    }
+    } else if (referral === undefined) {
+      return ""
+    }  else if (referral !== undefined) {
+      return '/checkout'
+    } 
   }
     
   return (

@@ -10,6 +10,7 @@
     flex: 35%;
     margin: 20px;
 }
+
 .items > div:nth-child(2) {
     /* padding-top: 60px; */
 }
@@ -81,7 +82,18 @@
     height: 40px;
     margin: 10px;
     padding: 10px;
+    cursor: pointer;
     border: 1px solid rgb(163, 163, 163);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sizeSelected {
+    border: 2px solid rgb(100, 100, 100) !important;
+    font-weight: bold; 
+}
+.colorSelected {
+    border:3.5px solid black;
 }
 .color > div span {
     width: 25px;

@@ -1,11 +1,12 @@
 import styles from './Nav.module.css'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useState } from 'react'
 
 
 export const Nav = () => {
-  const fsize = '22px'
 
+  const [items,setItems] = useState(1)
   const router = useRouter()
   
   
@@ -14,9 +15,9 @@ export const Nav = () => {
      <div className={styles.Nav}>
         <div className={styles.controls}>
           <div className={styles.counter}>
-              <div>-</div>
-              <div>1</div>
-              <div>+</div>
+              <div onClick={()=> setItems(curr => curr === 0 ? 0:curr-1)}>-</div>
+              <div>{items}</div>
+              <div onClick={()=> setItems(curr => curr+1)}>+</div>
           </div>
           <Link href={`/cart`}>
           <button className={styles.toCart}>

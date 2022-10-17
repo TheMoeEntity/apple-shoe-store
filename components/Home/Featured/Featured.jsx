@@ -12,8 +12,18 @@ import boy from '../../../public/assets/boy.jpeg'
 import boy4 from '../../../public/assets/boy4.jpeg'
 import shoegreen from '../../../public/assets/shoegreen.jpeg'
 import shoered from '../../../public/assets/shoered2.jpg'
+import { useState,useRef, useEffect } from 'react'
+import { HoverEffect } from '../../../helpers/transitions'
 
 export const Featured = ({heading}) => {
+  const ref = useRef(null)
+  const [coords, setCoords] = useState({x: 0, y: 0})
+  
+  
+  useEffect(()=> {
+    // HoverEffect(ref)
+  },[])
+
   return (
     <div className={styles.featured}>
       <div className={styles.title}>
@@ -25,7 +35,7 @@ export const Featured = ({heading}) => {
       </div>
 
 
-        <div className={styles.wrapper}>
+        <div ref={ref} className={styles.wrapper}>
             <div className={styles.cardContainer}>
             <Card img={man5} name={'Soft jacket'} />
             <Card img={jeans} name={'Men\'s Jeans'} />

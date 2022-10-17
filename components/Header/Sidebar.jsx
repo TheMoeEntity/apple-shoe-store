@@ -6,7 +6,8 @@ export const Sidebar = ({sidebar,set}) => {
 
     const showDiv = e => {
         const height =  e.target.nextElementSibling.style.maxHeight
-        e.target.nextElementSibling.style.maxHeight = height === "" || height === "0px" ? "220px": "0"
+        const elemHeight = e.target.nextElementSibling.scrollHeight
+        e.target.nextElementSibling.style.maxHeight = height === "" || height === "0px" ? `${elemHeight}px`: "0"
         e.target.nextElementSibling.style.padding = height === "" || height === "0px" ? "10px":"0"
     }
 

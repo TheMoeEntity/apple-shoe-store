@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styles from './Card.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -6,12 +6,21 @@ import { useRouter } from 'next/router'
 
 export const Card = ({img,name,id}) => {
   const router = useRouter()
+  const [coords, setCoords] = useState({x: 0, y: 0});
+
+  const handleMouseMove = event => {
+    // setCoords({
+    //   x: event.clientX,
+    //   y: event.clientY - event.target.offsetTop,
+    // });
+    // console.log(coords.x)
+  };
 
   return (
 
     <Link href={router.pathname === '/' ? "":`/items/${id}`}>
     <div className={styles.card}>
-        <div className={styles.img}>
+        <div onMouseMove={handleMouseMove} className={styles.img}>
             <Image  src={img} objectFit="cover" alt='card-image' layout="fill" />
             <div className={styles.tag}>-17%</div>
             <div className={styles.like}>

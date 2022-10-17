@@ -110,16 +110,29 @@ const Cart = ({}) => {
             <div className={styles.quantity}>Quantity</div>
             <div>Subtotal</div>
         </div>
+
         <ul className={styles.item}>
+
           <li>
           <div>Oversize Hooder with Zipper</div>
             <div className={styles.quantity}>1</div>
             <div>{price}</div>
+            <div className={styles.more}>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
           </li>
+
           <li>
           <div>{`Men's`} Ashawo Shorts</div>
             <div className={styles.quantity}>1</div>
             <div>{price}</div>
+            <div className={styles.more}>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
           </li>
         </ul>
       </div>
@@ -142,7 +155,7 @@ const Cart = ({}) => {
             <button className={styles.totalbutton}>Proceed to checkout</button>
             <button style={{maxHeight:less? "60px":"0"}} onClick={ProceedToRefer} className={styles.group}>Generate link</button>
             <button style={{maxHeight:less? "60px":"0"}} onClick={ProceedToGroup} className={styles.group}>Proceed to group buying</button>
-            <br />
+            <br/>
         </div>
       </div>
 

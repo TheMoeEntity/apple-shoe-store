@@ -1,6 +1,6 @@
 import styles from './items.module.css'
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { useRef, useState } from 'react'
 import Head from 'next/head'
 import boylarge2 from '../../public/assets/boylarge2.jpeg'
 import boy from '../../public/assets/boy.jpeg'
@@ -12,17 +12,23 @@ import { useRouter } from 'next/router'
 
 const assets = [boylarge2,boy,boy4,jeans]
 const Items = () => {
-  const [id,setId] = useState(1)
-  const router = useRouter()
-  // console.log(router.query['id'])
-
-  const [currImage,setCurrImage] = useState(boy)
-  const [currItems,setCurrItems] = useState(1)
- 
-  useEffect(()=> {
-    
-  },[])
   
+  const [items,setItems] = useState(1)
+  const [currImage,setCurrImage] = useState(boy)
+  const sizeRef = useRef(null)
+  const colorRef = useRef(null)
+  const [currSize,setCurrSize] = useState("")
+
+  const handleSize = (e,type) => {
+    const parent = type === "size" ? sizeRef.current : colorRef.current
+    const selected = type === "size" ? styles.sizeSelected : styles.colorSelected
+    Array(...parent.children).forEach(element => {
+        element.classList.remove(selected)
+    })
+    e.target.classList.toggle(selected)
+    setCurrSize(e.target.innerHTML)
+  }
+
   return ( 
     <div className={styles.items}>
       <Head>
@@ -36,7 +42,7 @@ const Items = () => {
         </div>
             <h3>Oversized Hoodie</h3>
             <div className={styles.banner}>
-                <Image priority objectFit='cover' src={currImage} layout={"fill"}  />
+                <Image objectFit='cover' src={currImage} layout={"fill"}  priority />
             </div>
             <div className={styles.flex}>
                 {
@@ -58,23 +64,23 @@ const Items = () => {
       <div>
       <div className={styles.variations}>
               <h3>SIZE VARIATIONS:</h3>
-              <div>
-                <span> 43</span>
-                <span> 42</span>
-                <span> 41</span>
-                <span> 40</span>
-                <span> 39</span>
+              <div ref={sizeRef}>
+                <span className={styles.sizeSelected} onClick={e => handleSize(e,"size")}> 43</span>
+                <span onClick={e => handleSize(e,"size")}> 42</span>
+                <span onClick={e => handleSize(e,"size")}> 41</span>
+                <span onClick={e => handleSize(e,"size")}> 40</span>
+                <span onClick={e => handleSize(e,"size")}> 39</span>
               </div>
               
             </div>
       <div className={styles.color}>
               <h3>COLOR VARIATIONS:</h3>
-              <div>
-                <span style={{background:'darkred'}}></span>
-                <span style={{background:'darkblue'}}></span>
-                <span style={{background:'darkgreen'}}></span>
-                <span style={{background:'black'}}></span>
-                <span style={{background:'yellowgreen'}}></span>
+              <div ref={colorRef}>
+                <span onClick={e => handleSize(e,"color")} style={{background:'darkred'}}></span>
+                <span onClick={e => handleSize(e,"color")} style={{background:'darkblue'}}></span>
+                <span onClick={e => handleSize(e,"color")} style={{background:'darkgreen'}}></span>
+                <span onClick={e => handleSize(e,"color")} style={{background:'black'}}></span>
+                <span onClick={e => handleSize(e,"color")} style={{background:'yellowgreen'}}></span>
               </div>
               
             </div>
@@ -93,9 +99,9 @@ const Items = () => {
           height: "70px"
         }} className={NavStyles.controls}>
           <div className={NavStyles.counter}>
-              <div>-</div>
-              <div>1</div>
-              <div>+</div>
+              <div onClick={()=> setItems(curr => curr === 0 ? 0:curr-1)}>-</div>
+              <div>{items}</div>
+              <div onClick={()=> setItems(curr => curr+1)}>+</div>
           </div>
           <Link href={`/cart`}>
           <button className={NavStyles.toCart}>
