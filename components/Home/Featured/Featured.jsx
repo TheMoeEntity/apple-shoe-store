@@ -62,7 +62,7 @@ export const Featured = ({heading}) => {
               <h3>NEW SEASON</h3>
               <h2>Show off your best season <span style={{color:'#98BFCD'}}>fits.</span></h2>
 
-              <div>Don't miss this opportunity</div>
+              <div>{`Don't`} miss this opportunity</div>
               <button>Shop collection <i>&#10230;</i></button>
             </div>
           </div>
@@ -72,7 +72,7 @@ export const Featured = ({heading}) => {
               <h3>NEW SEASON</h3>
               <h2>How well do you <br /> know street fashion ?</h2>
 
-              <div>Don't miss this opportunity.</div>
+              <div>{`Don't`} miss this opportunity.</div>
               <button>Shop now! <i>&#10230;</i></button>
             </div>
           </div>
