@@ -3,17 +3,16 @@ import styles from './Featured.module.css'
 import shoe1 from '../../../public/assets/shoes1.JPG'
 import shoe2 from '../../../public/assets/shoes3.JPG'
 import girl from '../../../public/assets/girl.jpeg'
-import banner from '../../../public/assets/banner.jpeg'
-import man from '../../../public/assets/men.jpeg'
 import man5 from '../../../public/assets/man5.jpeg'
 import jeans from '../../../public/assets/jeans.jpeg'
-import { Dots } from '../../Dots/Dots'
 import boy from '../../../public/assets/boy.jpeg'
 import boy4 from '../../../public/assets/boy4.jpeg'
 import shoegreen from '../../../public/assets/shoegreen.jpeg'
 import shoered from '../../../public/assets/shoered2.jpg'
 import { useState,useRef, useEffect } from 'react'
-import { HoverEffect } from '../../../helpers/transitions'
+import Image from 'next/image'
+import banner from '../../../public/assets/banner-22.jpeg'
+import banner2 from '../../../public/assets/banner-23.jpeg'
 
 export const Featured = ({heading}) => {
   const ref = useRef(null)
@@ -52,6 +51,36 @@ export const Featured = ({heading}) => {
             <Card img={shoe2} name={'VANS'} />
             </div>    
         </div>
+
+      {
+        heading === "Featured products" && (
+          
+          <div className={styles.collection}>
+          <div>
+            <Image src={banner} objectFit='cover' layout='fill' alt='Collection banner' />
+            <div className={styles.caption}>
+              <h3>NEW SEASON</h3>
+              <h2>Show off your best season <span style={{color:'#98BFCD'}}>fits.</span></h2>
+
+              <div>Don't miss this opportunity</div>
+              <button>Shop collection <i>&#10230;</i></button>
+            </div>
+          </div>
+          <div>
+          <Image src={banner2} objectFit='cover' layout='fill' alt='Collection banner' />
+          <div className={styles.caption}>
+              <h3>NEW SEASON</h3>
+              <h2>How well do you <br /> know street fashion ?</h2>
+
+              <div>Don't miss this opportunity.</div>
+              <button>Shop now! <i>&#10230;</i></button>
+            </div>
+          </div>
+      </div>
+
+        )
+      }
+
         
     </div>
   )

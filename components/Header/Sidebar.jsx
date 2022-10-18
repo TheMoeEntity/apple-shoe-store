@@ -12,8 +12,10 @@ export const Sidebar = ({sidebar,set}) => {
     }
 
   return (
+    <>
     <div style={{visibility: sidebar ? "visible":"hidden"}}  className={styles.sidebar}>
-        <div style={{left:sidebar ? "0":"-100%"}}  className={styles.sidebarContent}>
+    </div>
+            <div style={{left:sidebar ? "0":"-100%"}}  className={styles.sidebarContent}>
             <h2>Apple Stores</h2>
             <div className={styles.closeBtn}>
                 <span onClick={set}>&times;</span>
@@ -74,6 +76,6 @@ export const Sidebar = ({sidebar,set}) => {
                 </li>
             </ul>
         </div>
-    </div>
+    </>
   )
 }
