@@ -12,16 +12,25 @@ import shoered from '../../../public/assets/shoered2.jpg'
 import { useState,useRef, useEffect } from 'react'
 import Image from 'next/image'
 import banner from '../../../public/assets/banner-22.jpeg'
+import banner3 from '../../../public/assets/banner.jpeg'
 import banner2 from '../../../public/assets/banner-23.jpeg'
+import slider from '../../../public/assets/slider-14.jpeg'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
+import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
 
 export const Featured = ({heading}) => {
   const ref = useRef(null)
   const [coords, setCoords] = useState({x: 0, y: 0})
-  
-  
-  useEffect(()=> {
-    // HoverEffect(ref)
-  },[])
+  const carousel = useRef(null)
+
+  const next = direction => {
+    const parent = carousel.current
+    const container = parent.children[0]
+    parent.scrollLeft = direction === "right" ? 
+    container.scrollWidth+container.scrollWidth :
+    container.scrollWidth-container.scrollWidth
+  }
 
   return (
     <div className={styles.featured}>
@@ -55,6 +64,7 @@ export const Featured = ({heading}) => {
       {
         heading === "Featured products" && (
           
+          <>
           <div className={styles.collection}>
           <div>
             <Image src={banner} objectFit='cover' layout='fill' alt='Collection banner' />
@@ -76,8 +86,27 @@ export const Featured = ({heading}) => {
               <button>Shop now! <i>&#10230;</i></button>
             </div>
           </div>
-      </div>
+          </div>
+          <div className={styles.imgSlider}>
+          <div ref={carousel} className={styles.carousel}>
+              <div>
+                <div className={styles.overlay}></div>
+                <Image src={slider} objectFit='cover' layout='fill' alt='Collection banner' />
+              </div>
+              <div>
+                <div className={styles.overlay}></div>
+                <Image src={banner3} objectFit='cover' layout='fill' alt='Collection banner' />
+              </div>
+          </div>
+          <div className={`${styles.controlButtons} ${styles.left}`} onClick={()=> next("left")}>
+            <FontAwesomeIcon color='whitesmoke' fontSize={"40px"} icon={faAngleLeft} />
+          </div>
+          <div className={`${styles.controlButtons} ${styles.right}`} onClick={()=> next("right")}>
+            <FontAwesomeIcon color='whitesmoke' fontSize={"40px"} icon={faAngleRight} />
+          </div>
+          </div>
 
+          </>
         )
       }
 
