@@ -9,15 +9,12 @@ import boy from '../../../public/assets/boy.jpeg'
 import boy4 from '../../../public/assets/boy4.jpeg'
 import shoegreen from '../../../public/assets/shoegreen.jpeg'
 import shoered from '../../../public/assets/shoered2.jpg'
-import { useState,useRef, useEffect } from 'react'
+import { useState,useRef} from 'react'
 import Image from 'next/image'
 import banner from '../../../public/assets/banner-22.jpeg'
 import banner3 from '../../../public/assets/banner.jpeg'
 import banner2 from '../../../public/assets/banner-23.jpeg'
 import slider from '../../../public/assets/slider-14.jpeg'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
-import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
 
 export const Featured = ({heading}) => {
   const ref = useRef(null)
@@ -37,8 +34,7 @@ export const Featured = ({heading}) => {
       <div className={styles.title}>
       <h2>{heading}</h2> 
         <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat eius ipsam ea dolores sit. Labore qui explicabo aut incidunt pariatur aliquid optio, voluptates esse adipisci, aperiam, sit excepturi ex molestiae.
-
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat eius ipsam ea dolores sit. Labore qui explicabo aut incidunt pariatur aliquid optio, voluptates esse adipisci, aperiam, sit excepturi ex molestiae.
         </p>
       </div>
 
@@ -92,17 +88,29 @@ export const Featured = ({heading}) => {
               <div>
                 <div className={styles.overlay}></div>
                 <Image src={slider} objectFit='cover' layout='fill' alt='Collection banner' />
+                <div className={styles.caption}>
+                  <span>Our winter Collection</span>
+                  <h1>APPLE STORES ESSENTIAL WINTER COLLECTION</h1>
+                  <span>Our summer collection will blow your mind</span>
+                  <button>Shop collection <i>&#10230;</i></button>
+                </div>
               </div>
               <div>
                 <div className={styles.overlay}></div>
                 <Image src={banner3} objectFit='cover' layout='fill' alt='Collection banner' />
+                <div className={styles.caption}>
+                  <span>Our winter Collection</span>
+                  <h1>VALENTIN PAUL ESSENTIAL COLLECTION</h1>
+                  <span>Peruse our eye catching gallery</span>
+                  <button>Shop collection <i>&#10230;</i></button>
+                </div>
               </div>
           </div>
           <div className={`${styles.controlButtons} ${styles.left}`} onClick={()=> next("left")}>
-            <FontAwesomeIcon color='whitesmoke' fontSize={"40px"} icon={faAngleLeft} />
+          <i className="fa fa-angle-left" aria-hidden="true"></i>
           </div>
           <div className={`${styles.controlButtons} ${styles.right}`} onClick={()=> next("right")}>
-            <FontAwesomeIcon color='whitesmoke' fontSize={"40px"} icon={faAngleRight} />
+          <i className="fa fa-angle-right" aria-hidden="true"></i>
           </div>
           </div>
 

@@ -137,14 +137,20 @@
     width: fit-content;
     height: auto;
     cursor: pointer;
-    background-color: rgba(0,0,0,0.7);
-    padding: 10px 5px;
+    /* background-color: rgba(0,0,0,0.7); */
+    background-color: white;
+    padding: 6px 2.5px;
+}
+.controlButtons i {
+    font-size: 35px;
 }
 .left {
     left: 0px;
+    color: black;
 }
 .right {
     right: 0px;
+    color: black;
 }
 
 .carousel > div {
@@ -162,6 +168,39 @@
     left: 0;
     background-color: rgba(0,0,0,0.5);
     z-index: 1;
+}
+.carousel .caption {
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    width: 80%;
+    text-align: center;
+    color: whitesmoke;
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column wrap;
+}
+.carousel .caption span:nth-child(1) {
+    color: white;
+    font-weight: 400;
+    opacity:1;
+}
+.carousel .caption > span{
+    opacity: 0.8;
+    color: white;
+    font-size: 15px;
+    display: block;
+}
+.carousel .caption h1 {
+    margin:10px 0;
+    font-size: 50px;
+}
+.carousel .caption > button {
+    font-weight: bolder;
+    color: whitesmoke;
 }
 
 @media screen and (min-width:750px) {
@@ -199,6 +238,7 @@
     .featured {
         padding: 30px;
     }
+
 }
 @media screen and (min-width:1024px) {
     .wrapper {
@@ -217,7 +257,11 @@
     .collection > div {
         flex: 100%;
         margin: 15px 0;
-        min-height: 210px;
+        min-height: 250px;
+    }
+    .carousel .caption h1 {
+        margin:10px 0;
+        font-size: 26px;
     }
     .caption {
         height: 90%;
@@ -230,6 +274,6 @@
         margin-top: 15px;
     }
     .carousel > div {
-        height: 280px;
+        height: 320px;
     }
 }
