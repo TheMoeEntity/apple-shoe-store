@@ -64,6 +64,9 @@
     .cart {
         display: block;
     }
+    .moreOptions {
+        right:-10px !important;
+    }
 }
 
 .free {

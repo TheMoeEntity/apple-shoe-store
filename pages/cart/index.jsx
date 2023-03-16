@@ -89,7 +89,7 @@ const Cart = ({}) => {
   };
 
   const [cartitems, setItems] = useState(
-    (items = [
+    ([
       {
         name: "Men's Hoodie with zipper",
         quantity: 1,
