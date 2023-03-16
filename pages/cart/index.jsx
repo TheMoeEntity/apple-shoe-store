@@ -88,7 +88,7 @@ const Cart = ({}) => {
     }
   };
 
-  const [items, setItems] = useState(
+  const [cartitems, setItems] = useState(
     (items = [
       {
         name: "Men's Hoodie with zipper",
@@ -137,7 +137,7 @@ const Cart = ({}) => {
         </div>
 
         <ul className={styles.item}>
-          {items.map((x, i) => (
+          {cartitems.map((x, i) => (
             <li key={i}>
               <div>{x.name}</div>
               <div className={styles.quantity}>{x.quantity}</div>
