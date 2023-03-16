@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-export const Card = ({img,name,id}) => {
+export const Card = ({img,name,id,men=false}) => {
   const router = useRouter()
   const [coords, setCoords] = useState({x: 0, y: 0});
 
@@ -19,7 +19,7 @@ export const Card = ({img,name,id}) => {
   return (
 
     <Link href={router.pathname === '/' ? "":`/items/${id}`}>
-    <div className={styles.card}>
+    <div className={`${styles.card} ${men ? styles.cardMen:""}`}>
         <div onMouseMove={handleMouseMove} className={styles.img}>
             <Image  src={img} objectFit="cover" alt='card-image' layout="fill" />
             <div className={styles.tag}>-17%</div>

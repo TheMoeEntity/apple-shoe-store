@@ -29,6 +29,10 @@ const Items = () => {
     setCurrSize(e.target.innerHTML)
   }
 
+  const addToCart = async () => {
+
+  }
+
   return ( 
     <div className={styles.items}>
       <Head>
@@ -103,12 +107,10 @@ const Items = () => {
               <div>{items}</div>
               <div onClick={()=> setItems(curr => curr+1)}>+</div>
           </div>
-          <Link href={`/cart`}>
-          <button className={NavStyles.toCart}>
+         
+          <button onClick={addToCart} className={NavStyles.toCart}>
               Add to cart
           </button>
-          </Link>
-
         </div>
 
         

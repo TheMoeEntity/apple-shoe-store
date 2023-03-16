@@ -1,229 +1,229 @@
 .controls {
-    width: 100%;
-    height: 60px;
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
 }
 .sidebar {
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.7);
-    top: 0px;
-    left: 0%;
-    /* z-index: 500; */
-    overflow-y: scroll;
-    transition: 0.7s;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  top: 0px;
+  left: 0%;
+  /* z-index: 500; */
+  overflow-y: scroll;
+  transition: 0.7s;
 }
 .flexItems {
-    display: flex;
-    justify-content: space-between;
-    padding: 50px 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 50px 0;
 }
 .filtersect {
-    width: 40%;
+  width: 40%;
 }
 .mainsect {
-    width: 55%;
+  width: 55%;
 }
 
 .sidebarContent {
-    /* z-index: 350; */
-    position: relative;
-    padding: 20px 20px;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    left: 0%;
-    overflow-y: scroll;
-    transition: left 0.5s;
-    overflow-y: scroll;
-    background-color: white;
-    transition: 1s;
+  /* z-index: 350; */
+  position: relative;
+  padding: 20px 20px;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  left: 0%;
+  overflow-y: scroll;
+  transition: left 0.5s;
+  overflow-y: scroll;
+  background-color: white;
+  transition: 1s;
 }
 .sidebarContent h2 {
-    margin-top: 0;
+  margin-top: 0;
 }
 .sidebarContent h4 {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 .sidebarContent button {
-    display: block;
-    margin: 20px 0;
-    background: none;
+  display: block;
+  margin: 20px 0;
+  background: none;
 }
 .sidebarContent ul {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    border-bottom: 1px solid lightgray;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid lightgray;
 }
 .sidebarContent ul li {
-    width: 100%;
-    margin: 16px 0;
-    height: auto;
-    font-size: 15px;
-    padding: 5px;
-    list-style: none;
-    transition: 0.5s;
-    display: flex;
-    justify-content: space-between;
+  width: 100%;
+  margin: 16px 0;
+  height: auto;
+  font-size: 15px;
+  padding: 5px;
+  list-style: none;
+  transition: 0.5s;
+  display: flex;
+  justify-content: space-between;
 }
 .sidebarContent ul li span {
-    display: flex;
-    align-items: center;
-    color: rgb(42, 41, 41);
+  display: flex;
+  align-items: center;
+  color: rgb(42, 41, 41);
 }
 .sidebarContent ul li input {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 .circle {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    margin-right: 9px;
-
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 9px;
 }
 
 .sidebarContent ul li > div {
-    max-height: 0px;
-    height: fit-content;
-    overflow: hidden;
-    transition:0.5s ease;
-    text-align: left;
+  max-height: 0px;
+  height: fit-content;
+  overflow: hidden;
+  transition: 0.5s ease;
+  text-align: left;
 }
 .sidebarContent ul li > div li {
-    border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
 }
 .closeBtn {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    top: 20px;
-    right: 20px;
-    background-color: lightgray;
-    display: flex;
-    align-items: center;
-    justify-content: center;
- 
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 20px;
+  right: 20px;
+  background-color: lightgray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .closeBtn span {
-    transform: scale(1.2);
-    font-weight: bold;   
+  transform: scale(1.2);
+  font-weight: bold;
 }
 .price {
-    width: 100%;
-    height: 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .price > span:last-child {
-    background-color: lightgray;
-    padding: 10px;
-    font-weight: 700;
-    font-size: small;
-
+  background-color: lightgray;
+  padding: 10px;
+  font-weight: 700;
+  font-size: small;
 }
 .flex {
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
-
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
 }
 .flex > div {
-    flex:100%;
-    justify-content: space-between;
-    height: auto;
-    display: flex;
-    min-width: 100%;
-    min-height: 450px;
+  flex: 100%;
+  justify-content: space-between;
+  height: auto;
+  display: flex;
+  min-width: 100%;
+  min-height: 450px;
 }
-.flex  > div > div {
-    flex: 30%;
-    margin:0 10px;
+.flex > div > div {
+  flex: 30%;
+  margin: 0 10px;
 }
-.flex  > div > div:nth-child(1) {
-    margin-left: 0;
-
+.flex > div > div:nth-child(1) {
+  margin-left: 0;
 }
-.flex  > div > div:nth-child(2) {
-    margin-right: 0;
+.flex > div > div:nth-child(2) {
+  margin-right: 0;
 }
 .cardContainer:nth-child(1) {
-    margin-left: 0;
+  margin-left: 0;
 }
 #recent > div {
-    min-height: 550px;
-    margin: 5px 0;
+  min-height: 550px;
+  margin: 5px 0;
 }
-#recent > div  > div {
-    margin: 15px;
+#recent > div > div {
+  margin: 15px;
 }
-#recent > div  > div > div {
-    height:78%;
+#recent > div > div > div {
+  height: 78%;
 }
 .recentlyviewed {
-    width: 100%;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    height: auto;
-    padding: 30px 0;
-    position: relative;
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  height: auto;
+  padding: 30px 0;
+  position: relative;
 }
 .recentlyviewed > div {
-    flex: 23%;
-    margin: 10px;
-    position: relative;
-    min-height: 440px;
-    min-width: 200px;
+  flex: 23%;
+  margin: 10px;
+  position: relative;
+  min-height: 440px;
+  min-width: 200px;
 }
 .recentlyviewed > div > div > div {
-    height: 80%;
+  height: 80%;
 }
 .recentlyviewed > div > div > div:nth-child(2) {
-    height: fit-content !important;
+  height: fit-content !important;
+}
+.panel {
+  visibility: hidden;
 }
 
-@media screen and (max-width:625px) {
-    .flexItems {
-        display: block;
-    }
-    .flex > div {
-        min-height: 330px;
-        margin: 15px 0;
-    }
-    .mainsect {
-        width: 100%;
-    }
-    .sidebar {
-        position:fixed;
-        z-index: 999;
-        top: 0;
-        left: -100%;
-        width: 70%;
-        height: 100%;
-        overflow-y: scroll;
-    }
-    #recent > div >div {
-        flex: 100% !important;
-    }
-    
-    #recent > div {
-        min-height: 350px;
-        margin: 20px 0; 
-    }
-    #recent > div  > div {
-        margin: 7px;
-    }
-    
+@media screen and (max-width: 625px) {
+  .panel {
+    visibility: visible;
+  }
+  .flexItems {
+    display: block;
+  }
+  .flex > div {
+    min-height: 330px;
+    margin: 15px 0;
+  }
+  .mainsect {
+    width: 100%;
+  }
+  .sidebar {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: -100%;
+    width: 70%;
+    height: 100%;
+    overflow-y: scroll;
+  }
+  #recent > div > div {
+    flex: 100% !important;
+  }
+
+  #recent > div {
+    min-height: 350px;
+    margin: 20px 0;
+  }
+  #recent > div > div {
+    margin: 7px;
+  }
 }
 
-@media screen and (min-width:1020px) {
-    .flex > div {
-        min-height: 520px;
-    }
+@media screen and (min-width: 1020px) {
+  .flex > div {
+    min-height: 520px;
+  }
 }
