@@ -88,31 +88,33 @@ const Cart = ({}) => {
     }
   };
 
-  const [cartitems, setItems] = useState(
-    ([
-      {
-        name: "Men's Hoodie with zipper",
-        quantity: 1,
-        subtotal: "₦7400",
-        more: false,
-      },
-      {
-        name: "Ashawo shorts",
-        quantity: 2,
-        subtotal: "₦2000",
-        more: false,
-      },
-    ])
-  );
+  const [cartitems, setItems] = useState([
+    {
+      name: "Men's Hoodie with zipper",
+      quantity: 1,
+      subtotal: "₦7400",
+      more: false,
+    },
+    {
+      name: "Ashawo shorts",
+      quantity: 2,
+      subtotal: "₦2000",
+      more: false,
+    },
+  ]);
 
-  const handleMore = name => {
-    setItems(prev => {
-        const newItem = prev.map(x => x.name === name ? {
-          ...x,
-          more:!x.more
-        }:{...x,more:false})
-        return newItem
-    })
+  const handleMore = (name) => {
+    setItems((prev) => {
+      const newItem = prev.map((x) =>
+        x.name === name
+          ? {
+              ...x,
+              more: !x.more,
+            }
+          : { ...x, more: false }
+      );
+      return newItem;
+    });
   };
 
   return (
@@ -124,39 +126,50 @@ const Cart = ({}) => {
       </Head>
       <div>
         <h2>Your Shopping Cart</h2>
-        <div className={styles.free}>
-          Add $125.45 more and win free shipping!
-          <div className={styles.bar}>
-            <div className={styles.width}></div>
+        {cartitems.length === 0 ? (
+          <div className={styles.noItems}>
+            <h3>You have no items in your shopping cart!</h3>
           </div>
-        </div>
-        <div className={styles.title}>
-          <div>Product</div>
-          <div className={styles.quantity}>Quantity</div>
-          <div>Subtotal</div>
-        </div>
+        ) : (
+          <div>
+            <div className={styles.free}>
+              Add $125.45 more and win free shipping!
+              <div className={styles.bar}>
+                <div className={styles.width}></div>
+              </div>
+            </div>
+            <div className={styles.title}>
+              <div>Product</div>
+              <div className={styles.quantity}>Quantity</div>
+              <div>Subtotal</div>
+            </div>
 
-        <ul className={styles.item}>
-          {cartitems.map((x, i) => (
-            <li key={i}>
-              <div>{x.name}</div>
-              <div className={styles.quantity}>{x.quantity}</div>
-              <div>{x.subtotal}</div>
-              <div onClick={() => handleMore(x.name)} className={styles.more}>
-                <div></div>
-                <div></div>
-                <div></div>
-              </div>
-              <div
-                style={{ display: x.more ? "block" : "none" }}
-                className={styles.moreOptions}
-              >
-                <div>Delete</div>
-                <div>Edit item number</div>
-              </div>
-            </li>
-          ))}
-        </ul>
+            <ul className={styles.item}>
+              {cartitems.map((x, i) => (
+                <li key={i}>
+                  <div>{x.name}</div>
+                  <div className={styles.quantity}>{x.quantity}</div>
+                  <div>{x.subtotal}</div>
+                  <div
+                    onClick={() => handleMore(x.name)}
+                    className={styles.more}
+                  >
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                  <div
+                    style={{ display: x.more ? "block" : "none" }}
+                    className={styles.moreOptions}
+                  >
+                    <div>Remove from cart</div>
+                    <div>Edit item number</div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
 
       <div>

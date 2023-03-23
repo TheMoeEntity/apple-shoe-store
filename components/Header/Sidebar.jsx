@@ -24,6 +24,8 @@ export const Sidebar = ({sidebar,set}) => {
             <h4>Main Menu</h4>
             <ul>
                 <li><Link href={`/`}>Home</Link></li>
+                <li><Link href={`/login`}>Login</Link></li>
+                <li><Link href={`/signup`}>Create account</Link></li>
                 <li>
                     <span onClick={e => showDiv(e)}>Shop</span>
                     <div>

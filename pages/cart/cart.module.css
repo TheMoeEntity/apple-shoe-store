@@ -301,3 +301,7 @@
 .moreOptions > div:last-child {
     border-bottom: none;
 }
+.noItems h3 {
+    font-weight: 300;
+    color: rgba(106, 105, 105, 0.8);
+}
