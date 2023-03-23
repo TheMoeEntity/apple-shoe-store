@@ -18,7 +18,7 @@ const login = () => {
         <button className={styles.submitButton}>Login</button>
 
         <div className={styles.account}>
-            Don't have an account?
+            {`Don't`} have an account?
             <div>
                 <Link  href={`/signup`}>
                 <button type="button">Create account</button>
