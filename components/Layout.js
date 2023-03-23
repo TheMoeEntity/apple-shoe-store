@@ -9,7 +9,7 @@ export const Layout = ({ children }) => {
     <div className="container">
       <Header />
       {children}
-      {router.pathname == "/login" || '/signup' ? (<></>): (
+      {router.pathname == "/login" || router.pathname == "/signup" ? (<></>): (
         <>
           <Footer />
           <Nav />

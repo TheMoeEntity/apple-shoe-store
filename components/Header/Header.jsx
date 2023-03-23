@@ -6,8 +6,10 @@ import { Sidebar } from "./Sidebar";
 import { useState } from "react";
 import Link from "next/link";
 import CartModal from "./CartModal";
+import { useRouter } from "next/router";
 
 export const Header = () => {
+  const router = useRouter();
   const [sideBar, setSideBar] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
 
@@ -18,12 +20,10 @@ export const Header = () => {
     <div className={styles.header}>
       <CartModal cartOpen={cartOpen} />
       <Sidebar sidebar={sideBar} set={set} />
-      <div>
-        <div onClick={() => setSideBar(!sideBar)} className={styles.hamburger}>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
+      <div onClick={() => setSideBar(!sideBar)} className={styles.hamburger}>
+        <div></div>
+        <div></div>
+        <div></div>
       </div>
 
       <div>
@@ -33,10 +33,19 @@ export const Header = () => {
       </div>
 
       {/* <Link href={`/cart`}> */}
-        <div onClick={()=> setCartOpen(!cartOpen)} style={{ cursor: "pointer" }}>
-          <Image src={cart} alt="cart image" />
-          <div className={styles.cartCount}>0</div>
-        </div>
+      <div
+        onClick={() => setCartOpen(!cartOpen)}
+        style={{
+          cursor: "pointer",
+          visibility:
+            router.pathname == "/login" || router.pathname == "/signup"
+              ? "hidden"
+              : "visible",
+        }}
+      >
+        <Image src={cart} alt="cart image" />
+        <div className={styles.cartCount}>0</div>
+      </div>
       {/* </Link> */}
     </div>
   );

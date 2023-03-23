@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 const CartModal = ({ cartOpen }) => {
-    const router = useRouter()
+  const router = useRouter();
   return (
     <div
       style={{ bottom: !cartOpen ? "100px" : "-500px" }}
@@ -26,7 +26,10 @@ const CartModal = ({ cartOpen }) => {
                 <h4>Rey Nylon Backpack</h4>
                 <h5>Natural | XL</h5>
               </div>
-              <div>$76</div>
+              <div className={styles.cost}>
+                <button>Remove</button>
+                <span className={styles.itempri}>$123.45</span>
+              </div>
             </div>
           </li>
         ))}
@@ -41,7 +44,9 @@ const CartModal = ({ cartOpen }) => {
           <Link href={"/cart"}>
             <button>View cart</button>
           </Link>
-          <button className={styles.checkBtn}>Check out</button>
+          <Link href={"/checkout"}>
+            <button className={styles.checkBtn}>Check out</button>
+          </Link>
         </div>
       </div>
     </div>
