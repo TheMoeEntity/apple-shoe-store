@@ -1,9 +1,19 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './Header.module.css'
 import Link from 'next/link'
+// import Cookies from 'js-cookie'
+import { bake_cookie,read_cookie } from 'sfcookies'
 
 export const Sidebar = ({sidebar,set}) => {
-
+    // const userInfo = Cookies.get("userInfo");
+    const [user,setUser] = useState('')
+    let name
+    useEffect(()=> {
+        const userinfo = read_cookie('userInfo')
+        name = userinfo.name
+        setUser(name)
+        console.log(name)
+    },[])
     const showDiv = e => {
         const height =  e.target.nextElementSibling.style.maxHeight
         const elemHeight = e.target.nextElementSibling.scrollHeight
@@ -20,7 +30,10 @@ export const Sidebar = ({sidebar,set}) => {
             <div className={styles.closeBtn}>
                 <span onClick={set}>&times;</span>
             </div>
-
+            {
+                user === '' ? (<></>):(<h3>Good evening, {user}</h3>)
+            }
+            {/* <h3>Good evening, Moses Nwigberi</h3> */}
             <h4>Main Menu</h4>
             <ul>
                 <li><Link href={`/`}>Home</Link></li>
@@ -75,6 +88,9 @@ export const Sidebar = ({sidebar,set}) => {
                 </li>
                 <li>
                     shoes
+                </li>
+                <li>
+                    Log out
                 </li>
             </ul>
         </div>

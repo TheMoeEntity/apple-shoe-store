@@ -68,6 +68,9 @@
 .links ul li {
   display: inline;
 }
+.sidebarContent h3 {
+  margin-top: 30px !important;
+}
 .sidebarContent {
   z-index: 350;
   position: fixed;
@@ -275,7 +278,14 @@
     width: fit-content;
     border-radius: 5px;
 }
-
+.navlinks {
+  /* width: 170px !important;
+  height: 50px; */
+  /* background-color: red; */
+}
+.cart {
+  
+}
 @media screen and (max-width: 415px) {
     .cartModal {
         width: 350px;

@@ -4,7 +4,7 @@ import boy from "../../public/assets/shoegreen.jpeg";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-const CartModal = ({ cartOpen }) => {
+const CartModal = ({ cartOpen,closeCart }) => {
   const router = useRouter();
   return (
     <div
@@ -42,7 +42,7 @@ const CartModal = ({ cartOpen }) => {
         <p>shipping total calculated at checkout</p>
         <div className={styles.bottomControls}>
           <Link href={"/cart"}>
-            <button>View cart</button>
+            <button onClick={closeCart}>View cart</button>
           </Link>
           <Link href={"/checkout"}>
             <button className={styles.checkBtn}>Check out</button>

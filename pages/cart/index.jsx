@@ -93,7 +93,7 @@ const Cart = ({}) => {
       name: "Men's Hoodie with zipper",
       quantity: 1,
       subtotal: "₦7400",
-      more: false,
+      more: false, 
     },
     {
       name: "Ashawo shorts",

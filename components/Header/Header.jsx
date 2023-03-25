@@ -18,7 +18,7 @@ export const Header = () => {
   };
   return (
     <div className={styles.header}>
-      <CartModal cartOpen={cartOpen} />
+      <CartModal closeCart={() => setCartOpen(false)} cartOpen={cartOpen} />
       <Sidebar sidebar={sideBar} set={set} />
       <div onClick={() => setSideBar(!sideBar)} className={styles.hamburger}>
         <div></div>
@@ -32,21 +32,22 @@ export const Header = () => {
         </Link>
       </div>
 
-      {/* <Link href={`/cart`}> */}
-      <div
-        onClick={() => setCartOpen(!cartOpen)}
-        style={{
-          cursor: "pointer",
-          visibility:
-            router.pathname == "/login" || router.pathname == "/signup"
-              ? "hidden"
-              : "visible",
-        }}
-      >
-        <Image src={cart} alt="cart image" />
-        <div className={styles.cartCount}>0</div>
+      <div className={styles.navlinks}>
+        <div
+          onClick={() => setCartOpen(!cartOpen)}
+          style={{
+            cursor: "pointer",
+            visibility:
+              router.pathname == "/login" || router.pathname == "/signup"
+                ? "hidden"
+                : "visible",
+          }}
+          className={styles.cart}
+        >
+          <Image src={cart} alt="cart image" />
+          <div className={styles.cartCount}>0</div>
+        </div>
       </div>
-      {/* </Link> */}
     </div>
   );
 };
