@@ -7,7 +7,7 @@ import Cookies from "js-cookie";
 import { bake_cookie, read_cookie } from 'sfcookies'
 import { useEffect } from "react";
 
-const signup = () => {
+const Signup = () => {
   const router = useRouter();
   useEffect(() => {
     const userInfo = read_cookie("userInfo");
@@ -98,4 +98,4 @@ const signup = () => {
   );
 };
 
-export default signup;
+export default Signup;

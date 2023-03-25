@@ -2,7 +2,7 @@ import styles from './login.module.css'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-const login = () => {
+const Login = () => {
     
   return (
     <div className={styles.login}>
@@ -30,4 +30,4 @@ const login = () => {
   )
 }
 
-export default login
+export default Login
