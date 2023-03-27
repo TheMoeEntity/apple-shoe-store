@@ -1,28 +1,29 @@
 import styles from "../login/login.module.css";
 import Link from "next/link";
-import { enqueueSnackbar } from "notistack";
+import { useSnackbar } from "notistack";
 import { useRouter } from "next/router";
-import { jsCookie } from "js-cookie";
-import Cookies from "js-cookie";
 import { bake_cookie, read_cookie } from 'sfcookies'
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const Signup = () => {
-  const router = useRouter();
+  const router = useRouter()
+  const [signupStatus,setsignupStatus] = useState('Create account');
+  const {enqueueSnackbar} = useSnackbar()
   useEffect(() => {
     const userInfo = read_cookie("userInfo");
-    
+
     if (userInfo.length != 0) {
       enqueueSnackbar("Already logged in!", { variant: 'info' });
       setTimeout(() => {
         router.push("/");
-      }, 2000);
+      }, 3000);
       
     }
 
   }, []);
   const submitAction = async (e) => {
     e.preventDefault();
+    setsignupStatus('sending credentials...')
     const name = e.target[0].value;
     const email = e.target[1].value;
     const password = e.target[2].value;
@@ -55,6 +56,7 @@ const Signup = () => {
             // enqueueSnackbar("An error occured", { variant: "error" });
             return Promise.reject(error);
           } else if (res.ok) {
+            setsignupStatus('Create account')
             enqueueSnackbar("User created successfully", {
               variant: "success",
             });
@@ -65,6 +67,7 @@ const Signup = () => {
           }
         })
         .catch((err) => {
+          setsignupStatus('Create account')
           enqueueSnackbar("An error occured" + ` ${err}`, { variant: "error" });
         });
     }
@@ -83,7 +86,7 @@ const Signup = () => {
         <label htmlFor="">Confirm password</label> <br />
         <input type="password" placeholder="Confirm password" required />
         <button type="submit" className={styles.submitButton}>
-          Create account
+          {signupStatus}
         </button>
         <div className={styles.account}>
           Already have an account?

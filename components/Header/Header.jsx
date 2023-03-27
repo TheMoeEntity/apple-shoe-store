@@ -7,17 +7,20 @@ import { useState } from "react";
 import Link from "next/link";
 import CartModal from "./CartModal";
 import { useRouter } from "next/router";
+import Profile from "./Profile";
 
 export const Header = () => {
   const router = useRouter();
   const [sideBar, setSideBar] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
+  const [profileOpen, setProfileOpen] = useState(false);
 
   const set = () => {
     setSideBar(false);
   };
   return (
     <div className={styles.header}>
+      {/* <Profile profileOpen={profileOpen} /> */}
       <CartModal closeCart={() => setCartOpen(false)} cartOpen={cartOpen} />
       <Sidebar sidebar={sideBar} set={set} />
       <div onClick={() => setSideBar(!sideBar)} className={styles.hamburger}>
@@ -33,6 +36,9 @@ export const Header = () => {
       </div>
 
       <div className={styles.navlinks}>
+        <div className={styles.profile}>
+        <i className='fa-solid fa-user'></i>
+        </div>
         <div
           onClick={() => setCartOpen(!cartOpen)}
           style={{
@@ -47,6 +53,7 @@ export const Header = () => {
           <Image src={cart} alt="cart image" />
           <div className={styles.cartCount}>0</div>
         </div>
+
       </div>
     </div>
   );
