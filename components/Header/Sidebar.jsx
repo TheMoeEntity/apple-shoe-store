@@ -7,7 +7,7 @@ import { useSnackbar } from "notistack";
 
 export const Sidebar = ({ sidebar, set }) => {
   const { enqueueSnackbar } = useSnackbar();
-  const [greeting,setGreeting] = useState('')
+  const [greeting, setGreeting] = useState("");
   const router = useRouter();
   const [user, setUser] = useState("");
   let name;
@@ -15,13 +15,17 @@ export const Sidebar = ({ sidebar, set }) => {
     const userinfo = read_cookie("userInfo");
     name = userinfo.name;
     setUser(name);
-    const hour = new Date().getHours()
+    const hour = new Date().getHours();
     setGreeting(() => {
-        let timeCheck = hour < 12 ? "Good Morning" :
-                        hour < 18 ? "Good Afternoon": "Good Evening"
+      let timeCheck =
+        hour < 12
+          ? "Good Morning"
+          : hour < 18
+          ? "Good Afternoon"
+          : "Good Evening";
 
-        return timeCheck
-    })
+      return timeCheck;
+    });
   }, [user, router]);
   const showDiv = (e) => {
     const height = e.target.nextElementSibling.style.maxHeight;
@@ -58,7 +62,9 @@ export const Sidebar = ({ sidebar, set }) => {
         {user === "" || user == undefined ? (
           <></>
         ) : (
-          <h3>{greeting}, {user}</h3>
+          <h3>
+            {greeting}, {user}
+          </h3>
         )}
         {/* <h3>Good evening, Moses Nwigberi</h3> */}
         <h4>Main Menu</h4>
@@ -76,9 +82,13 @@ export const Sidebar = ({ sidebar, set }) => {
           </Link>
 
           <div onClick={set}>
-            <li>
-              <Link href={`/signup`}>Create account</Link>
-            </li>
+            {user === "" || user == undefined ? (
+              <li>
+                <Link href={`/signup`}>Create account</Link>
+              </li>
+            ) : (
+              <></>
+            )}
           </div>
 
           <li>

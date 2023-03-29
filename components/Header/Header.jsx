@@ -20,7 +20,7 @@ export const Header = () => {
   };
   return (
     <div className={styles.header}>
-      {/* <Profile profileOpen={profileOpen} /> */}
+      <Profile profileOpen={profileOpen} />
       <CartModal closeCart={() => setCartOpen(false)} cartOpen={cartOpen} />
       <Sidebar sidebar={sideBar} set={set} />
       <div onClick={() => setSideBar(!sideBar)} className={styles.hamburger}>
@@ -36,8 +36,8 @@ export const Header = () => {
       </div>
 
       <div className={styles.navlinks}>
-        <div className={styles.profile}>
-        <i className='fa-solid fa-user'></i>
+        <div className={styles.profile} onClick={()=> setProfileOpen(!profileOpen)}>
+        <i className='fa-solid fa-user'></i> 
         </div>
         <div
           onClick={() => setCartOpen(!cartOpen)}

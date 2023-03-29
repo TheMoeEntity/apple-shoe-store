@@ -1,54 +1,71 @@
-import styles from './profile.module.css'
+import styles from "./profile.module.css";
 import Image from "next/image";
-import boy from "../../public/assets/shoegreen.jpeg";
 import Link from "next/link";
+import boy from "../../public/assets/boy.jpeg";
 
-const Profile = ({profileOpen=false}) => {
-    return (
-        <div
-          style={{ bottom: profileOpen ? "100px" : "-500px" }}
-          className={styles.cartModal}
-        >
-          <h2>Shopping Cart</h2>
-    
-          <ul>
-            {[...Array(4)].map((_x, i) => (
-              <li key={i}>
-                <div>
-                  <div className={styles.image}>
-                    <div>
-                      <Image layout="fill" src={boy} alt="product image" />
-                    </div>
-                  </div>
-                  <div className={styles.desc}>
-                    <h4>Rey Nylon Backpack</h4>
-                    <h5>Natural | XL</h5>
-                  </div>
-                  <div className={styles.cost}>
-                    <button>Remove</button>
-                    <span className={styles.itempri}>$123.45</span>
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ul>
-          <div className={styles.bottom}>
-            <div className={styles.prices}>
-              <h3>Cart total</h3>
-              <h4>$325.56</h4>
-            </div>
-            <p>shipping total calculated at checkout</p>
-            <div className={styles.bottomControls}>
-              <Link href={"/cart"}>
-                <button>View cart</button>
-              </Link>
-              <Link href={"/checkout"}>
-                <button className={styles.checkBtn}>Check out</button>
-              </Link>
-            </div>
-          </div>
+const Profile = ({ profileOpen = false }) => {
+  return (
+    <div
+      style={{ bottom: !profileOpen ? "100px" : "-380px" }}
+      className={styles.profile}
+    >
+      <div className={styles.userheader}>
+        <div className="">
+          <Image layout="fill" src={boy} alt="user image" />
         </div>
-      );
-}
+        <div className={styles.details}>
+          <div>
+            <b>Moses Nwigberi</b>
+          </div>
+          <div>Lagos, Nigeria</div>
+        </div>
+      </div>
+      <div className="">
+        <ul>
+          <li>
+            <div>
+              <i className="fa-solid fa-user"></i> My Account
+            </div>
+          </li>
+          <li>
+            <div>
+              <i className="fas fa-tasks"></i> My Order
+            </div>
+          </li>
+          <li>
+            <div>
+              <i className="fas fa-heart"></i> Wishlist
+            </div>
+          </li>
+          <li>
+            <div>
+              <i className="fa-solid fa-clock"></i> Recently Viewed
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div className="">
+        <ul>
+          <li>
+            <div>
+              <i className="fa-solid fa-circle-half-stroke"></i>Dark mode
+            </div>
+          </li>
+          <li>
+            <div>
+              <i className="fa-solid fa-gear"></i>Settings
+            </div>
+          </li>
 
-export default Profile
+          <li>
+            <div>
+              <i className="fa-solid fa-arrow-right-from-bracket"></i> Log out
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  );
+};
+
+export default Profile;
