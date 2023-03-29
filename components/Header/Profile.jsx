@@ -2,8 +2,21 @@ import styles from "./profile.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import boy from "../../public/assets/boy.jpeg";
+import { useSnackbar } from "notistack";
+import { delete_cookie } from "sfcookies";
 
-const Profile = ({ profileOpen = false }) => {
+const Profile = ({ profileOpen = false, setUser }) => {
+  const enqueueSnackbar = useSnackbar()
+  const logoutAction = () => {
+    set();
+    const conf = confirm("Do you really want to logout?");
+    if (conf) {
+      enqueueSnackbar("You have been logged out!", { variant: "info" });
+      delete_cookie("userInfo");
+      // setUser(undefined);
+    }
+  };
+
   return (
     <div
       style={{ bottom: !profileOpen ? "100px" : "-380px" }}
@@ -58,7 +71,7 @@ const Profile = ({ profileOpen = false }) => {
           </li>
 
           <li>
-            <div>
+            <div onClick={logoutAction}>
               <i className="fa-solid fa-arrow-right-from-bracket"></i> Log out
             </div>
           </li>

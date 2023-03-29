@@ -1,12 +1,13 @@
 import styles from "./cart.module.css";
-import Link from "next/link";
+import Image from "next/image";
+import boy from "../../public/assets/shoegreen.jpeg";
 import { useState } from "react";
 import { nanoid } from "nanoid";
 import { useRouter } from "next/router";
 import { bake_cookie, read_cookie, delete_cookie } from "sfcookies";
 import axios from "axios";
 import Head from "next/head";
-
+ 
 const Cart = ({}) => {
   const router = useRouter();
   const [price, setprice] = useState(34000);
@@ -147,7 +148,17 @@ const Cart = ({}) => {
             <ul className={styles.item}>
               {cartitems.map((x, i) => (
                 <li key={i}>
-                  <div>{x.name}</div>
+                  <div className={styles.itemDetails}>
+                    <div>
+                      <div className="">
+                      <Image layout="fill" src={boy} alt="product image" />
+                      </div>
+                    </div>
+                    <div>
+                      <h3>{x.name}</h3>
+                      <span>Natural | XL</span>
+                    </div>
+                  </div>
                   <div className={styles.quantity}>{x.quantity}</div>
                   <div>{x.subtotal}</div>
                   <div

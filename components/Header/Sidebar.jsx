@@ -35,15 +35,6 @@ export const Sidebar = ({ sidebar, set }) => {
     e.target.nextElementSibling.style.padding =
       height === "" || height === "0px" ? "10px" : "0";
   };
-  const logoutAction = () => {
-    set();
-    const conf = confirm("Do you really want to logout?");
-    if (conf) {
-      enqueueSnackbar("You have been logged out!", { variant: "info" });
-      delete_cookie("userInfo");
-      setUser(undefined);
-    }
-  };
 
   return (
     <>
@@ -74,12 +65,15 @@ export const Sidebar = ({ sidebar, set }) => {
               <li>Home</li>
             </div>
           </Link>
-
-          <Link href={`/login`}>
-            <div onClick={set}>
-              <li>Login</li>
-            </div>
-          </Link>
+          {user === "" || user == undefined ? (
+            <Link href={`/login`}>
+              <div onClick={set}>
+                <li>Login</li>
+              </div>
+            </Link>
+          ) : (
+            <></>
+          )}
 
           <div onClick={set}>
             {user === "" || user == undefined ? (
@@ -130,17 +124,6 @@ export const Sidebar = ({ sidebar, set }) => {
           <li>Baby</li>
           <li>shoes</li>
         </ul>
-        {}
-        {user === "" || user == undefined ? (
-          <></>
-        ) : (
-          <div>
-            <h4>Account</h4>
-            <ul>
-              <li onClick={logoutAction}>Log out</li>
-            </ul>
-          </div>
-        )}
       </div>
     </>
   );
