@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useSnackbar } from "notistack";
 import { bake_cookie, read_cookie } from 'sfcookies'
 import { useEffect, useState } from "react";
-import { useRouter } from "next/Router";
+import { useRouter } from "next/router"; 
 
 const Login = () => {
   const {enqueueSnackbar} = useSnackbar()
