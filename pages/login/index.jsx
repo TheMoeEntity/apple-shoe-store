@@ -5,7 +5,7 @@ import { bake_cookie, read_cookie } from 'sfcookies'
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router"; 
 
-const Login = () => {
+const Login = ({products}) => {
   const {enqueueSnackbar} = useSnackbar()
   const [loginStatus,setLoginStatus] = useState('Login')
   const router = useRouter()

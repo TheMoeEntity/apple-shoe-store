@@ -4,11 +4,11 @@ import boy from "../../public/assets/shoegreen.jpeg";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-const CartModal = ({ cartOpen,closeCart }) => {
+const CartModal = ({ cartOpen,closeCart, profileOpen }) => {
   const router = useRouter();
   return (
     <div
-      style={{ bottom: !cartOpen ? "100px" : "-500px" }}
+      style={{ bottom: !cartOpen ? "100px" : "-500px"}}
       className={styles.cartModal}
     >
       <h2>Shopping Cart</h2>

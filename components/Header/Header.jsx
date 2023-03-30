@@ -21,7 +21,7 @@ export const Header = () => {
   return (
     <div className={styles.header}>
       <Profile profileOpen={profileOpen} />
-      <CartModal closeCart={() => setCartOpen(false)} cartOpen={cartOpen} />
+      <CartModal profileOpen={profileOpen} closeCart={() => setCartOpen(false)} cartOpen={cartOpen} />
       <Sidebar sidebar={sideBar} set={set} />
       <div onClick={() => setSideBar(!sideBar)} className={styles.hamburger}>
         <div></div>
@@ -36,11 +36,11 @@ export const Header = () => {
       </div>
 
       <div className={styles.navlinks}>
-        <div className={styles.profile} onClick={()=> setProfileOpen(!profileOpen)}>
+        <div className={styles.profile} onClick={()=> cartOpen ? setProfileOpen(false) : setProfileOpen(!profileOpen)}>
         <i className='fa-solid fa-user'></i> 
         </div>
         <div
-          onClick={() => setCartOpen(!cartOpen)}
+          onClick={() => profileOpen ? setCartOpen(false) : setCartOpen(!cartOpen)}
           style={{
             cursor: "pointer",
             visibility:

@@ -9,9 +9,10 @@ export default {
       type: 'string',
     },
     {
-      name: 'brand',
-      title: 'Brand',
-      type: 'string',
+      name: 'sizes',
+      title: 'Sizes',
+      type: 'array',
+      of:[{type:'string'}],
     },
     {
       name: 'category',
@@ -21,6 +22,16 @@ export default {
     {
       name: 'color',
       title: 'Color',
+      type: 'string',
+    },
+    {
+      name: 'description',
+      title: 'Description',
+      type: 'string',
+    },
+    {
+      name: 'headline',
+      title: 'Headline',
       type: 'string',
     },
     {
@@ -53,9 +64,10 @@ export default {
       },
     },
     {
-      name: 'image',
-      title: 'Image',
-      type: 'image',
+      name: 'images',
+      title: 'Images',
+      type: 'array',
+      of:[{type:'image'}],
       options: {
         hotspot: true,
       },

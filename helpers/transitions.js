@@ -1,4 +1,12 @@
-
+import client from "./client"
+export const fetchData = async () => {
+    try {
+        const products = await client.fetch(`*[_type == "featured" ]`)
+        return products
+      } catch (error) {
+        return error
+      }
+}
 export const HoverEffect = (ref) => {
     // elem.addEventListener("mouseover",()=> {
     //     const x = elem.clientX
