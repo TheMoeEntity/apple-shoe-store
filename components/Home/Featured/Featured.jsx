@@ -52,7 +52,6 @@ export const Featured = ({ heading }) => {
       }
     };
     fetchData();
-    console.log("The product",products[5]);
   }, []);
   const next = (direction) => {
     const parent = carousel.current;
