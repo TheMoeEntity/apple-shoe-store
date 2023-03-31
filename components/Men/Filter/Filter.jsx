@@ -9,7 +9,10 @@ import man2 from "../../../public/assets/man.png";
 import boylarge2 from "../../../public/assets/cap.jpeg";
 import shoegreen from "../../../public/assets/shoegreen.jpeg";
 import Link from "next/link";
-import { useState } from "react";
+import client from "../../../helpers/client";
+import { useSnackbar } from "notistack";
+import { Loader } from "../../Loader/Loader";
+import { useState,useRef, useEffect } from "react";
 
 const Filter = () => {
   const assets = [
@@ -41,8 +44,41 @@ const Filter = () => {
     },
   ];
   const [show, setShow] = useState(false);
+  const enqueueSnackbar = useSnackbar();
+  const [state, setState] = useState({
+    products: [],
+    error: "",
+    loading: true,
+  });
+
+  const { loading, error, products } = state;
+  const carousel = useRef(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const products = await client.fetch(`*[_type == "products" ]`);
+        setState({
+          products,
+          error: false,
+          loading: false,
+        });
+      } catch (err) {
+        setState({
+          products: undefined,
+          error: err.message,
+          loading: true,
+        });
+        enqueueSnackbar("Error loading features", {
+          variant: "error",
+        });
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
+    
     <div className={styles.main}>
       <div className={styles.flexItems}>
         <div className={styles.filtersect}>
