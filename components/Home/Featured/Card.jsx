@@ -3,10 +3,11 @@ import styles from './Card.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import {urlFor} from '../../../helpers/image'
 
-export const Card = ({img,name,id,men=false}) => {
+export const Card = ({img,name,id,men=false,url}) => {
   const router = useRouter()
-  const [coords, setCoords] = useState({x: 0, y: 0});
+
 
   const handleMouseMove = event => {
     // setCoords({
@@ -15,13 +16,13 @@ export const Card = ({img,name,id,men=false}) => {
     // });
     // console.log(coords.x)
   };
-
+ 
   return (
 
-    <Link href={router.pathname === '/' ? "":`/items/${id}`}>
+    <Link href={`/items/${url}`} passHref>
     <div className={`${styles.card} ${men ? styles.cardMen:""}`}>
         <div onMouseMove={handleMouseMove} className={styles.img}>
-            <Image  src={img} objectFit="cover" alt='card-image' layout="fill" />
+            <Image  src={urlFor(img.image)} objectFit="cover" alt='card-image' layout="fill" />
             <div className={styles.tag}>-17%</div>
             <div className={styles.like}>
                 <i className='fa-solid fa-heart'></i>
@@ -31,9 +32,9 @@ export const Card = ({img,name,id,men=false}) => {
             </div>
         </div>
         <div className={styles.details}>
-        <h3>3 reviews</h3>
+        <h3>{img.reviews} reviews</h3>
         <h4>{name}</h4>
-        <h4>$34.80</h4>
+        <h4>₦{img.price}</h4>
 
         </div>
     </div>

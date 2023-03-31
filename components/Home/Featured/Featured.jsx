@@ -9,35 +9,51 @@ import boy from "../../../public/assets/boy.jpeg";
 import boy4 from "../../../public/assets/boy4.jpeg";
 import shoegreen from "../../../public/assets/shoegreen.jpeg";
 import shoered from "../../../public/assets/shoered2.jpg";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import banner from "../../../public/assets/banner-22.jpeg";
 import banner3 from "../../../public/assets/banner.jpeg";
 import banner2 from "../../../public/assets/banner-23.jpeg";
 import slider from "../../../public/assets/slider-14.jpeg";
-import { useEffect } from "react";
-import client from "../../../helpers/client"
+import client from "../../../helpers/client";
+import { useSnackbar } from "notistack";
+import { Loader } from "../../Loader/Loader";
 
-
-export const Featured = ({ heading}) => {
+export const Featured = ({ heading }) => {
   const ref = useRef(null);
-  const [products,setProducts] = useState({
-    products:[]
-  })
+  const enqueueSnackbar = useSnackbar();
+  const [state, setState] = useState({
+    products: [],
+    error: "",
+    loading: true,
+  });
+
+  const { loading, error, products } = state;
   const carousel = useRef(null);
 
-  useEffect(()=> {
+  useEffect(() => {
     const fetchData = async () => {
       try {
-          const products = await client.fetch(`*[_type == "featured" ]`)
-          setProducts({products})
-        } catch (error) {
-          setProducts(undefined)
-        }
-  }
-    fetchData()
-    console.log(products)
-  },[])
+        const products = await client.fetch(`*[_type == "featured" ]`);
+        setState({
+          products,
+          error: false,
+          loading: false,
+        });
+      } catch (err) {
+        setState({
+          products: undefined,
+          error: err.message,
+          loading: true,
+        });
+        enqueueSnackbar("Error loading features", {
+          variant: "error",
+        });
+      }
+    };
+    fetchData();
+    console.log("The product",products[5]);
+  }, []);
   const next = (direction) => {
     const parent = carousel.current;
     const container = parent.children[0];
@@ -59,23 +75,28 @@ export const Featured = ({ heading}) => {
         </p>
       </div>
 
-      <div ref={ref} className={styles.wrapper}>
-        <div className={styles.cardContainer}>
-          <Card img={man5} name={"Soft jacket"} />
-          <Card img={jeans} name={"Men's Jeans"} />
-          <Card img={boy} name={"Hoodie"} />
+      {loading ? (
+        <Loader done={!state.loading} />
+      ) : (
+        
+        <div ref={ref} className={styles.wrapper}>
+          <div className={styles.cardContainer}>
+            <Card url={products[0].slug.current} img={products[3]} name={products[3].name} />
+            <Card url={products[1].slug.current} img={products[4]} name={products[4].name} />
+            <Card url={products[2].slug.current} img={products[2]} name={products[2].name} />
+          </div>
+          <div className={styles.cardContainer}>
+            <Card url={products[3].slug.current} img={products[0]} name={products[0].name} />
+            <Card url={products[4].slug.current} img={products[1]} name={products[1].name} />
+            <Card url={products[5].slug.current} img={products[5]} name={products[5].name} />
+          </div>
+          <div className={styles.cardContainer}>
+            <Card url={products[2].slug.current} img={products[2]} name={products[1].name} />
+            <Card url={products[0].slug.current} img={products[0]} name={products[0].name} />
+            <Card url={products[3].slug.current} img={products[3]} name={products[3].name} />
+          </div>
         </div>
-        <div className={styles.cardContainer}>
-          <Card img={boy4} name={"Leather Jacket"} />
-          <Card img={shoegreen} name={"VANS-special ed"} />
-          <Card img={shoe1} name={"VANS"} />
-        </div>
-        <div className={styles.cardContainer}>
-          <Card img={girl} name={"Wool Sweather"} />
-          <Card img={shoered} name={"NIKE-red"} />
-          <Card img={shoe2} name={"VANS"} />
-        </div>
-      </div>
+      )}
 
       {heading === "Featured products" && (
         <>
