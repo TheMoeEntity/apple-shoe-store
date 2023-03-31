@@ -21,16 +21,18 @@ import client from "../../../helpers/client"
 
 export const Featured = ({ heading}) => {
   const ref = useRef(null);
-  const [products,setProducts] = useState()
+  const [products,setProducts] = useState({
+    products:[]
+  })
   const carousel = useRef(null);
 
   useEffect(()=> {
     const fetchData = async () => {
       try {
           const products = await client.fetch(`*[_type == "featured" ]`)
-          setProducts(products)
+          setProducts({products})
         } catch (error) {
-          return setProducts(undefined)
+          setProducts(undefined)
         }
   }
     fetchData()

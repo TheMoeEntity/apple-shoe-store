@@ -5,21 +5,21 @@ import { bake_cookie, read_cookie } from 'sfcookies'
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router"; 
 
-const Login = ({products}) => {
+const Login = () => {
   const {enqueueSnackbar} = useSnackbar()
   const [loginStatus,setLoginStatus] = useState('Login')
   const router = useRouter()
-  useEffect(() => {
-    const userInfo = read_cookie("userInfo");
-    if (userInfo.length != 0) {
-      enqueueSnackbar("Already logged in!", { variant: 'info' });
-      setTimeout(() => {
-        router.push("/");
-      }, 3000);
+  // useEffect(() => {
+  //   const userInfo = read_cookie("userInfo");
+  //   if (userInfo.length != 0) {
+  //     enqueueSnackbar("Already logged in!", { variant: 'info' });
+  //     setTimeout(() => {
+  //       router.push("/");
+  //     }, 3000);
       
-    }
+  //   }
 
-  }, []);
+  // }, []);
   const loginAction = async (e) => {
     setLoginStatus('Loggin in.....')
     e.preventDefault();
@@ -67,7 +67,7 @@ const Login = ({products}) => {
         <h2>Login</h2>
         <label htmlFor="">Email or Phone Number</label> <br />
         <input type="text" placeholder="Enter email address or phone number" />
-        <label htmlFor="">Email or Phone Number</label> <br />
+        <label htmlFor="">Password</label> <br />
         <input type="password" placeholder="Enter your password" />
         <div>
           <button>Forgot password?</button>
