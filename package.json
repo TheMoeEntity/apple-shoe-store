@@ -32,7 +32,8 @@
     "react-redux": "^8.0.4",
     "redux": "^4.2.0",
     "sanity": "^3.8.0",
-    "sfcookies": "^1.0.2"
+    "sfcookies": "^1.0.2",
+    "styled-components": "^5.3.9"
   },
   "devDependencies": {
     "eslint": "8.25.0",
