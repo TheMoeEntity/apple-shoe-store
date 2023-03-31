@@ -23,7 +23,7 @@ export const Card = ({img,name,id,men=false,url}) => {
     <Link href={`/items/${url}`} passHref>
     <div className={`${styles.card} ${men ? styles.cardMen:""}`}>
         <div onMouseMove={handleMouseMove} className={styles.img}>
-            <Image  src={urlFor(img.image != undefined ? img.image:loading)} objectFit="cover" alt='card-image' layout="fill" />
+            <Image  src={urlFor(img.image,loading)} objectFit="cover" alt='card-image' layout="fill" />
             <div className={styles.tag}>-17%</div>
             <div className={styles.like}>
                 <i className='fa-solid fa-heart'></i>

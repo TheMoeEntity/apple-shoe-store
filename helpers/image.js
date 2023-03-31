@@ -1,13 +1,13 @@
 import client from "./client"
 import ImageUrlBuilder  from "@sanity/image-url"
 
-const urlForThumbnail = source => {
+const urlForThumbnail = (source,fallback) => {
 
     return ImageUrlBuilder(client).image(source).width(300).url()
 }
-const urlFor = source => {
+const urlFor = (source,fallback) => {
     
-    return ImageUrlBuilder(client).image(source).width(400).url()
+    return source === undefined ? fallback : ImageUrlBuilder(client).image(source).width(400).url()
 }
 
 export { urlForThumbnail, urlFor }
