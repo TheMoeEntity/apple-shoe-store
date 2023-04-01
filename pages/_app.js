@@ -1,12 +1,15 @@
 import "../styles/globals.css";
 import { Layout } from "../components/Layout";
-import { SnackbarProvider, enqueueSnackbar } from "notistack";
+import { SnackbarProvider } from "notistack";
+import { StoreProvider } from "../helpers/Context/Store";
 
 function MyApp({ Component, pageProps }) {
   return (
     <Layout>
       <SnackbarProvider>
-        <Component {...pageProps} />
+        <StoreProvider>
+          <Component {...pageProps} />
+        </StoreProvider>
       </SnackbarProvider>
     </Layout>
   );

@@ -9,15 +9,26 @@ import jeans from '../../public/assets/jeans.jpeg'
 import Link from 'next/link'
 import NavStyles from '../../components/Nav/Nav.module.css'
 import { useRouter } from 'next/router'
+import { useEffect } from 'react'
+import client from '../../helpers/client'
+import { urlForThumbnail } from '../../helpers/image'
 
 const assets = [boylarge2,boy,boy4,jeans]
-const Items = () => {
+const Items = ({item}) => {
   
   const [items,setItems] = useState(1)
   const [currImage,setCurrImage] = useState(boy)
+  const [images,setImages] = useState([])
   const sizeRef = useRef(null)
   const colorRef = useRef(null)
   const [currSize,setCurrSize] = useState("")
+  useEffect(()=> {
+    const imgArray = []
+    item.images.forEach(element => {
+      imgArray.push(urlForThumbnail(element))
+    });
+    setImages(imgArray)
+  },[])
 
   const handleSize = (e,type) => {
     const parent = type === "size" ? sizeRef.current : colorRef.current
@@ -42,25 +53,25 @@ const Items = () => {
       </Head>
       <div>
       <div className={styles.pagination}>
-            Home / Men / Sweatshirts and Pants
+            Home / Men / {item.name}
         </div>
-            <h3>Oversized Hoodie</h3>
+            <h3>{item.name}</h3>
             <div className={styles.banner}>
-                <Image objectFit='cover' src={currImage} layout={"fill"}  priority />
+                <Image objectFit='cover' src={images[0]} layout={"fill"}  priority />
             </div>
             <div className={styles.flex}>
                 {
-                  assets.map((item,key)=> (
+                  images.map((item,key)=> (
                     <div onClick={()=> setCurrImage(item)} key={key}>
                     <Image objectFit='cover' src={item} layout={"fill"}  />
                     </div>
                   ))
                 } 
             </div>
-            <h3>Oversized Hoodie</h3>
-            <h4>1 review</h4>
+            <h3>{item.name}</h3>
+            <h4>{item.reviews} {item.reviews > 1 ? "reviews":"review"}</h4>
             <h4>$324.87</h4>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing. amet consectetur. amet consectetur</p>
+            <p>{item.headline}</p>
 
       </div>
 
@@ -91,8 +102,8 @@ const Items = () => {
             <div className={styles.desc}>
                 <h4>Description</h4>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos praesentium tenetur enim non veritatis debitis quod optio nulla veniam, ratione magnam tempora magni ducimus doloribus consectetur molestias voluptatum nostrum officia eligendi in, architecto fugiat! Doloribus debitis maxime impedit rerum architecto? <br /><br />
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, aperiam magnam rem obcaecati ducimus, eaque odio voluptates tempora, dignissimos debitis amet at. Nemo culpa tempora saepe perspiciatis labore placeat omnis asperiores maxime laudantium magni, eveniet cum ipsam? Sapiente officia labore dolorum, minima sint voluptatum quae distinctio magni doloribus. Tenetur culpa consectetur omnis praesentium placeat magni exercitationem in dolores eaque iste.
+                  {item.description}<br /><br />
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 </p>
             </div>
         
@@ -123,3 +134,14 @@ const Items = () => {
 }
 
 export default Items
+export const getServerSideProps =async ({params}) => {
+  
+  const id = params.id
+  const item = await client.fetch(`*[_type == "product" && slug.current == $id][0]`, {id})
+  return {
+    props: {
+      item,
+     }
+    }
+
+}
