@@ -6,43 +6,13 @@ import girl from "../../../public/assets/girl.jpeg";
 import shoe1 from "../../../public/assets/shoes1.JPG";
 import man from "../../../public/assets/men.jpeg";
 import man2 from "../../../public/assets/man.png";
-import boylarge2 from "../../../public/assets/cap.jpeg";
-import shoegreen from "../../../public/assets/shoegreen.jpeg";
-import Link from "next/link";
 import client from "../../../helpers/client";
 import { useSnackbar } from "notistack";
 import { Loader } from "../../Loader/Loader";
-import { useState,useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
+import imageUrlBuilder from "@sanity/image-url";
 
-const Filter = () => {
-  const assets = [
-    {
-      one: {
-        name: "Oversized Hoodie",
-        img: boylarge2,
-        id: 1,
-        arr: ["boylarge2", "boy", "boy4", "cap"],
-      },
-      two: {
-        name: "Apple Shoes",
-        img: shoegreen,
-        id: 2,
-        arr: ["shoegreen", "shoegreen2", "shoegreen3", "shoegreen5"],
-      },
-    },
-    {
-      one: {
-        name: "Nike Airforce 1s",
-        img: shoe1,
-        id: Math.floor(Math.random() * 1000),
-      },
-      two: {
-        name: "Vans shoes",
-        img: shoe2,
-        id: Math.floor(Math.random() * 1000),
-      },
-    },
-  ];
+const Filter = ({ items }) => {
   const [show, setShow] = useState(false);
   const enqueueSnackbar = useSnackbar();
   const [state, setState] = useState({
@@ -52,14 +22,16 @@ const Filter = () => {
   });
 
   const { loading, error, products } = state;
-  const carousel = useRef(null);
-
+  const builder = imageUrlBuilder(client);
+  function urlForAsset(source) {
+    return builder.image(source);
+  }
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const products = await client.fetch(`*[_type == "products" ]`);
+        const product = await client.fetch(`*[_type == "product" ]`);
         setState({
-          products,
+          products: product,
           error: false,
           loading: false,
         });
@@ -74,11 +46,11 @@ const Filter = () => {
         });
       }
     };
+    console.log(items);
     fetchData();
   }, []);
 
   return (
-    
     <div className={styles.main}>
       <div className={styles.flexItems}>
         <div className={styles.filtersect}>
@@ -92,22 +64,36 @@ const Filter = () => {
             </div>
             <div> Sort by latest</div>
           </div>
-          <div className={styles.flex}>
-            {assets.map((item, key) => (
-              <div key={key}>
+          {loading ? (
+            <Loader done={!state.loading} />
+          ) : (
+            <div className={styles.flex}>
+              <div>
                 <Card
-                  id={item.one.id}
-                  img={item.one.img}
-                  name={item.one.name}
+                  url={items[0].slug.current}
+                  img={items[0]}
+                  name={items[0].name}
                 />
                 <Card
-                  id={item.two.id}
-                  img={item.two.img}
-                  name={item.two.name}
+                  url={items[1].slug.current}
+                  img={items[1]}
+                  name={items[1].name}
                 />
               </div>
-            ))}
-          </div>
+              <div>
+                <Card
+                  url={items[2].slug.current}
+                  img={items[2]}
+                  name={items[2].name}
+                />
+                <Card
+                  url={items[3].slug.current}
+                  img={items[3]}
+                  name={items[3].name}
+                />
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
@@ -116,59 +102,59 @@ const Filter = () => {
       <div className={styles.recentlyviewed}>
         <div>
           <Card
-            id={Math.floor(Math.random() * 10000)}
-            img={man}
-            name={"NIKE pro max"}
+            url={items[1].slug.current}
+            img={items[1]}
+            name={items[1].name}
           />
         </div>
         <div>
           <Card
-            id={Math.floor(Math.random() * 10000)}
-            img={man2}
-            name={"NIKE pro max"}
+            url={items[0].slug.current}
+            img={items[0]}
+            name={items[0].name}
           />
         </div>
         <div>
           <Card
-            id={Math.floor(Math.random() * 10000)}
-            img={girl}
-            name={"NIKE pro max"}
+            url={items[3].slug.current}
+            img={items[3]}
+            name={items[3].name}
           />
         </div>
         <div>
           <Card
-            id={Math.floor(Math.random() * 10000)}
-            img={shoe1}
-            name={"NIKE pro max"}
+            url={items[0].slug.current}
+            img={items[0]}
+            name={items[0].name}
           />
         </div>
 
         <div>
           <Card
-            id={Math.floor(Math.random() * 10000)}
-            img={girl}
-            name={"NIKE pro max"}
+            url={items[3].slug.current}
+            img={items[3]}
+            name={items[3].name}
           />
         </div>
         <div>
           <Card
-            id={Math.floor(Math.random() * 10000)}
-            img={shoe2}
-            name={"NIKE pro max"}
+             url={items[0].slug.current}
+            img={items[0]}
+            name={items[0].name}
           />
         </div>
         <div>
           <Card
-            id={Math.floor(Math.random() * 10000)}
-            img={girl}
-            name={"NIKE pro max"}
+            url={items[2].slug.current}
+            img={items[2]}
+            name={items[2].name}
           />
         </div>
         <div>
           <Card
-            id={Math.floor(Math.random() * 10000)}
-            img={shoe1}
-            name={"NIKE pro max"}
+             url={items[3].slug.current}
+            img={items[3]}
+            name={items[3].name}
           />
         </div>
       </div>
@@ -178,34 +164,30 @@ const Filter = () => {
       <div className={styles.recentlyviewed}>
         <div>
           <Card
-            men={true}
-            id={Math.floor(Math.random() * 10000)}
-            img={man}
-            name={"NIKE pro max"}
+            url={items[0].slug.current}
+            img={items[0]}
+            name={items[0].name}
           />
         </div>
         <div>
           <Card
-            men={true}
-            id={Math.floor(Math.random() * 10000)}
-            img={man2}
-            name={"NIKE pro max"}
+            url={items[1].slug.current}
+            img={items[1]}
+            name={items[1].name}
           />
         </div>
         <div>
           <Card
-            men={true}
-            id={Math.floor(Math.random() * 10000)}
-            img={girl}
-            name={"NIKE pro max"}
+            url={items[3].slug.current}
+            img={items[3]}
+            name={items[3].name}
           />
         </div>
         <div>
           <Card
-            men={true}
-            id={Math.floor(Math.random() * 10000)}
-            img={shoe1}
-            name={"NIKE pro max"}
+            url={items[0].slug.current}
+            img={items[0]}
+            name={items[0].name}
           />
         </div>
       </div>

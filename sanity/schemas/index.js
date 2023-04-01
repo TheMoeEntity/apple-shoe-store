@@ -1,5 +1,5 @@
-import products from "./products";
+import product from "./product";
 import user from "./user";
 import featured from "./featured";
 
-export const schemaTypes = [products,user,featured]
+export const schemaTypes = [product,user,featured]

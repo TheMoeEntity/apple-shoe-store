@@ -3,8 +3,10 @@ import Image from 'next/image'
 import banner from '../../public/assets/banner.jpeg'
 import Filter from '../../components/Men/Filter/Filter'
 import Head from 'next/head'
+import client from '../../helpers/client'
 
-const Men = () => {
+const Men = ({items}) => {
+
   return (
     <div className={styles.men}>
       <Head>
@@ -19,9 +21,20 @@ const Men = () => {
 
         </div>
 
-        <Filter />
+        <Filter items={items} />
     </div>
   )
 }
 
 export default Men
+export const getServerSideProps = async () => {
+  const product = await client.fetch(`*[_type == "product" ]`);
+  const more = await client.fetch(`*[_type == "featured" ]`);
+
+  return {
+    props: {
+      items: product,
+     }
+    }
+
+}

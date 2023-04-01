@@ -1,14 +1,5 @@
 import { Card } from "./Card";
 import styles from "./Featured.module.css";
-import shoe1 from "../../../public/assets/shoes1.JPG";
-import shoe2 from "../../../public/assets/shoes3.JPG";
-import girl from "../../../public/assets/girl.jpeg";
-import man5 from "../../../public/assets/man5.jpeg";
-import jeans from "../../../public/assets/jeans.jpeg";
-import boy from "../../../public/assets/boy.jpeg";
-import boy4 from "../../../public/assets/boy4.jpeg";
-import shoegreen from "../../../public/assets/shoegreen.jpeg";
-import shoered from "../../../public/assets/shoered2.jpg";
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import banner from "../../../public/assets/banner-22.jpeg";
@@ -18,10 +9,10 @@ import slider from "../../../public/assets/slider-14.jpeg";
 import client from "../../../helpers/client";
 import { useSnackbar } from "notistack";
 import { Loader } from "../../Loader/Loader";
+import { urlFor } from "../../../helpers/image";
 
 export const Featured = ({ heading }) => {
   const ref = useRef(null);
-  const enqueueSnackbar = useSnackbar();
   const [state, setState] = useState({
     products: [],
     error: "",
@@ -46,9 +37,7 @@ export const Featured = ({ heading }) => {
           error: err.message,
           loading: true,
         });
-        enqueueSnackbar("Error loading features", {
-          variant: "error",
-        });
+
       }
     };
     fetchData();
@@ -77,22 +66,57 @@ export const Featured = ({ heading }) => {
       {loading ? (
         <Loader done={!state.loading} />
       ) : (
-        
         <div ref={ref} className={styles.wrapper}>
           <div className={styles.cardContainer}>
-            <Card url={products[0].slug.current} img={products[3]} name={products[3].name} />
-            <Card url={products[1].slug.current} img={products[4]} name={products[4].name} />
-            <Card url={products[2].slug.current} img={products[2]} name={products[2].name} />
+            <Card
+              url={products[0].slug.current}
+              img={products[3]}
+              name={products[3].name}
+            />
+            <Card
+              url={products[1].slug.current}
+              img={products[4]}
+              name={products[4].name}
+            />
+            <Card
+              url={products[2].slug.current}
+              img={products[2]}
+              name={products[2].name}
+            />
           </div>
           <div className={styles.cardContainer}>
-            <Card url={products[3].slug.current} img={products[0]} name={products[0].name} />
-            <Card url={products[4].slug.current} img={products[1]} name={products[1].name} />
-            <Card url={products[5].slug.current} img={products[5]} name={products[5].name} />
+            <Card
+              url={products[3].slug.current}
+              img={products[0]}
+              name={products[0].name}
+            />
+            <Card
+              url={products[4].slug.current}
+              img={products[1]}
+              name={products[1].name}
+            />
+            <Card
+              url={products[5].slug.current}
+              img={products[5]}
+              name={products[5].name}
+            />
           </div>
           <div className={styles.cardContainer}>
-            <Card url={products[2].slug.current} img={products[2]} name={products[1].name} />
-            <Card url={products[0].slug.current} img={products[0]} name={products[0].name} />
-            <Card url={products[3].slug.current} img={products[3]} name={products[3].name} />
+            <Card
+              url={products[2].slug.current}
+              img={products[2]}
+              name={products[1].name}
+            />
+            <Card
+              url={products[0].slug.current}
+              img={products[0]}
+              name={products[0].name}
+            />
+            <Card
+              url={products[3].slug.current}
+              img={products[3]}
+              name={products[3].name}
+            />
           </div>
         </div>
       )}

@@ -3,19 +3,22 @@ import styles from "./Card.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { urlFor } from "../../../helpers/image";
+import { urlFor, urlForThumbnail } from "../../../helpers/image";
 import loading from "../../../public/assets/loading.jpeg";
+
 
 export const Card = ({ img, name, men = false, url }) => {
   const router = useRouter();
-
+  const coma = price => {
+    return price.toLocaleString()
+  }
   return (
     <Link href={`/items/${url}`} passHref>
       {router.pathname === "/men" ? (
         <div className={`${styles.card} ${men ? styles.cardMen : ""}`}>
           <div className={styles.img}>
             <Image
-              src={urlFor(img.image, loading)}
+              src={urlFor(img.images[0], loading)}
               objectFit="cover"
               alt="card-image"
               layout="fill"
@@ -31,7 +34,7 @@ export const Card = ({ img, name, men = false, url }) => {
           <div className={styles.details}>
             <h3>{img.reviews} reviews</h3>
             <h4>{name}</h4>
-            <h4>₦45678</h4>
+            <h4>₦{coma(img.price)}</h4>
           </div>
         </div>
       ) : (

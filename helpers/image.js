@@ -3,7 +3,7 @@ import ImageUrlBuilder  from "@sanity/image-url"
 
 const urlForThumbnail = (source,fallback) => {
 
-    return ImageUrlBuilder(client).image(source).width(300).url()
+    return source === undefined ? fallback :  ImageUrlBuilder(client).image(source).width(300).url()
 }
 const urlFor = (source,fallback) => {
     
