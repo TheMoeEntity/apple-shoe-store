@@ -17,8 +17,8 @@ const Items = ({ item }) => {
     dispatch,
   } = useContext(Store);
   const [items, setItems] = useState(1);
-  const [currImage, setCurrImage] = useState(boy);
   const [images, setImages] = useState([]);
+  const [currImage, setCurrImage] = useState(urlForThumbnail(item.images[0]));
   const sizeRef = useRef(null);
   const colorRef = useRef(null);
   const [currSize, setCurrSize] = useState("");
@@ -27,6 +27,7 @@ const Items = ({ item }) => {
     item.images.forEach((element) => {
       imgArray.push(urlForThumbnail(element));
     });
+    setCurrImage(imgArray[0])
     setImages(imgArray);
   }, []);
 
@@ -54,7 +55,7 @@ const Items = ({ item }) => {
         <div className={styles.pagination}>Home / Men / {item.name}</div>
         <h3>{item.name}</h3>
         <div className={styles.banner}>
-          <Image objectFit="cover" src={images[0]} layout={"fill"} priority />
+          <Image objectFit="cover" src={currImage} layout={"fill"} priority />
         </div>
         <div className={styles.flex}>
           {images.map((item, key) => (

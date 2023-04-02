@@ -6,6 +6,9 @@ import { useState } from "react";
 export const Nav = () => {
   const [items, setItems] = useState(1);
   const router = useRouter();
+  const navActions = payload => {
+    router.push(`${payload}`)
+  }
 
   if (router.pathname === "/items/[id]") {
     return (
@@ -29,13 +32,9 @@ export const Nav = () => {
   } else {
     return (
       <div className={styles.Nav}>
-        <div>
-          <Link href={`/`}>
-            <>
-            <i className="fa-solid fa-house"></i>
-            <span>Home</span>
-            </>
-          </Link>
+        <div onClick={()=>navActions('/')}>
+          <i className="fa-solid fa-house"></i>
+          <span>Home</span>
         </div>
         {/* <div>
           <i className="fa-solid fa-search"></i>
@@ -45,7 +44,7 @@ export const Nav = () => {
           <i className="fa-solid fa-heart"></i>
           <span>wishlist</span>
         </div>
-        <div>
+        <div onClick={()=>navActions('/cart')}>
           <i className="fa-solid fa-shopping-cart"></i>
           <span>Cart</span>
         </div>

@@ -41,6 +41,7 @@
     border: 1px solid #d9dde1;
     border-radius: 8px;
     padding: 5px;
+    overflow: hidden;
 }
 
 .flex {
@@ -58,6 +59,7 @@
     border: 1px solid #d9dde1;
     border-radius: 8px;
     overflow: hidden;
+    cursor: pointer;
 }
 .flex > div:first-child {
     margin-left: 0;
@@ -139,7 +141,7 @@
 }
 @media screen and (max-width:660px) {
     .banner {
-        min-height: 550px;
+        min-height: 390px;
     }
     .flex {
         height: 90px;

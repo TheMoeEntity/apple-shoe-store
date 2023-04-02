@@ -70,9 +70,9 @@ const Filter = ({ items }) => {
             <div className={styles.flex}>
               <div>
                 <Card
-                  url={items[0].slug.current}
-                  img={items[0]}
-                  name={items[0].name}
+                  url={items[4].slug.current}
+                  img={items[4]}
+                  name={items[4].name}
                 />
                 <Card
                   url={items[1].slug.current}
