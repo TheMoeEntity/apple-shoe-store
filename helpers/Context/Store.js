@@ -13,9 +13,17 @@ const initialState = {
 
 const reducer = (state, action) => {
   switch (action.payload) {
-    case "ADD_To_CART":
+    case "ADD_TO_CART": {
       const newItem = action.payload;
-      break;
+      const exists = state.cart.cartItems.find(
+        (item) => item._key === newItem._key
+      );
+      const cartItems = exists
+        ? state.cart.cartItems.map((item) =>
+            item._key === exists._key ? newItem : item
+          )
+        : [...state];
+    }
 
     default:
       return state;

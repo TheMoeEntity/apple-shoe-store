@@ -7,11 +7,11 @@ import banner3 from "../../../public/assets/banner.jpeg";
 import banner2 from "../../../public/assets/banner-23.jpeg";
 import slider from "../../../public/assets/slider-14.jpeg";
 import client from "../../../helpers/client";
-import { useSnackbar } from "notistack";
-import { Loader } from "../../Loader/Loader";
-import { urlFor } from "../../../helpers/image";
 
-export const Featured = ({ heading }) => {
+import { Loader } from "../../Loader/Loader";
+
+
+export const Featured = ({ heading, prods }) => {
   const ref = useRef(null);
   const [state, setState] = useState({
     products: [],
@@ -25,9 +25,9 @@ export const Featured = ({ heading }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const products = await client.fetch(`*[_type == "featured" ]`);
+        
         setState({
-          products,
+          products:prods,
           error: false,
           loading: false,
         });
