@@ -4,6 +4,7 @@ import Cookies from "js-cookie";
 
 export const Store = createContext();
 const initialState = {
+  sidebar: false,
   cart: {
     cartItems: Cookies.get("cartItems")
       ? JSON.parse(Cookies.get("cartItems"))
@@ -13,6 +14,10 @@ const initialState = {
 
 const reducer = (state, action) => {
   switch (action.payload) {
+    case "OPEN_SIDEBAR":
+      return { ...state, sidebar: true };
+    case "CLOSE_SIDEBAR":
+      return { ...state, sidebar: false };
     case "ADD_TO_CART": {
       const newItem = action.payload;
       const exists = state.cart.cartItems.find(

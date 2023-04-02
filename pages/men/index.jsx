@@ -27,7 +27,7 @@ const Men = ({items}) => {
 }
 
 export default Men
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const product = await client.fetch(`*[_type == "product" ]`);
   const more = await client.fetch(`*[_type == "featured" ]`);
 
