@@ -10,6 +10,7 @@ import client from "../../helpers/client";
 import { urlForThumbnail } from "../../helpers/image";
 import { useContext } from "react";
 import { Store } from "../../helpers/Context/Store";
+import noimage from "../../public/assets/noimage.png";
 
 const Items = ({ item }) => {
   const {
@@ -18,17 +19,34 @@ const Items = ({ item }) => {
   } = useContext(Store);
   const [items, setItems] = useState(1);
   const [images, setImages] = useState([]);
-  const [currImage, setCurrImage] = useState(urlForThumbnail(item.images[0]));
+  const [currImage, setCurrImage] = useState(noimage);
+  const [price, setPrice] = useState("0");
   const sizeRef = useRef(null);
   const colorRef = useRef(null);
+  const [sizes, setSizes] = useState([]);
   const [currSize, setCurrSize] = useState("");
   useEffect(() => {
     const imgArray = [];
-    item.images.forEach((element) => {
-      imgArray.push(urlForThumbnail(element));
+    const allSizes = [];
+    if (item.images) {
+      item.images.forEach((element) => {
+        imgArray.push(urlForThumbnail(element,noimage));
+      });
+      setCurrImage(imgArray[0]);
+      setImages(imgArray);
+    } else {
+      setCurrImage(urlForThumbnail(item.image,noimage))
+    }
+    item.sizes.forEach((element) => {
+      allSizes.push(element);
     });
-    setCurrImage(imgArray[0])
-    setImages(imgArray);
+    setSizes(allSizes);
+    
+    // setPrice(() => {
+    //   const pr = `${item.price}`;
+    //   return pr.tolocaleString();
+    // });
+    
   }, []);
 
   const handleSize = (e, type) => {
@@ -57,18 +75,29 @@ const Items = ({ item }) => {
         <div className={styles.banner}>
           <Image objectFit="cover" src={currImage} layout={"fill"} priority />
         </div>
-        <div className={styles.flex}>
-          {images.map((item, key) => (
-            <div onClick={() => setCurrImage(item)} key={key}>
-              <Image objectFit="cover" src={item} layout={"fill"} />
-            </div>
-          ))}
-        </div>
+
+        {item.images ? (
+          <div className={styles.flex}>
+            {images.map((item, key) => (
+              <div onClick={() => setCurrImage(item)} key={key}>
+                <Image objectFit="cover" src={item} layout={"fill"} />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className={styles.flex}>
+            {[...Array(4)].map((_item, key) => (
+              <div key={key}>
+                <Image objectFit="cover" src={noimage} layout={"fill"} />
+              </div>
+            ))}
+          </div>
+        )}
         <h3>{item.name}</h3>
         <h4>
           {item.reviews} {item.reviews > 1 ? "reviews" : "review"}
         </h4>
-        <h4>$324.87</h4>
+        <h4>₦{item.price}</h4>
         <p>{item.headline}</p>
       </div>
 
@@ -76,7 +105,7 @@ const Items = ({ item }) => {
         <div className={styles.variations}>
           <h3>SIZE VARIATIONS:</h3>
           <div ref={sizeRef}>
-            <span
+            {/* <span
               className={styles.sizeSelected}
               onClick={(e) => handleSize(e, "size")}
             >
@@ -86,7 +115,13 @@ const Items = ({ item }) => {
             <span onClick={(e) => handleSize(e, "size")}> 42</span>
             <span onClick={(e) => handleSize(e, "size")}> 41</span>
             <span onClick={(e) => handleSize(e, "size")}> 40</span>
-            <span onClick={(e) => handleSize(e, "size")}> 39</span>
+            <span onClick={(e) => handleSize(e, "size")}> 39</span> */}
+            {sizes.map((size, key) => (
+              <span key={key} onClick={(e) => handleSize(e, "size")}>
+                {" "}
+                {size}
+              </span>
+            ))}
           </div>
         </div>
         <div className={styles.color}>
@@ -155,12 +190,21 @@ const Items = ({ item }) => {
 };
 
 export default Items;
-export const getServerSideProps = async ({ params }) => {
+export const getServerSideProps = async ({ params,query }) => {
   const id = params.id;
-  const item = await client.fetch(
+  var item = await client.fetch(
     `*[_type == "product" && slug.current == $id][0]`,
     { id }
   );
+  const featured = await client.fetch(
+    `*[_type == "featured" && slug.current == $id][0]`,
+    { id }
+  );
+  console.log(query)
+  if (query.from === "home") {
+    item = featured
+  }
+  
   return {
     props: {
       item,
