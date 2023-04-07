@@ -1,0 +1,32 @@
+.account {
+    width: 100%;
+    min-height: 400px;
+    padding: 20px 0px;
+}
+.account h2 {
+    color: #334255;
+    font-size: 28px;
+}
+.account h4 {
+    color:#334255;
+    font-weight: 300;
+}
+.account > div {
+    width: 80%;
+    margin: 0 auto;
+}
+.controls {
+    width: 100%;
+    height: 55px;
+    border-top: 1px solid #3342553d;
+    border-bottom: 1px solid #3342553d;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    overflow-x: scroll;
+    justify-content: space-between;
+    color: #334255;
+}
+.controls > div {
+    display: inline-block;
+}

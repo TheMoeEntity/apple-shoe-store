@@ -6,9 +6,8 @@ import { useSnackbar } from "notistack";
 import { delete_cookie } from "sfcookies";
 
 const Profile = ({ profileOpen = false, setUser }) => {
-  const enqueueSnackbar = useSnackbar()
+  const { enqueueSnackbar } = useSnackbar();
   const logoutAction = () => {
-    set();
     const conf = confirm("Do you really want to logout?");
     if (conf) {
       enqueueSnackbar("You have been logged out!", { variant: "info" });
@@ -36,9 +35,11 @@ const Profile = ({ profileOpen = false, setUser }) => {
       <div className="">
         <ul>
           <li>
-            <div>
-              <i className="fa-solid fa-user"></i> My Account
-            </div>
+            <Link href={`/account`}>
+              <div>
+                <i className="fa-solid fa-user"></i> My Account
+              </div>
+            </Link>
           </li>
           <li>
             <div>

@@ -200,7 +200,6 @@ export const getServerSideProps = async ({ params,query }) => {
     `*[_type == "featured" && slug.current == $id][0]`,
     { id }
   );
-  console.log(query)
   if (query.from === "home") {
     item = featured
   }
