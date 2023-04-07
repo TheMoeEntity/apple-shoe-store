@@ -1,17 +1,18 @@
 import "../styles/globals.css";
 import { Layout } from "../components/Layout";
 import { SnackbarProvider } from "notistack";
-import { StoreProvider } from "../helpers/Context/Store";
+import { Provider } from "react-redux";
+import store from "../helpers/Redux/store";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Layout>
-      <SnackbarProvider>
-        <StoreProvider>
+    <Provider store={store}>
+      <Layout>
+        <SnackbarProvider>
           <Component {...pageProps} />
-        </StoreProvider>
-      </SnackbarProvider>
-    </Layout>
+        </SnackbarProvider>
+      </Layout>
+    </Provider>
   );
 }
 

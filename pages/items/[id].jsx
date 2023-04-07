@@ -8,15 +8,13 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import client from "../../helpers/client";
 import { urlForThumbnail } from "../../helpers/image";
-import { useContext } from "react";
-import { Store } from "../../helpers/Context/Store";
 import noimage from "../../public/assets/noimage.png";
+import { addProduct } from "../../helpers/Redux/cart";
+import { useDispatch } from "react-redux";
+import { useSnackbar } from "notistack";
 
 const Items = ({ item }) => {
-  const {
-    state: { cart },
-    dispatch,
-  } = useContext(Store);
+  const {enqueueSnackbar} = useSnackbar()
   const [items, setItems] = useState(1);
   const [images, setImages] = useState([]);
   const [currImage, setCurrImage] = useState(noimage);
@@ -25,28 +23,28 @@ const Items = ({ item }) => {
   const colorRef = useRef(null);
   const [sizes, setSizes] = useState([]);
   const [currSize, setCurrSize] = useState("");
+  const dispatch = useDispatch();
   useEffect(() => {
     const imgArray = [];
     const allSizes = [];
     if (item.images) {
       item.images.forEach((element) => {
-        imgArray.push(urlForThumbnail(element,noimage));
+        imgArray.push(urlForThumbnail(element, noimage));
       });
       setCurrImage(imgArray[0]);
       setImages(imgArray);
     } else {
-      setCurrImage(urlForThumbnail(item.image,noimage))
+      setCurrImage(urlForThumbnail(item.image, noimage));
     }
     item.sizes.forEach((element) => {
       allSizes.push(element);
     });
     setSizes(allSizes);
-    
+
     // setPrice(() => {
     //   const pr = `${item.price}`;
     //   return pr.tolocaleString();
     // });
-    
   }, []);
 
   const handleSize = (e, type) => {
@@ -60,7 +58,13 @@ const Items = ({ item }) => {
     setCurrSize(e.target.innerHTML);
   };
 
-  const addToCart = async () => {};
+  const addToCart = () => {
+    const price = item.price*items
+    dispatch(addProduct({ ...item, items, price }));
+    enqueueSnackbar("Successfully Added item to your cart", {
+      variant: "success",
+    }); 
+  };
 
   return (
     <div className={styles.items}>
@@ -179,7 +183,7 @@ const Items = ({ item }) => {
 };
 
 export default Items;
-export const getServerSideProps = async ({ params,query }) => {
+export const getServerSideProps = async ({ params, query }) => {
   const id = params.id;
   var item = await client.fetch(
     `*[_type == "product" && slug.current == $id][0]`,
@@ -190,9 +194,9 @@ export const getServerSideProps = async ({ params,query }) => {
     { id }
   );
   if (query.from === "home") {
-    item = featured
+    item = featured;
   }
-  
+
   return {
     props: {
       item,

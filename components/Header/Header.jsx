@@ -8,12 +8,14 @@ import Link from "next/link";
 import CartModal from "./CartModal";
 import { useRouter } from "next/router";
 import Profile from "./Profile";
+import { useSelector } from "react-redux"
 
 export const Header = () => {
   const router = useRouter();
   const [sideBar, setSideBar] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
+  const items = useSelector(state => state.cart.quantity)
 
   const set = () => {
     setSideBar(false);
@@ -51,7 +53,7 @@ export const Header = () => {
           className={styles.cart}
         >
           <Image src={cart} alt="cart image" />
-          <div className={styles.cartCount}>0</div>
+          <div className={styles.cartCount}>{items}</div>
         </div>
 
       </div>

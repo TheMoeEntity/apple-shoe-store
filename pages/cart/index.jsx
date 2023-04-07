@@ -7,11 +7,29 @@ import { useRouter } from "next/router";
 import { bake_cookie, read_cookie, delete_cookie } from "sfcookies";
 import axios from "axios";
 import Head from "next/head";
- 
+import { useDispatch, useSelector } from "react-redux";
+import { removeProduct, reset } from "../../helpers/Redux/cart";
+import noimage from '../../public/assets/noimage.png'
+import { urlForThumbnail } from "../../helpers/image";
+
 const Cart = ({}) => {
   const router = useRouter();
   const [price, setprice] = useState(34000);
   const [less, setLess] = useState(false);
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart);
+
+  const CalculateTotal = (cart) => {
+    let total = 0;
+    for (let index = 0; index < cart.length; index++) {
+      total += cart[index].price;
+    }
+    return total;
+  };
+  const total = CalculateTotal(cart.products);
+  const removeCartItem = (product, item_id, price, packs) => {
+    dispatch(removeProduct({ ...product, item_id, price, packs }));
+  };
 
   const ProceedToRefer = async () => {
     const didRefer = read_cookie("ref").length != 0;
@@ -94,7 +112,7 @@ const Cart = ({}) => {
       name: "Men's Hoodie with zipper",
       quantity: 1,
       subtotal: "₦7400",
-      more: false, 
+      more: false,
     },
     {
       name: "Ashawo shorts",
@@ -146,12 +164,12 @@ const Cart = ({}) => {
             </div>
 
             <ul className={styles.item}>
-              {cartitems.map((x, i) => (
+              {cart.products.map((x, i) => (
                 <li key={i}>
                   <div className={styles.itemDetails}>
                     <div>
                       <div className="">
-                      <Image layout="fill" src={boy} alt="product image" />
+                        <Image layout="fill" src={urlForThumbnail(x.images[0],noimage)} alt="product image" />
                       </div>
                     </div>
                     <div>
@@ -160,7 +178,7 @@ const Cart = ({}) => {
                     </div>
                   </div>
                   <div className={styles.quantity}>{x.quantity}</div>
-                  <div>{x.subtotal}</div>
+                  <div>₦{x.price.toLocaleString()}</div>
                   <div
                     onClick={() => handleMore(x.name)}
                     className={styles.more}
@@ -188,16 +206,16 @@ const Cart = ({}) => {
           <h3>Cart totals</h3>
           <div className={styles.subtotal}>
             <span>Subtotal</span>
-            <span>$12.300</span>
+            <span>₦{total.toLocaleString()}</span>
           </div>
           <div className={styles.totalpr}>
             <span>Total</span>
-            <span>$12.300</span>
+            <span>₦{total.toLocaleString()}</span>
           </div>
           <div className={styles.totalpr}>
             <span>Pay less</span>
             <span style={{ cursor: "pointer" }} onClick={() => setLess(!less)}>
-              ${(price - 0.7 * price).toLocaleString()}
+            ₦{(total - 0.7 * total).toLocaleString()}
             </span>
           </div>
           <button className={styles.totalbutton}>Proceed to checkout</button>

@@ -336,3 +336,6 @@
 .itemDetails > div:nth-child(1) > div img {
     border-radius: 12px;
 }
+.itemDetails img {
+    object-fit: cover;
+}
