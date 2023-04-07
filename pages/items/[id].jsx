@@ -105,17 +105,6 @@ const Items = ({ item }) => {
         <div className={styles.variations}>
           <h3>SIZE VARIATIONS:</h3>
           <div ref={sizeRef}>
-            {/* <span
-              className={styles.sizeSelected}
-              onClick={(e) => handleSize(e, "size")}
-            >
-              {" "}
-              43
-            </span>
-            <span onClick={(e) => handleSize(e, "size")}> 42</span>
-            <span onClick={(e) => handleSize(e, "size")}> 41</span>
-            <span onClick={(e) => handleSize(e, "size")}> 40</span>
-            <span onClick={(e) => handleSize(e, "size")}> 39</span> */}
             {sizes.map((size, key) => (
               <span key={key} onClick={(e) => handleSize(e, "size")}>
                 {" "}

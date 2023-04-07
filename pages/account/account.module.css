@@ -12,7 +12,8 @@
     font-weight: 300;
 }
 .account > div {
-    width: 80%;
+    width: 85%;
+    max-width: 700px;
     margin: 0 auto;
 }
 .controls {
@@ -21,12 +22,71 @@
     border-top: 1px solid #3342553d;
     border-bottom: 1px solid #3342553d;
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: row;
     align-items: center;
-    overflow-x: scroll;
+    overflow-x: auto;
     justify-content: space-between;
     color: #334255;
+    padding: 0;
 }
+.controls::-webkit-scrollbar {
+    display: none;
+  }
 .controls > div {
-    display: inline-block;
+    min-width: fit-content;
+    white-space: nowrap;
+    margin-right: 20px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.controls > div:first-child {
+    border-bottom: 1px solid #334255;
+}
+.content {
+    min-height: 400px;
+    width: 100%;
+}
+.content h3 {
+    color: #334255;
+
+}
+.content form {
+    width: 100%;
+    height: auto;
+    padding: 5px 0;
+}
+.pic {
+    width: 110px;
+    height: 110px;
+    position: relative;
+    margin-bottom: 20px;
+}
+.pic img {
+    object-fit: cover;
+    border-radius: 50%;
+}
+.content form label {
+    font-weight: bold;
+    color: #334255;
+    display: block;
+}
+.content form input {
+    width: 100%;
+    max-width: 600px;
+    padding: 12px;
+    margin: 15px 0;
+    border-radius: 15px;
+    border:1px solid #3342553d;
+}
+.content form button {
+    background-color: #334255;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    height: 40px;
+    display: block;
+    width: 120px;
+    margin-top: 15px;
 }
