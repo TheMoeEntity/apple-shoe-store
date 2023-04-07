@@ -22,7 +22,6 @@ const cartSlice = createSlice({
         removeProduct:(state,action) => {
             state.products.splice(action.payload.item_id,1)
             state.quantity -= 1
-            console.log(action.payload.item_id)
             state.total -= action.payload.price * action.payload.packs
         }
     }

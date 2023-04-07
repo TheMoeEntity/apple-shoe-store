@@ -34,6 +34,18 @@ const index = () => {
               <input type="text" placeholder="Enter a new address" />
               <button type="submit">Update info</button>
             </div>
+
+            <div>
+              <label htmlFor="">Full Name</label>
+              <input type="text" placeholder="Your Name" />
+              <label htmlFor="">Email</label>
+              <input type="text" placeholder="Enter email" />
+              <label htmlFor="">Phone Number</label>
+              <input type="text" placeholder="Enter phone" />
+              <label htmlFor="">Address</label>
+              <input type="text" placeholder="Enter a new address" />
+              <button type="submit">Update info</button>
+            </div>
           </form>
         </div>
       </div>

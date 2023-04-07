@@ -70,21 +70,21 @@ const Filter = ({ items }) => {
             <div className={styles.flex}>
               <div>
                 <Card
-                  url={items[4].slug.current}
-                  img={items[4]}
-                  name={items[4].name}
+                  url={items[7].slug.current}
+                  img={items[7]}
+                  name={items[7].name}
                 />
                 <Card
-                  url={items[1].slug.current}
-                  img={items[1]}
-                  name={items[1].name}
+                  url={items[0].slug.current}
+                  img={items[0]}
+                  name={items[0].name}
                 />
               </div>
               <div>
                 <Card
-                  url={items[2].slug.current}
-                  img={items[2]}
-                  name={items[2].name}
+                  url={items[5].slug.current}
+                  img={items[5]}
+                  name={items[5].name}
                 />
                 <Card
                   url={items[3].slug.current}
@@ -102,6 +102,13 @@ const Filter = ({ items }) => {
       <div className={styles.recentlyviewed}>
         <div>
           <Card
+            url={items[0].slug.current}
+            img={items[0]}
+            name={items[0].name}
+          />
+        </div>
+        <div>
+          <Card
             url={items[1].slug.current}
             img={items[1]}
             name={items[1].name}
@@ -109,23 +116,16 @@ const Filter = ({ items }) => {
         </div>
         <div>
           <Card
-            url={items[0].slug.current}
-            img={items[0]}
-            name={items[0].name}
+            url={items[2].slug.current}
+            img={items[2]}
+            name={items[2].name}
           />
         </div>
         <div>
           <Card
-            url={items[3].slug.current}
-            img={items[3]}
-            name={items[3].name}
-          />
-        </div>
-        <div>
-          <Card
-            url={items[0].slug.current}
-            img={items[0]}
-            name={items[0].name}
+            url={items[4].slug.current}
+            img={items[4]}
+            name={items[4].name}
           />
         </div>
 
