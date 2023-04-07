@@ -1,10 +1,9 @@
 import styles from "./Header.module.css";
 import Image from "next/image";
-import boy from "../../public/assets/shoegreen.jpeg";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
-import { removeProduct, reset } from "../../helpers/Redux/cart";
+import { removeProduct } from "../../helpers/Redux/cart";
 import noimage from '../../public/assets/noimage.png'
 import { urlForThumbnail } from "../../helpers/image";
 
@@ -30,28 +29,37 @@ const CartModal = ({ cartOpen,closeCart, profileOpen }) => {
       className={styles.cartModal}
     >
       <h2>Shopping Cart</h2>
-
-      <ul>
-        {cart.products.map((x, i) => (
-          <li key={i}>
-            <div>
-              <div className={styles.image}>
-                <div>
-                  <Image layout="fill" src={urlForThumbnail(x.images[0],noimage)} alt="product image" />
+      {
+        cart.products.length == 0 ? 
+        (
+          <div className="">
+            <h3>You have no items in your cart</h3>
+          </div>
+        ):
+        ( 
+               <ul>
+          {cart.products.map((x, i) => (
+            <li key={i}>
+              <div>
+                <div className={styles.image}>
+                  <div>
+                    <Image layout="fill" src={urlForThumbnail(x.images[0],noimage)} alt="product image" />
+                  </div>
+                </div>
+                <div className={styles.desc}>
+                  <h4>{x.name}</h4>
+                  <h5>Natural | XL</h5>
+                </div>
+                <div className={styles.cost}>
+                  <button>Remove</button>
+                  <span className={styles.itempri}>₦{x.price.toLocaleString()}</span>
                 </div>
               </div>
-              <div className={styles.desc}>
-                <h4>{x.name}</h4>
-                <h5>Natural | XL</h5>
-              </div>
-              <div className={styles.cost}>
-                <button>Remove</button>
-                <span className={styles.itempri}>₦{x.price.toLocaleString()}</span>
-              </div>
-            </div>
-          </li>
-        ))}
-      </ul>
+            </li>
+          ))}
+        </ul>)
+      }
+
       <div className={styles.bottom}>
         <div className={styles.prices}>
           <h3>Cart total</h3>

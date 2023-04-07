@@ -4,7 +4,7 @@ import { Benefits } from '../components/Home/Benefits/Benefits'
 import { Hero } from '../components/Home/Hero/Hero'
 import styles from '../styles/Home.module.css'
 import Script from 'next/script'
-import { Featured } from '../components/Home/Featured/Featured'
+import Featured  from '../components/Home/Featured/Featured'
 import client from '../helpers/client'
 
 
