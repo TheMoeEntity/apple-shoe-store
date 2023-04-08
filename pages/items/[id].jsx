@@ -87,9 +87,9 @@ const Items = ({ item }) => {
             <div>{items}</div>
             <div onClick={() => setItems((curr) => curr + 1)}>+</div>
           </div>
-          <Link href={`/cart`}>
+          {/* <Link href={`/cart`}> */}
             <button onClick={addToCart} className={styles2.toCart}>Add to cart</button>
-          </Link>
+          {/* </Link> */}
         </div>
       </div>
 

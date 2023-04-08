@@ -317,6 +317,7 @@
     color: #334255;
     font-size: 17px;
     margin-top: 5px;
+    white-space: nowrap;
 }
 .itemDetails > div:nth-child(1) {
     width: 95px;
