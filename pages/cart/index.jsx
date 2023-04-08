@@ -1,6 +1,5 @@
 import styles from "./cart.module.css";
 import Image from "next/image";
-import boy from "../../public/assets/shoegreen.jpeg";
 import { useState } from "react";
 import { nanoid } from "nanoid";
 import { useRouter } from "next/router";

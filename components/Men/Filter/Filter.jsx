@@ -1,14 +1,9 @@
 import styles from "./Filter.module.css";
 import FilterSideBar from "./FilterSideBar";
-import { Card } from "../../Home/Featured/Card";
-import shoe2 from "../../../public/assets/shoes3.JPG";
-import girl from "../../../public/assets/girl.jpeg";
-import shoe1 from "../../../public/assets/shoes1.JPG";
-import man from "../../../public/assets/men.jpeg";
-import man2 from "../../../public/assets/man.png";
+import Card from "../../Home/Featured/Card";
 import client from "../../../helpers/client";
 import { useSnackbar } from "notistack";
-import { Loader } from "../../Loader/Loader";
+import Loader  from "../../Loader/Loader";
 import { useState, useRef, useEffect } from "react";
 import imageUrlBuilder from "@sanity/image-url";
 

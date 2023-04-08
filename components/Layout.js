@@ -1,8 +1,7 @@
-import { Footer } from "./Footer/Footer";
-import { Header } from "./Header/Header";
-import { Nav } from "./Nav/Nav";
+import  Footer from "./Footer/Footer";
+import  Nav from "./Nav/Nav";
 import { useRouter } from "next/router";
-
+import Header from './Header/Header'
 export const Layout = ({ children }) => {
   const router = useRouter();
   return (

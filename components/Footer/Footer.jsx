@@ -1,6 +1,5 @@
 import styles from '../Nav/Nav.module.css'
-
-export const Footer = () => {
+ const Footer = () => {
   return (
     <>
     <div className={styles.footer}>
@@ -78,3 +77,4 @@ export const Footer = () => {
     </>
   )
 }
+export default Footer

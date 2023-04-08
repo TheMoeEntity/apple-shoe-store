@@ -3,7 +3,7 @@ import Image from 'next/image'
 import styles from './Hero.module.css'
 import { Dots } from '../../Dots/Dots'
 
-export const Hero = () => {
+const Hero = () => {
   return (
     <div className={styles.hero}>
         <Image alt='Banner-img' objectFit='cover' layout='fill' priority={true}  src={banner} />
@@ -20,3 +20,4 @@ export const Hero = () => {
     </div>
   )
 }
+export default Hero

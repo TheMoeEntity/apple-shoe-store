@@ -173,6 +173,16 @@
   border-top: 1px solid rgba(204, 204, 204, 0.376);
   background-color: #f9fafb;
 }
+.nocart  {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nocart h4 {
+  margin-top: 50px !important;
+}
 .bottomControls {
     position: absolute;
     width: 100%;

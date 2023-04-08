@@ -1,4 +1,4 @@
-import { Card } from "./Card";
+import  Card  from "./Card";
 import styles from "./Featured.module.css";
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
@@ -7,11 +7,9 @@ import banner3 from "../../../public/assets/banner.jpeg";
 import banner2 from "../../../public/assets/banner-23.jpeg";
 import slider from "../../../public/assets/slider-14.jpeg";
 import client from "../../../helpers/client";
+import  Loader  from "../../Loader/Loader";
 
-import { Loader } from "../../Loader/Loader";
-
-
-export const Featured = ({ heading, prods }) => {
+ const Featured = ({ heading, prods }) => {
   const ref = useRef(null);
   const [state, setState] = useState({
     products: [],
@@ -219,3 +217,4 @@ export const Featured = ({ heading, prods }) => {
     </div>
   );
 };
+export default Featured

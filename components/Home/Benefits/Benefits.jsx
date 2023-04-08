@@ -2,7 +2,7 @@ import styles from './Benefits.module.css'
 import Link from 'next/link'
 
 
-export const Benefits = () => {
+const Benefits = () => {
   return (
     <div className={styles.benefits}>
         <div>
@@ -99,3 +99,4 @@ export const Benefits = () => {
     </div>
   )
 }
+export default Benefits

@@ -7,7 +7,7 @@ import { urlFor, urlForThumbnail } from "../../../helpers/image";
 import loading from "../../../public/assets/loading.jpeg";
 
 
-export const Card = ({ img, name, men = false, url }) => {
+const Card = ({ img, name, men = false, url }) => {
   const router = useRouter();
   const coma = price => {
     return price.toLocaleString()
@@ -90,3 +90,4 @@ export const Card = ({ img, name, men = false, url }) => {
 
   );
 };
+export default Card

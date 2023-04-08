@@ -32,8 +32,8 @@ const CartModal = ({ cartOpen,closeCart, profileOpen }) => {
       {
         cart.products.length == 0 ? 
         (
-          <div className="">
-            <h3>You have no items in your cart</h3>
+          <div className={styles.nocart}>
+            <h4>You have no items in your cart</h4>
           </div>
         ):
         ( 

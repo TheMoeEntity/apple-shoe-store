@@ -10,7 +10,7 @@ import { useRouter } from "next/router";
 import Profile from "./Profile";
 import { useSelector } from "react-redux"
 
-export const Header = () => {
+const Header = () => {
   const router = useRouter();
   const [sideBar, setSideBar] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
@@ -60,3 +60,4 @@ export const Header = () => {
     </div>
   );
 };
+export default Header

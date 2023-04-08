@@ -1,4 +1,5 @@
 import styles from "./items.module.css";
+import styles2 from '../../components/Nav/Nav.module.css'
 import Image from "next/image";
 import { useRef, useState } from "react";
 import Head from "next/head";
@@ -12,6 +13,7 @@ import noimage from "../../public/assets/noimage.png";
 import { addProduct } from "../../helpers/Redux/cart";
 import { useDispatch } from "react-redux";
 import { useSnackbar } from "notistack";
+import Link from "next/link";
 
 const Items = ({ item }) => {
   const {enqueueSnackbar} = useSnackbar()
@@ -74,6 +76,23 @@ const Items = ({ item }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
+      <div className={styles2.Nav}>
+        <div className={styles2.controls}>
+          <div className={styles2.counter}>
+            <div
+              onClick={() => setItems((curr) => (curr === 0 ? 0 : curr - 1))}
+            >
+              -
+            </div>
+            <div>{items}</div>
+            <div onClick={() => setItems((curr) => curr + 1)}>+</div>
+          </div>
+          <Link href={`/cart`}>
+            <button onClick={addToCart} className={styles2.toCart}>Add to cart</button>
+          </Link>
+        </div>
+      </div>
+
         <div className={styles.pagination}>Home / Men / {item.name}</div>
         <h3>{item.name}</h3>
         <div className={styles.banner}>

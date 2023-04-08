@@ -2,18 +2,31 @@ import styles from "./Nav.module.css";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useSnackbar } from "notistack";
+import { addProduct } from "../../helpers/Redux/cart";
 
-export const Nav = () => {
+ const Nav = () => {
+  const {enqueueSnackbar} = useSnackbar()
+  const [currSize, setCurrSize] = useState("");
+  const dispatch = useDispatch();
   const [items, setItems] = useState(1);
   const router = useRouter();
+  // const addToCart = () => {
+  //   const price = item.price*items
+  //   dispatch(addProduct({ ...item, items, price }));
+  //   enqueueSnackbar("Successfully Added item to your cart", {
+  //     variant: "success",
+  //   }); 
+  // };
   const navActions = payload => {
     router.push(`${payload}`)
   }
 
   if (router.pathname === "/items/[id]") {
     return (
-      <div className={styles.Nav}>
-        <div className={styles.controls}>
+      <div>
+        {/* <div className={styles.controls}>
           <div className={styles.counter}>
             <div
               onClick={() => setItems((curr) => (curr === 0 ? 0 : curr - 1))}
@@ -26,7 +39,7 @@ export const Nav = () => {
           <Link href={`/cart`}>
             <button className={styles.toCart}>Add to cart</button>
           </Link>
-        </div>
+        </div> */}
       </div>
     );
   } else {
@@ -56,3 +69,4 @@ export const Nav = () => {
     );
   }
 };
+export default Nav
