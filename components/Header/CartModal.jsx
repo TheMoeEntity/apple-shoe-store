@@ -60,7 +60,9 @@ const CartModal = ({ cartOpen,closeCart, profileOpen }) => {
         </ul>)
       }
 
-      <div className={styles.bottom}>
+      <div style={{
+        position: cart.products.length < 3 ? 'absolute':'sticky'
+      }} className={styles.bottom}>
         <div className={styles.prices}>
           <h3>Cart total</h3>
           <h4>₦{total.toLocaleString()}</h4>

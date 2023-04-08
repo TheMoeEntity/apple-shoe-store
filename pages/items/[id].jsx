@@ -93,7 +93,7 @@ const Items = ({ item }) => {
         </div>
       </div>
 
-        <div className={styles.pagination}>Home / Men / {item.name}</div>
+        <div className={styles.pagination}> <Link href={`/`}>Home</Link> / <Link href={`/men`}>Men</Link> / {item.name}</div>
         <h3>{item.name}</h3>
         <div className={styles.banner}>
           <Image objectFit="cover" src={currImage} layout={"fill"} priority />

@@ -8,7 +8,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <Provider store={store}>
       <Layout>
-        <SnackbarProvider>
+        <SnackbarProvider anchorOrigin={{horizontal:'left',vertical:'top'}}>
           <Component {...pageProps} />
         </SnackbarProvider>
       </Layout>
