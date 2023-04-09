@@ -14,6 +14,7 @@ import { addProduct } from "../../helpers/Redux/cart";
 import { useDispatch } from "react-redux";
 import { useSnackbar } from "notistack";
 import Link from "next/link";
+import { nanoid } from "nanoid";
 
 const Items = ({ item }) => {
   const {enqueueSnackbar} = useSnackbar()
@@ -63,8 +64,9 @@ const Items = ({ item }) => {
   const addToCart = () => {
     const price = item.price*items
     let newItem
-    if (!(images in item)) {
-      newItem = {...item,images:[item.image]}
+    const specialID = nanoid(10)
+    if (!('images' in item)) {
+      newItem = {...item,images:[item.image],more:false}
       item = item.image === undefined ? item:newItem
       
     }

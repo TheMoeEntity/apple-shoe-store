@@ -11,6 +11,7 @@ import { removeProduct, reset } from "../../helpers/Redux/cart";
 import noimage from "../../public/assets/noimage.png";
 import { urlForThumbnail } from "../../helpers/image";
 import Link from "next/link";
+import { useEffect } from "react";
 
 const Cart = ({}) => {
   const router = useRouter();
@@ -18,6 +19,19 @@ const Cart = ({}) => {
   const [less, setLess] = useState(false);
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
+  const [currCart,setCurrCart] = useState(cart.products)
+
+  const modifyCart = ()=> {
+    setCurrCart((currentCart)=> {
+      const newCart = currentCart.map(item => ({...item,cartID:nanoid(10)}))
+      console.log(currCart)
+      return newCart
+    })
+  }
+  useEffect(()=> {
+    console.log('cartID' in currCart[0])
+    modifyCart()
+  },[])
 
   const CalculateTotal = (cart) => {
     let total = 0;
@@ -107,25 +121,11 @@ const Cart = ({}) => {
     }
   };
 
-  const [cartitems, setItems] = useState([
-    {
-      name: "Men's Hoodie with zipper",
-      quantity: 1,
-      subtotal: "₦7400",
-      more: false,
-    },
-    {
-      name: "Ashawo shorts",
-      quantity: 2,
-      subtotal: "₦2000",
-      more: false,
-    },
-  ]);
 
   const handleMore = (name) => {
-    setItems((prev) => {
+    setCurrCart((prev) => {
       const newItem = prev.map((x) =>
-        x.name === name
+        x.cartID === name
           ? {
               ...x,
               more: !x.more,
@@ -134,7 +134,12 @@ const Cart = ({}) => {
       );
       return newItem;
     });
+    
   };
+
+  const remove = ()=> {
+
+  }
 
   return (
     <div className={styles.cart}>
@@ -145,7 +150,7 @@ const Cart = ({}) => {
       </Head>
       <div>
         <h2>Your Shopping Cart</h2>
-        {cartitems.length === 0 ? (
+        {cart.products.length === 0 ? (
           <div className={styles.noItems}>
             <h3>You have no items in your shopping cart!</h3>
           </div>
@@ -164,7 +169,7 @@ const Cart = ({}) => {
             </div>
 
             <ul className={styles.item}>
-              {cart.products.map((x, i) => (
+              {currCart.map((x, i) => (
                 <li key={i}>
                   <div className={styles.itemDetails}>
                     <div>
@@ -184,7 +189,7 @@ const Cart = ({}) => {
                   <div className={styles.quantity}>{x.quantity}</div>
                   <div>₦{x.price.toLocaleString()}</div>
                   <div
-                    onClick={() => handleMore(x.name)}
+                    onClick={() => handleMore(x.cartID)}
                     className={styles.more}
                   >
                     <div></div>
@@ -195,7 +200,7 @@ const Cart = ({}) => {
                     style={{ display: x.more ? "block" : "none" }}
                     className={styles.moreOptions}
                   >
-                    <div>Remove from cart</div>
+                    <div onClick={remove}>Remove from cart</div>
                     <div>Edit item number</div>
                   </div>
                 </li>
