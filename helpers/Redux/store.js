@@ -1,7 +1,16 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore,getDefaultMiddleware } from "@reduxjs/toolkit";
 import cartReducer from "./cart";
 import storage from "redux-persist/lib/storage";
-import { persistReducer, persistStore } from "redux-persist";
+import {
+  persistReducer,
+  persistStore,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from "redux-persist";
 import thunk from "redux-thunk";
 
 const persistConfig = {
@@ -14,7 +23,11 @@ export const store = configureStore({
   reducer: {
     cart: persistedReducer,
     devTools: process.env.NODE_ENV !== "production",
-    middleware: [thunk],
+    middleware: getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
+      }
+    })
   },
 });
-export const persistor = persistStore(store)
+export const persistor = persistStore(store);
