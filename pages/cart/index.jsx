@@ -8,8 +8,9 @@ import axios from "axios";
 import Head from "next/head";
 import { useDispatch, useSelector } from "react-redux";
 import { removeProduct, reset } from "../../helpers/Redux/cart";
-import noimage from '../../public/assets/noimage.png'
+import noimage from "../../public/assets/noimage.png";
 import { urlForThumbnail } from "../../helpers/image";
+import Link from "next/link";
 
 const Cart = ({}) => {
   const router = useRouter();
@@ -168,7 +169,11 @@ const Cart = ({}) => {
                   <div className={styles.itemDetails}>
                     <div>
                       <div className="">
-                        <Image layout="fill" src={urlForThumbnail(x.images[0],noimage)} alt="product image" />
+                        <Image
+                          layout="fill"
+                          src={urlForThumbnail(x.images[0], noimage)}
+                          alt="product image"
+                        />
                       </div>
                     </div>
                     <div>
@@ -214,10 +219,12 @@ const Cart = ({}) => {
           <div className={styles.totalpr}>
             <span>Pay less</span>
             <span style={{ cursor: "pointer" }} onClick={() => setLess(!less)}>
-            ₦{(total - 0.7 * total).toLocaleString()}
+              ₦{(total - 0.7 * total).toLocaleString()}
             </span>
           </div>
-          <button className={styles.totalbutton}>Proceed to checkout</button>
+          <Link href={`/checkout`}>
+            <button className={styles.totalbutton}>Proceed to checkout</button>
+          </Link>
           <button
             style={{ maxHeight: less ? "60px" : "0" }}
             onClick={ProceedToRefer}
