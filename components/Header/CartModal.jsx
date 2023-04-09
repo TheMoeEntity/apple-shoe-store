@@ -51,7 +51,7 @@ const CartModal = ({ cartOpen,closeCart, profileOpen }) => {
                   <h5>Natural | XL</h5>
                 </div>
                 <div className={styles.cost}>
-                  <button>Remove</button>
+                  <button onClick={removeCartItem}>Remove</button>
                   <span className={styles.itempri}>₦{x.price.toLocaleString()}</span>
                 </div>
               </div>
