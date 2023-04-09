@@ -152,7 +152,7 @@ const Cart = ({}) => {
         ) : (
           <div>
             <div className={styles.free}>
-              Add $125.45 more and win free shipping!
+              Add ₦4,000.45 more and win free shipping!
               <div className={styles.bar}>
                 <div className={styles.width}></div>
               </div>

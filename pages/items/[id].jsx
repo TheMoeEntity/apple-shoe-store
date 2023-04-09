@@ -62,7 +62,13 @@ const Items = ({ item }) => {
 
   const addToCart = () => {
     const price = item.price*items
-    item.images = [item.images[0]]
+    let newItem
+    if (!(images in item)) {
+      newItem = {...item,images:[item.image]}
+      item = item.image === undefined ? item:newItem
+      
+    }
+    console.log(item)
     dispatch(addProduct({ ...item, items, price }));
     enqueueSnackbar("Successfully Added item to your cart", {
       variant: "success",
