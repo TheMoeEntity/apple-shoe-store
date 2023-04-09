@@ -62,6 +62,7 @@ const Items = ({ item }) => {
 
   const addToCart = () => {
     const price = item.price*items
+    item.images = [currImage]
     dispatch(addProduct({ ...item, items, price }));
     enqueueSnackbar("Successfully Added item to your cart", {
       variant: "success",
