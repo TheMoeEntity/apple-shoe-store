@@ -42,7 +42,7 @@ const CartModal = ({ cartOpen, closeCart, profileOpen }) => {
                   <div>
                     <Image
                       layout="fill"
-                      src={x.images[0]?? noimage}
+                      src={urlForThumbnail(x.images[0], noimage)}
                       alt="product image"
                     />
                   </div>
