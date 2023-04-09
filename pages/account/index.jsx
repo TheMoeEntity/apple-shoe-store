@@ -3,7 +3,7 @@ import styles from "./account.module.css";
 import girl from "../../public/assets/boy4.jpeg";
 import { useEffect, useRef } from "react";
 
-const index = () => {
+const Index = () => {
   const container = useRef(null)
   const displayContent = (index)=> {
     let others = container.current.children
@@ -180,4 +180,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;
