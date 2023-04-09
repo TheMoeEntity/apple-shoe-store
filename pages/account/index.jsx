@@ -81,7 +81,7 @@ const index = () => {
               <ul>
                 <li>
                   <div>
-                    <b>Men's Shorts</b>
+                    <b>{`Men's`} Shorts</b>
                   </div>
                   <div>Natural | XXL</div>
                   <div>$3549.34</div>
@@ -91,7 +91,7 @@ const index = () => {
                 </li>
                 <li>
                   <div>
-                    <b>Men's Shorts</b>
+                    <b>{`Men's`} Shorts</b>
                   </div>
                   <div>Natural | XXL</div>
                   <div>$3549.34</div>
@@ -101,7 +101,7 @@ const index = () => {
                 </li>
                 <li>
                   <div>
-                    <b>Men's Shorts</b>
+                    <b>{`Men's`} Shorts</b>
                   </div>
                   <div>Natural | XXL</div>
                   <div>$3549.34</div>
@@ -111,7 +111,7 @@ const index = () => {
                 </li>
                 <li>
                   <div>
-                    <b>Men's Shorts</b>
+                    <b>{`Men's`} Shorts</b>
                   </div>
                   <div>Natural | XXL</div>
                   <div>$3549.34</div>
@@ -133,7 +133,7 @@ const index = () => {
               <ul>
                 <li>
                   <div>
-                    <b>Men's Shorts</b>
+                    <b>{`Men's`} Shorts</b>
                   </div>
                   <div>Natural | XXL</div>
                   <div>$3549.34</div>
@@ -143,7 +143,7 @@ const index = () => {
                 </li>
                 <li>
                   <div>
-                    <b>Men's Shorts</b>
+                    <b>{`Men's`} Shorts</b>
                   </div>
                   <div>Natural | XXL</div>
                   <div>$3549.34</div>
@@ -153,7 +153,7 @@ const index = () => {
                 </li>
                 <li>
                   <div>
-                    <b>Men's Shorts</b>
+                    <b>{`Men's`} Shorts</b>
                   </div>
                   <div>Natural | XXL</div>
                   <div>$3549.34</div>
@@ -163,7 +163,7 @@ const index = () => {
                 </li>
                 <li>
                   <div>
-                    <b>Men's Shorts</b>
+                    <b>{`Men's`} Shorts</b>
                   </div>
                   <div>Natural | XXL</div>
                   <div>$3549.34</div>
