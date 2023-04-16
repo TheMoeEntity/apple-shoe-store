@@ -1,6 +1,8 @@
 import styles from './Card.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
+import { urlFor } from '../../../helpers/image'
+import loading from "../../../public/assets/loading.jpeg";
 
 const Wishcard = ({img, name, men = false, url}) => {
   return (
