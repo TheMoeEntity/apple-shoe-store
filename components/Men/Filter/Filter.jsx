@@ -9,7 +9,7 @@ import imageUrlBuilder from "@sanity/image-url";
 
 const Filter = ({ items }) => {
   const [show, setShow] = useState(false);
-  const enqueueSnackbar = useSnackbar();
+  const {enqueueSnackbar} = useSnackbar();
   const [state, setState] = useState({
     products: [],
     error: "",

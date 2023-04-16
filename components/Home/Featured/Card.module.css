@@ -2,7 +2,6 @@
     width: 100%;
     height: 100%;
     position: relative;
-    cursor: pointer;
 }
 .cardMen {
     max-width: 275px;
@@ -13,6 +12,7 @@
     position: relative;
     border: 1px solid lightgray;
 }
+
 .card  h3 {
     margin:10px 8px;
     font-weight: 300;
@@ -21,6 +21,7 @@
 
 .details {
     background-color: white;
+    cursor: pointer;
 }
 .card  h4 {
     margin: 8px;
@@ -46,6 +47,7 @@
     right: 10px;
     padding: 3px; 
     background-color: whitesmoke;
+    z-index: 9999999;
 }
 .like i {
     color: rgba(254, 33, 33, 0.648);
@@ -56,6 +58,8 @@
     left: 10px;
     padding: 3px; 
     background-color: whitesmoke;
+    cursor: pointer;
+    z-index: 9999999;
 }
 @media screen and (min-width:750px) {
     .details {

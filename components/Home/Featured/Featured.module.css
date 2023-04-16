@@ -64,7 +64,6 @@
     margin: 15px;
     border-radius: 8px;
     height: auto;
-    cursor: pointer;
     transition: transform 0.3s ease;
     min-width: 100%;
     min-height: 330px;

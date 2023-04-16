@@ -137,8 +137,9 @@ const Cart = ({}) => {
     
   };
 
-  const remove = ()=> {
-
+  const remove = (a,b,c,d) => {
+    removeCartItem(a,b,c,d)
+    setCurrCart(cart)
   }
 
   return (
@@ -200,7 +201,7 @@ const Cart = ({}) => {
                     style={{ display: x.more ? "block" : "none" }}
                     className={styles.moreOptions}
                   >
-                    <div onClick={remove}>Remove from cart</div>
+                    <div onClick={() => remove(x,i,x.price,x.packs)}>Remove from cart</div>
                     <div>Edit item number</div>
                   </div>
                 </li>
