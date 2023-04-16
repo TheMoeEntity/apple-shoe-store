@@ -15,7 +15,6 @@ import { useEffect } from "react";
 
 const Cart = ({}) => {
   const router = useRouter();
-  const [price, setprice] = useState(34000);
   const [less, setLess] = useState(false);
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
@@ -139,7 +138,7 @@ const Cart = ({}) => {
 
   const remove = (a,b,c,d) => {
     removeCartItem(a,b,c,d)
-    setCurrCart(cart)
+    setCurrCart(cart.products)
   }
 
   return (
