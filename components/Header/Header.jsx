@@ -3,29 +3,28 @@ import styles from "./Header.module.css";
 import Image from "next/image";
 import cart from "../../public/assets/cart.png";
 import { Sidebar } from "./Sidebar";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Link from "next/link";
 import CartModal from "./CartModal";
 import { useRouter } from "next/router";
 import Profile from "./Profile";
 import { useSelector } from "react-redux"
+import { menu } from "../../helpers/context/context";
 
 const Header = () => {
   const router = useRouter();
-  const [sideBar, setSideBar] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const items = useSelector(state => state.cart.quantity)
+  const {menuOpen,setMenuOpen} = useContext(menu)
 
-  const set = () => {
-    setSideBar(false);
-  };
+
   return (
     <div className={styles.header}>
       <Profile profileOpen={profileOpen} />
       <CartModal profileOpen={profileOpen} closeCart={() => setCartOpen(false)} cartOpen={cartOpen} />
-      <Sidebar sidebar={sideBar} set={set} />
-      <div onClick={() => setSideBar(!sideBar)} className={styles.hamburger}>
+      <Sidebar sidebar={menuOpen} set={()=> setMenuOpen(false) } />
+      <div onClick={() => setMenuOpen(!menuOpen)} className={styles.hamburger}>
         <div></div>
         <div></div>
         <div></div>

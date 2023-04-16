@@ -34,7 +34,7 @@ const Index = () => {
           <div onClick={()=> displayContent(0)}>Account info</div>
           <div onClick={()=> displayContent(1)}>Change password</div>
           <div onClick={()=> displayContent(2)}>My Order</div>
-          <div onClick={()=> displayContent(3)}>My order</div>
+          <div onClick={()=> displayContent(3)}>Wishlist</div>
         </div>
         <div className={styles.content} ref={container}>
           <div className={styles.acc}>
@@ -174,6 +174,15 @@ const Index = () => {
               </ul>
             </div>
           </div>
+
+          <div className={styles.wish}>
+            <form action="">
+            <h3>Items in your wishlist</h3>
+
+            </form>
+          </div>
+
+
         </div>
       </div>
     </div>
