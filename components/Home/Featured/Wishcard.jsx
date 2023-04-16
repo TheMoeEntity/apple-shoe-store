@@ -1,7 +1,8 @@
 import styles from './Card.module.css'
 import Image from 'next/image'
+import Link from 'next/link'
 
-const Wishcard = () => {
+const Wishcard = ({img, name, men = false, url}) => {
   return (
     <div className={`${styles.card} ${men ? styles.cardMen : ""}`}>
     <div className={styles.img}>
