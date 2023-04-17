@@ -8,14 +8,12 @@ import loading from "../../../public/assets/loading.jpeg";
 import { addProduct } from "../../../helpers/Redux/cart";
 import { useDispatch } from "react-redux";
 import { useSnackbar } from "notistack";
+import { Helpers } from "../../../helpers";
 
 const Card = ({ img, name, men = false, url }) => {
   const { enqueueSnackbar } = useSnackbar();
   const dispatch = useDispatch();
   const router = useRouter();
-  const coma = (price) => {
-    return price.toLocaleString();
-  };
   const addToCart = (item, items) => {
     const price = item.price * items;
     console.log(item);
@@ -60,7 +58,7 @@ const Card = ({ img, name, men = false, url }) => {
         <div className={styles.details}>
           <h3>{img.reviews} reviews</h3>
           <h4>{name}</h4>
-          <h4>₦{img.price.toLocaleString()}</h4>
+          <h4>₦{Helpers.coma(img.price)}</h4>
         </div>
       </Link>
     </div>
@@ -87,7 +85,7 @@ const Card = ({ img, name, men = false, url }) => {
             <div className={styles.details}>
               <h3>{img.reviews} reviews</h3>
               <h4>{name}</h4>
-              <h4>₦{coma(img.price)}</h4>
+              <h4>₦{Helpers.coma(img.price)}</h4>
             </div>
           </Link>
         </div>
@@ -112,7 +110,7 @@ const Card = ({ img, name, men = false, url }) => {
             <div className={styles.details}>
               <h3>{img.reviews} reviews</h3>
               <h4>{name}</h4>
-              <h4>₦{img.price.toLocaleString()}</h4>
+              <h4>₦{Helpers.coma(img.price)}</h4>
             </div>
           </Link>
         </div>

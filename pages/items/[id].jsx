@@ -15,6 +15,7 @@ import { useDispatch } from "react-redux";
 import { useSnackbar } from "notistack";
 import Link from "next/link";
 import { nanoid } from "nanoid";
+import { Helpers } from "../../helpers";
 
 const Items = ({ item }) => {
   const {enqueueSnackbar} = useSnackbar()
@@ -49,7 +50,9 @@ const Items = ({ item }) => {
     //   return pr.tolocaleString();
     // });
   }, []);
-
+  const coma = (price) => {
+    return price.toLocaleString();
+  };
   const handleSize = (e, type) => {
     const parent = type === "size" ? sizeRef.current : colorRef.current;
     const selected =
@@ -129,7 +132,7 @@ const Items = ({ item }) => {
         <h4>
           {item.reviews} {item.reviews > 1 ? "reviews" : "review"}
         </h4>
-        <h4>₦{item.price}</h4>
+        <h4>₦{Helpers.coma(item.price)}</h4>
         <p>{item.headline}</p>
       </div>
 
