@@ -23,12 +23,10 @@ const Cart = ({}) => {
   const modifyCart = ()=> {
     setCurrCart((currentCart)=> {
       const newCart = currentCart.map(item => ({...item,cartID:nanoid(10)}))
-      console.log(currCart)
       return newCart
     })
   }
   useEffect(()=> {
-    console.log('cartID' in currCart[0])
     modifyCart()
   },[])
 
@@ -136,9 +134,15 @@ const Cart = ({}) => {
     
   };
 
-  const remove = (a,b,c,d) => {
+  const remove = (a,b,c,d,e) => {
     removeCartItem(a,b,c,d)
-    setCurrCart(cart.products)
+  
+    setCurrCart((prev)=> {
+      let newItem = prev.filter(item => item != e)
+      return newItem
+    })
+    // modifyCart()
+
   }
 
   return (
@@ -178,6 +182,7 @@ const Cart = ({}) => {
                           layout="fill"
                           src={urlForThumbnail(x.images[0], noimage)}
                           alt="product image"
+                          priority
                         />
                       </div>
                     </div>
@@ -200,7 +205,7 @@ const Cart = ({}) => {
                     style={{ display: x.more ? "block" : "none" }}
                     className={styles.moreOptions}
                   >
-                    <div onClick={() => remove(x,i,x.price,x.packs)}>Remove from cart</div>
+                    <div onClick={() => remove(x,i,x.price,x.packs,x)}>Remove from cart</div>
                     <div>Edit item number</div>
                   </div>
                 </li>

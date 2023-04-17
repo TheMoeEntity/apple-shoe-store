@@ -1,10 +1,13 @@
 import Image from "next/image";
 import styles from "./account.module.css";
 import girl from "../../public/assets/boy4.jpeg";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/router";
+import { read_cookie } from "sfcookies";
 
 const Index = () => {
   const container = useRef(null)
+  const router = useRouter()
   const displayContent = (index)=> {
     let others = container.current.children
     for (const child of others) {
@@ -23,12 +26,24 @@ const Index = () => {
     
     hide()
   },[])
+
+  const [user, setUser] = useState("");
+  const [email, setMail] = useState("");
+  let name;
+  let mail
+  useEffect(() => {
+    const userinfo = read_cookie("userInfo");
+    name = userinfo.name;
+    mail = userinfo.email
+    setUser(name);
+    setMail(mail)
+  }, [user, router]);
   return (
     <div className={styles.account}>
       <div>
         <h2>My Account</h2>
         <h4>
-          <b>Moses nwigberi</b> mosesnwigberi@gmail.com, Abakaliki, Ebonyi
+          <b>{user}</b> <br />{email}, <br /> <br /> Abakaliki, Ebonyi
         </h4>
         <div className={styles.controls}>
           <div onClick={()=> displayContent(0)}>Account info</div>
@@ -44,9 +59,9 @@ const Index = () => {
                 <Image priority layout="fill" src={girl} alt="product image" />
               </div>
               <label htmlFor="">Full Name</label>
-              <input type="text" placeholder="Your Name" />
+              <input type="text" placeholder="Your Name" value={user} />
               <label htmlFor="">Email</label>
-              <input type="text" placeholder="Enter email" />
+              <input type="text" placeholder="Enter email" value={email} />
               <label htmlFor="">Phone Number</label>
               <input type="text" placeholder="Enter phone" />
               <label htmlFor="">Address</label>

@@ -28,6 +28,7 @@
     justify-content: space-between;
     color: #334255;
     padding: 0;
+    cursor: pointer;
 }
 .controls::-webkit-scrollbar {
     display: none;
