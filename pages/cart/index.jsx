@@ -30,6 +30,11 @@ const Cart = ({}) => {
     modifyCart()
   },[])
 
+  useEffect(()=> {
+    setCurrCart(cart.products)
+    modifyCart()
+  },[cart.products])
+
   const CalculateTotal = (cart) => {
     let total = 0;
     for (let index = 0; index < cart.length; index++) {
