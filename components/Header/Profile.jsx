@@ -3,18 +3,28 @@ import Image from "next/image";
 import Link from "next/link";
 import boy from "../../public/assets/boy.jpeg";
 import { useSnackbar } from "notistack";
-import { delete_cookie } from "sfcookies";
+import { delete_cookie, read_cookie } from "sfcookies";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
-const Profile = ({ profileOpen = false, setUser }) => {
+const Profile = ({ profileOpen = false }) => {
   const { enqueueSnackbar } = useSnackbar();
+  const router = useRouter();
+  const [user, setUser] = useState("");
+  let name;
   const logoutAction = () => {
     const conf = confirm("Do you really want to logout?");
     if (conf) {
       enqueueSnackbar("You have been logged out!", { variant: "info" });
       delete_cookie("userInfo");
-      // setUser(undefined);
+      setUser(undefined)
     }
   };
+  useEffect(() => {
+    const userinfo = read_cookie("userInfo");
+    name = userinfo.name;
+    setUser(name);
+  }, [user, router]);
 
   return (
     <div
@@ -27,7 +37,7 @@ const Profile = ({ profileOpen = false, setUser }) => {
         </div>
         <div className={styles.details}>
           <div>
-            <b>Moses Nwigberi</b>
+            <b>{user ?? "Username"}</b>
           </div>
           <div>Lagos, Nigeria</div>
         </div>
@@ -42,14 +52,18 @@ const Profile = ({ profileOpen = false, setUser }) => {
             </Link>
           </li>
           <li>
-            <div>
-              <i className="fas fa-tasks"></i> My Order
-            </div>
+            <Link href={`/account?link=order`}>
+              <div>
+                <i className="fas fa-tasks"></i> My Order
+              </div>
+            </Link>
           </li>
           <li>
+            <Link href={`/account?link=wishlist`}>
             <div>
               <i className="fas fa-heart"></i> Wishlist
             </div>
+            </Link>
           </li>
           <li>
             <div>

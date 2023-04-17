@@ -54,7 +54,7 @@ export const Sidebar = ({ sidebar, set }) => {
           <></>
         ) : (
           <h3>
-            {greeting}, {user}
+            {greeting}
           </h3>
         )}
         {/* <h3>Good evening, Moses Nwigberi</h3> */}

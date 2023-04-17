@@ -6,50 +6,66 @@ import { useRouter } from "next/router";
 import { read_cookie } from "sfcookies";
 
 const Index = () => {
-  const container = useRef(null)
-  const router = useRouter()
-  const displayContent = (index)=> {
-    let others = container.current.children
+  const container = useRef(null);
+  const router = useRouter();
+  const displayContent = (index) => {
+    let others = container.current.children;
     for (const child of others) {
-      child.style.display = 'none'
+      child.style.display = "none";
     }
-    others[index].style.display = 'block'
-  }
-  const hide = ()=> {
-    let others = container.current.children
+    others[index].style.display = "block";
+  };
+  const hide = (query) => {
+    let others = container.current.children;
     for (const child of others) {
-      child.style.display = 'none'
+      child.style.display = "none";
     }
-    others[0].style.display = 'block'
-  }
-  useEffect(()=> {
-    
-    hide()
-  },[])
+    switch (query) {
+      case undefined:
+        others[0].style.display = "block";
+        break;
+      case 'order':
+        others[2].style.display = "block";
+        break;
+      case 'wishlist':
+        others[3].style.display = "block";
+        break;
+      default:
+        others[0].style.display = "block";
+        break;
+    }
+  };
+  useEffect(() => {
+    const query = router.query["link"];
+    console.log(query);
+    hide(query);
+  }, []);
 
   const [user, setUser] = useState("");
   const [email, setMail] = useState("");
   let name;
-  let mail
+  let mail;
   useEffect(() => {
     const userinfo = read_cookie("userInfo");
     name = userinfo.name;
-    mail = userinfo.email
+    mail = userinfo.email;
     setUser(name);
-    setMail(mail)
+    setMail(mail);
   }, [user, router]);
+
   return (
     <div className={styles.account}>
       <div>
         <h2>My Account</h2>
         <h4>
-          <b>{user}</b> <br />{email}, <br /> <br /> Abakaliki, Ebonyi
+          <b>{user}</b> <br />
+          {email}, <br /> <br /> Abakaliki, Ebonyi
         </h4>
         <div className={styles.controls}>
-          <div onClick={()=> displayContent(0)}>Account info</div>
-          <div onClick={()=> displayContent(1)}>Change password</div>
-          <div onClick={()=> displayContent(2)}>My Order</div>
-          <div onClick={()=> displayContent(3)}>Wishlist</div>
+          <div onClick={() => displayContent(0)}>Account info</div>
+          <div onClick={() => displayContent(1)}>Change password</div>
+          <div onClick={() => displayContent(2)}>My Order</div>
+          <div onClick={() => displayContent(3)}>Wishlist</div>
         </div>
         <div className={styles.content} ref={container}>
           <div className={styles.acc}>
@@ -72,7 +88,7 @@ const Index = () => {
 
           <div className={styles.psw}>
             <form action="">
-            <h3>Change password</h3>
+              <h3>Change password</h3>
               <label htmlFor="">Old password</label>
               <input type="text" placeholder="Enter your old password" />
               <label htmlFor="">New Password</label>
@@ -84,7 +100,7 @@ const Index = () => {
           </div>
 
           <div className={styles.ord}>
-          <h3>Your order history</h3>
+            <h3>Your order history</h3>
             <div className={styles.orders}>
               <div className={styles.head}>
                 <b>#2341478733930</b>
@@ -192,12 +208,9 @@ const Index = () => {
 
           <div className={styles.wish}>
             <form action="">
-            <h3>Items in your wishlist</h3>
-
+              <h3>Items in your wishlist</h3>
             </form>
           </div>
-
-
         </div>
       </div>
     </div>

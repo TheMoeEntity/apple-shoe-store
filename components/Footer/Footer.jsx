@@ -12,7 +12,7 @@ const Footer = () => {
     let second = container2.current
 
     let revealTop = width.getBoundingClientRect().top;
-    let revealpoint = 120;
+    let revealpoint = 70;
 
     if (revealTop < height - revealpoint) {
         setTrigger(true)
