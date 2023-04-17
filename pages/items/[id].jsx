@@ -85,7 +85,7 @@ const Items = ({ item }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
-      <div className={styles2.Nav}>
+      <div style={{background:'whitesmoke'}} className={styles2.Nav}>
         <div className={styles2.controls}>
           <div className={styles2.counter}>
             <div

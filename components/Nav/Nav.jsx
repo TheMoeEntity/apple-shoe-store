@@ -25,33 +25,35 @@ const Nav = ({ triggerOn }) => {
     }
   }, [triggerOn]);
 
-  if (router.pathname === "/items/[id]") {
-    return <></>;
-  } else {
-    return (
-      <div ref={container} className={styles.Nav}>
-        <div onClick={() => navActions("/")}>
-          <i className="fa-solid fa-house"></i>
-          <span>Home</span>
-        </div>
-        {/* <div>
+  return (
+    <div
+      style={{
+        display: router.pathname === "/items/[id]" ? "none" : "flex",
+      }}
+      ref={container}
+      className={styles.Nav}
+    >
+      <div onClick={() => navActions("/")}>
+        <i className="fa-solid fa-house"></i>
+        <span>Home</span>
+      </div>
+      {/* <div>
           <i className="fa-solid fa-search"></i>
           <span>Search</span>
         </div> */}
-        <div>
-          <i className="fa-solid fa-heart"></i>
-          <span>wishlist</span>
-        </div>
-        <div onClick={() => navActions("/cart")}>
-          <i className="fa-solid fa-shopping-cart"></i>
-          <span>Cart</span>
-        </div>
-        <div onClick={() => setMenuOpen(!menuOpen)}>
-          <i className="fa-solid fa-bars"></i>
-          <span>More</span>
-        </div>
+      <div onClick={() => navActions("/account?link=wishlist")}>
+        <i className="fa-solid fa-heart"></i>
+        <span>wishlist</span>
       </div>
-    );
-  }
+      <div onClick={() => navActions("/cart")}>
+        <i className="fa-solid fa-shopping-cart"></i>
+        <span>Cart</span>
+      </div>
+      <div onClick={() => setMenuOpen(!menuOpen)}>
+        <i className="fa-solid fa-bars"></i>
+        <span>More</span>
+      </div>
+    </div>
+  );
 };
 export default Nav;
