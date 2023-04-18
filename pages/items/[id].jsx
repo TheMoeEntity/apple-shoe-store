@@ -145,7 +145,7 @@ const Items = ({ item }) => {
             border: "2px solid green",
             width: "fit-content",
             padding: "8px",
-            borderRadius:'8px'
+            borderRadius: "8px",
           }}
         >
           ₦{Helpers.coma(item.price)}
@@ -201,31 +201,45 @@ const Items = ({ item }) => {
         </div>
 
         <div>
-          <div
-            id={styles.hide}
-            style={{
-              maxWidth: "400px",
-              float: "left",
-              height: "70px",
-            }}
-            className={NavStyles.controls}
-          >
-            <div className={NavStyles.counter}>
-              <div
-                onClick={() => setItems((curr) => (curr === 0 ? 0 : curr - 1))}
-              >
-                -
+          <div>
+            <div
+              id={styles.hide}
+              style={{
+                maxWidth: "400px",
+                float: "left",
+                height: "70px",
+              }}
+              className={NavStyles.controls}
+            >
+              <div className={NavStyles.counter}>
+                <div
+                  onClick={() =>
+                    setItems((curr) => (curr === 0 ? 0 : curr - 1))
+                  }
+                >
+                  -
+                </div>
+                <div>{items}</div>
+                <div onClick={() => setItems((curr) => curr + 1)}>+</div>
               </div>
-              <div>{items}</div>
-              <div onClick={() => setItems((curr) => curr + 1)}>+</div>
+              <button onClick={addToCart} className={NavStyles.toCart}>
+                Add to cart
+              </button>
             </div>
-            <button onClick={addToCart} className={NavStyles.toCart}>
-              Add to cart
-            </button>
+            <br />
             <div className={styles.wish}>
               <br />
-              <i className="fa-solid fa-heart"></i> Add to wishlist <br /> <br />
-              <i className="fas fa-share"></i> Share with friends <i className="fa-brands fa-twitter"></i> <i className="fa-brands fa-facebook"></i> <i className="fa-brands fa-whatsapp"></i> 
+              <div>
+                <i className="fa-solid fa-heart"></i> Add to wishlist <br />{" "}
+              </div>
+
+              <br />
+              <div>
+                <i className="fas fa-share"></i> Share with friends{" "}
+                <i className="fa-brands fa-twitter"></i>{" "}
+                <i className="fa-brands fa-facebook"></i>{" "}
+                <i className="fa-brands fa-whatsapp"></i>
+              </div>
             </div>{" "}
             <br />
             <br />
@@ -237,9 +251,8 @@ const Items = ({ item }) => {
         <h2>
           <i className="fa-solid fa-star"></i> 4.87, {item.reviews} reviews{" "}
         </h2>
-          <Overview />
+        <Overview />
       </div>
-
     </div>
   );
 };

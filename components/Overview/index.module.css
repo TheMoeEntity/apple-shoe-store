@@ -3,6 +3,7 @@
     height: auto;
     min-height: 300px;
     background-color:#EFEFEF;
+    padding: 0 20px;
 }
 .controls {
     width: 100%;
@@ -11,18 +12,20 @@
     flex-flow: row;
     align-items: center;
     overflow-x: auto;
+    justify-content: space-between;
+    max-width: 650px;
     color: #334255;
     padding: 10px;
     cursor: pointer;
+    font-size: 18px;
     font-weight: bold;
 }
 .controls::-webkit-scrollbar {
     display: none;
 }
 .controls > div {
-    min-width: fit-content;
+    min-width: 120px;
     white-space: nowrap;
-    margin-right: 20px;
     height: 100%;
     display: flex;
     align-items: center;
