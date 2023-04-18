@@ -154,7 +154,7 @@
 }
 .wish {
     display: block !important;
-    width: fit-content;
+    width: 100%;
     height: auto;
     margin-top: 20px;
     text-transform: uppercase;
@@ -162,10 +162,16 @@
  
 }
 .wish i {
-    margin-right: 7px;
+    margin: 7px;
 }
 .share {
     display: block;
-    width: fit-content;
+    width: 100%;
     height: auto;
+}
+.panel {
+    width: 100%;
+    height: auto;
+    min-height: 300px;
+    background-color:#EFEFEF;
 }

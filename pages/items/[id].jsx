@@ -223,7 +223,8 @@ const Items = ({ item }) => {
             </button>
             <div className={styles.wish}>
               <br />
-              <i className="fa-solid fa-heart"></i> Add to wishlist
+              <i className="fa-solid fa-heart"></i> Add to wishlist <br /> <br />
+              <i className="fas fa-share"></i> Share with friends <i className="fa-brands fa-twitter"></i> <i className="fa-brands fa-facebook"></i> <i className="fa-brands fa-whatsapp"></i> 
             </div>{" "}
             <br />
             <br />
@@ -235,7 +236,11 @@ const Items = ({ item }) => {
         <h2>
           <i className="fa-solid fa-star"></i> 4.87, {item.reviews} reviews{" "}
         </h2>
+        <div className={styles.panel}>
+        
+        </div>
       </div>
+
     </div>
   );
 };
