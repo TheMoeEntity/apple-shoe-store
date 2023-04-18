@@ -1,9 +1,8 @@
 .panel {
     width: 100%;
     height: auto;
-    min-height: 300px;
     background-color:#EFEFEF;
-    padding: 0 20px;
+    padding-bottom: 20px;
 }
 .controls {
     width: 100%;
@@ -13,12 +12,13 @@
     align-items: center;
     overflow-x: auto;
     justify-content: space-between;
-    max-width: 650px;
+    max-width: 750px;
     color: #334255;
     padding: 10px;
     cursor: pointer;
     font-size: 18px;
     font-weight: bold;
+    border-bottom:1px solid #33425528;
 }
 .controls::-webkit-scrollbar {
     display: none;
@@ -30,4 +30,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.content > div {
+    padding: 20px;
 }
