@@ -16,6 +16,7 @@ import { useSnackbar } from "notistack";
 import Link from "next/link";
 import { nanoid } from "nanoid";
 import { Helpers } from "../../helpers";
+import Overview from "../../components/Overview";
 
 const Items = ({ item }) => {
   const { enqueueSnackbar } = useSnackbar();
@@ -236,9 +237,7 @@ const Items = ({ item }) => {
         <h2>
           <i className="fa-solid fa-star"></i> 4.87, {item.reviews} reviews{" "}
         </h2>
-        <div className={styles.panel}>
-        
-        </div>
+          <Overview />
       </div>
 
     </div>
