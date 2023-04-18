@@ -152,3 +152,20 @@
         display: none;
     }
 }
+.wish {
+    display: block !important;
+    width: fit-content;
+    height: auto;
+    margin-top: 20px;
+    text-transform: uppercase;
+    font-weight: bolder;
+ 
+}
+.wish i {
+    margin-right: 7px;
+}
+.share {
+    display: block;
+    width: fit-content;
+    height: auto;
+}

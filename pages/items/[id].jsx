@@ -1,5 +1,5 @@
 import styles from "./items.module.css";
-import styles2 from '../../components/Nav/Nav.module.css'
+import styles2 from "../../components/Nav/Nav.module.css";
 import Image from "next/image";
 import { useRef, useState } from "react";
 import Head from "next/head";
@@ -18,7 +18,7 @@ import { nanoid } from "nanoid";
 import { Helpers } from "../../helpers";
 
 const Items = ({ item }) => {
-  const {enqueueSnackbar} = useSnackbar()
+  const { enqueueSnackbar } = useSnackbar();
   const [items, setItems] = useState(1);
   const [images, setImages] = useState([]);
   const [currImage, setCurrImage] = useState(noimage);
@@ -65,19 +65,18 @@ const Items = ({ item }) => {
   };
 
   const addToCart = () => {
-    const price = item.price*items
-    let newItem
-    const specialID = nanoid(10)
-    if (!('images' in item)) {
-      newItem = {...item,images:[item.image],more:false}
-      item = item.image === undefined ? item:newItem
-      
+    const price = item.price * items;
+    let newItem;
+    const specialID = nanoid(10);
+    if (!("images" in item)) {
+      newItem = { ...item, images: [item.image], more: false };
+      item = item.image === undefined ? item : newItem;
     }
-    console.log(item)
+    console.log(item);
     dispatch(addProduct({ ...item, items, price }));
     enqueueSnackbar("Successfully Added item to your cart", {
       variant: "success",
-    }); 
+    });
   };
 
   return (
@@ -88,24 +87,30 @@ const Items = ({ item }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
-      <div style={{background:'whitesmoke'}} className={styles2.Nav}>
-        <div className={styles2.controls}>
-          <div className={styles2.counter}>
-            <div
-              onClick={() => setItems((curr) => (curr === 0 ? 0 : curr - 1))}
-            >
-              -
+        <div style={{ background: "whitesmoke" }} className={styles2.Nav}>
+          <div className={styles2.controls}>
+            <div className={styles2.counter}>
+              <div
+                onClick={() => setItems((curr) => (curr === 0 ? 0 : curr - 1))}
+              >
+                -
+              </div>
+              <div>{items}</div>
+              <div onClick={() => setItems((curr) => curr + 1)}>+</div>
             </div>
-            <div>{items}</div>
-            <div onClick={() => setItems((curr) => curr + 1)}>+</div>
+            {/* <Link href={`/cart`}> */}
+            <button onClick={addToCart} className={styles2.toCart}>
+              Add to cart
+            </button>
+            {/* </Link> */}
           </div>
-          {/* <Link href={`/cart`}> */}
-            <button onClick={addToCart} className={styles2.toCart}>Add to cart</button>
-          {/* </Link> */}
         </div>
-      </div>
 
-        <div className={styles.pagination}> <Link href={`/`}>Home</Link> / <Link href={`/men`}>Men</Link> / {item.name}</div>
+        <div className={styles.pagination}>
+          {" "}
+          <Link href={`/`}>Home</Link> / <Link href={`/men`}>Men</Link> /{" "}
+          {item.name}
+        </div>
         <h3>{item.name}</h3>
         <div className={styles.banner}>
           <Image objectFit="cover" src={currImage} layout={"fill"} priority />
@@ -129,10 +134,21 @@ const Items = ({ item }) => {
           </div>
         )}
         <h3>{item.name}</h3>
-        <h4>
+        {/* <h4>
           {item.reviews} {item.reviews > 1 ? "reviews" : "review"}
-        </h4>
-        <h4>₦{Helpers.coma(item.price)}</h4>
+        </h4> */}
+        <h3
+          style={{
+            color: "green",
+            fontSize: "22px",
+            border: "2px solid green",
+            width: "fit-content",
+            padding: "8px",
+            borderRadius:'8px'
+          }}
+        >
+          ₦{Helpers.coma(item.price)}
+        </h3>
         <p>{item.headline}</p>
       </div>
 
@@ -202,12 +218,23 @@ const Items = ({ item }) => {
               <div>{items}</div>
               <div onClick={() => setItems((curr) => curr + 1)}>+</div>
             </div>
-
             <button onClick={addToCart} className={NavStyles.toCart}>
               Add to cart
             </button>
+            <div className={styles.wish}>
+              <br />
+              <i className="fa-solid fa-heart"></i> Add to wishlist
+            </div>{" "}
+            <br />
+            <br />
           </div>
         </div>
+      </div>
+      <div className={styles.share}>
+        <br />
+        <h2>
+          <i className="fa-solid fa-star"></i> 4.87, {item.reviews} reviews{" "}
+        </h2>
       </div>
     </div>
   );

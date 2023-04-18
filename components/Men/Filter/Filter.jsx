@@ -36,7 +36,7 @@ const Filter = ({ items }) => {
           error: err.message,
           loading: true,
         });
-        enqueueSnackbar("Error loading features", {
+        enqueueSnackbar("Error loading collection", {
           variant: "error",
         });
       }
