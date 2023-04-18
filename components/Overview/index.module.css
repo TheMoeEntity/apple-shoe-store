@@ -11,10 +11,11 @@
     flex-flow: row;
     align-items: center;
     overflow-x: auto;
-    justify-content: space-around;
+    justify-content: space-between;
     color: #334255;
     padding: 10px;
     cursor: pointer;
+    font-weight: bold;
 }
 .controls::-webkit-scrollbar {
     display: none;
