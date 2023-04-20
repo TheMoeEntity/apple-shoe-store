@@ -25,7 +25,10 @@ const CartModal = ({ cartOpen, closeCart, profileOpen }) => {
   };
   return (
     <div
-      style={{ bottom: !cartOpen ? "100px" : "-500px" }}
+      style={{
+        bottom: !cartOpen ? "100px" : "-500px",
+        visibility: !cartOpen ? "hidden" : "visible",
+      }}
       className={styles.cartModal}
     >
       <h2>Shopping Cart</h2>
@@ -52,7 +55,9 @@ const CartModal = ({ cartOpen, closeCart, profileOpen }) => {
                   <h5>Natural | XL</h5>
                 </div>
                 <div className={styles.cost}>
-                  <button onClick={() => removeCartItem(x,i,x.price,1)}>Remove</button>
+                  <button onClick={() => removeCartItem(x, i, x.price, 1)}>
+                    Remove
+                  </button>
                   <span className={styles.itempri}>
                     ₦{x.price.toLocaleString()}
                   </span>

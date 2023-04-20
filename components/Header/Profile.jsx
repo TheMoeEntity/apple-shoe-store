@@ -7,19 +7,18 @@ import { delete_cookie, read_cookie } from "sfcookies";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-
-const Profile = ({ profileOpen = false }) => {
+const Profile = ({ profileOpen = false, forceClose }) => {
   const { enqueueSnackbar } = useSnackbar();
   const router = useRouter();
-  
+
   const [user, setUser] = useState("");
   let name;
   const logoutAction = () => {
     const conf = confirm("Do you really want to logout?");
     if (conf) {
       delete_cookie("userInfo");
-      setUser(undefined)
-   
+      setUser(undefined);
+      forceClose();
       enqueueSnackbar("You have been logged out!", { variant: "info" });
     }
   };
@@ -31,7 +30,10 @@ const Profile = ({ profileOpen = false }) => {
 
   return (
     <div
-      style={{ bottom: !profileOpen ? "100px" : "-380px" }}
+      style={{
+        bottom: !profileOpen ? "100px" : "-380px",
+        visibility: !profileOpen ? "hidden" : "visible",
+      }}
       className={styles.profile}
     >
       <div className={styles.userheader}>
@@ -63,9 +65,9 @@ const Profile = ({ profileOpen = false }) => {
           </li>
           <li>
             <Link href={`/account?link=wishlist`}>
-            <div>
-              <i className="fas fa-heart"></i> Wishlist
-            </div>
+              <div>
+                <i className="fas fa-heart"></i> Wishlist
+              </div>
             </Link>
           </li>
           <li>
