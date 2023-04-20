@@ -12,7 +12,7 @@ const Benefits = () => {
                 </div>
                 <div>
                     <h3>Free Shipping</h3>
-                    <h4>Free Shipping for orders over $130</h4>
+                    <h4>Free Shipping for orders over ₦45,000</h4>
                 </div>
             </div>
             <div className={styles.flexItems}>
