@@ -49,7 +49,7 @@ const Benefits = () => {
             <div className={styles.women}>
                 <div>
                     30 products 
-                    <h2>Women</h2>
+                    <Link href="/women"><h2>Navigate to our {`Women's`} category</h2></Link>
                     <br />
                     <h3>Hats</h3>
                     <h3>Shoes</h3>

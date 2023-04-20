@@ -97,7 +97,9 @@ export const Sidebar = ({ sidebar, set }) => {
               </ul>
             </div>
           </li>
-          <li>Women</li>
+          <li>
+            <Link href={`/women`}>Women</Link>
+          </li>
           <li>
             <Link href={`/men`}>Men</Link>
           </li>

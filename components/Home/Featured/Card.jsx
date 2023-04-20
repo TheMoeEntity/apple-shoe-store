@@ -89,6 +89,31 @@ const Card = ({ img, name, men = false, url }) => {
             </div>
           </Link>
         </div>
+      ): router.pathname === "/women" ? (
+        <div className={`${styles.card} ${men ? styles.cardMen : ""}`}>
+          <div onClick={()=> router.push(`/items/${url}`)} className={styles.img}>
+            <Image
+              src={urlFor(img.images[0], loading)}
+              objectFit="cover"
+              alt="card-image"
+              layout="fill"
+            />
+            <div className={styles.tag}>-17%</div>
+            <div className={styles.like}>
+              <i className="fa-solid fa-heart"></i>
+            </div>
+            <div className={styles.cart}>
+              <i className="fa-solid fa-shopping-cart"></i>
+            </div>
+          </div>
+          <Link href={`/items/${url}`} passHref>
+            <div className={styles.details}>
+              <h3>{img.reviews} reviews</h3>
+              <h4>{name}</h4>
+              <h4>₦{Helpers.coma(img.price)}</h4>
+            </div>
+          </Link>
+        </div>
       ) : (
         <div className={`${styles.card} ${men ? styles.cardMen : ""}`}>
           <div className={styles.img}>
