@@ -9,17 +9,8 @@ const Login = () => {
   const {enqueueSnackbar} = useSnackbar()
   const [loginStatus,setLoginStatus] = useState('Login')
   const router = useRouter()
-  // useEffect(() => {
-  //   const userInfo = read_cookie("userInfo");
-  //   if (userInfo.length != 0) {
-  //     enqueueSnackbar("Already logged in!", { variant: 'info' });
-  //     setTimeout(() => {
-  //       router.push("/");
-  //     }, 3000);
-      
-  //   }
-
-  // }, []);
+  const {previous}=router.query
+  console.log(previous)
   const loginAction = async (e) => {
     setLoginStatus('Loggin in.....')
     e.preventDefault();
@@ -50,7 +41,7 @@ const Login = () => {
             setLoginStatus('Login')
             bake_cookie("userInfo", data);
             setTimeout(() => {
-              router.push('/')
+              router.push(previous)
               // location.href = '/'
             }, 2000);
           }

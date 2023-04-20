@@ -11,6 +11,7 @@ export const Sidebar = ({ sidebar, set }) => {
   const router = useRouter();
   const [user, setUser] = useState("");
   let name;
+  const UserInfo = read_cookie("userInfo");
   useEffect(() => {
     const userinfo = read_cookie("userInfo");
     name = userinfo.name;
@@ -26,7 +27,7 @@ export const Sidebar = ({ sidebar, set }) => {
 
       return timeCheck;
     });
-  }, [user, router]);
+  }, [user, router, UserInfo]);
   const showDiv = (e) => {
     const height = e.target.nextElementSibling.style.maxHeight;
     const elemHeight = e.target.nextElementSibling.scrollHeight;
@@ -66,7 +67,7 @@ export const Sidebar = ({ sidebar, set }) => {
             </div>
           </Link>
           {user === "" || user == undefined ? (
-            <Link href={`/login`}>
+            <Link href={'/login?previous='+router.asPath}>
               <div onClick={set}>
                 <li>Login</li>
               </div>
@@ -78,7 +79,7 @@ export const Sidebar = ({ sidebar, set }) => {
           <div onClick={set}>
             {user === "" || user == undefined ? (
               <li>
-                <Link href={`/signup`}>Create account</Link>
+                <Link href={'/signup?previous='+router.asPath}>Create account</Link>
               </li>
             ) : (
               <></>

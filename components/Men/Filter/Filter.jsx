@@ -70,9 +70,9 @@ const Filter = ({ items }) => {
                   name={items[7].name}
                 />
                 <Card
-                  url={items[0].slug.current}
-                  img={items[0]}
-                  name={items[0].name}
+                  url={items[6].slug.current}
+                  img={items[6]}
+                  name={items[6].name}
                 />
               </div>
               <div>
@@ -97,23 +97,23 @@ const Filter = ({ items }) => {
       <div className={styles.recentlyviewed}>
         <div>
           <Card
-            url={items[0].slug.current}
-            img={items[0]}
-            name={items[0].name}
+            url={items[10].slug.current}
+            img={items[10]}
+            name={items[10].name}
           />
         </div>
         <div>
           <Card
-            url={items[1].slug.current}
-            img={items[1]}
-            name={items[1].name}
+            url={items[9].slug.current}
+            img={items[9]}
+            name={items[9].name}
           />
         </div>
         <div>
           <Card
-            url={items[2].slug.current}
-            img={items[2]}
-            name={items[2].name}
+            url={items[8].slug.current}
+            img={items[8]}
+            name={items[8].name}
           />
         </div>
         <div>
