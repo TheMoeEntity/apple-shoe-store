@@ -10,6 +10,7 @@ import { useRouter } from "next/router";
 import Profile from "./Profile";
 import { useSelector } from "react-redux";
 import { menu } from "../../helpers/context/context";
+import { read_cookie } from "sfcookies";
 
 const Header = () => {
   const router = useRouter();
@@ -17,6 +18,8 @@ const Header = () => {
   const [profileOpen, setProfileOpen] = useState(false);
   const items = useSelector((state) => state.cart.quantity);
   const { menuOpen, setMenuOpen } = useContext(menu);
+  const UserInfo = read_cookie("userInfo");
+
 
   return (
     <div className={styles.header}>
@@ -33,28 +36,31 @@ const Header = () => {
         <div></div>
       </div>
 
-      <div>
+      <div className={styles.logoMain}>
         <Link href={"/"}>
           <h3>Apple-Stores</h3>
         </Link>
       </div>
 
       <div className={styles.navlinks}>
-        <div
-          style={{
-            cursor: "pointer",
-            visibility:
-              router.pathname == "/login" || router.pathname == "/signup"
-                ? "hidden"
-                : "visible",
-          }}
-          className={styles.profile}
-          onClick={() =>
-            cartOpen ? setProfileOpen(false) : setProfileOpen(!profileOpen)
-          }
-        >
-          <i className="fa-solid fa-user"></i>
-        </div>
+        {!(UserInfo.length === 0) && (
+          <div
+            style={{
+              cursor: "pointer",
+              visibility:
+                router.pathname == "/login" || router.pathname == "/signup"
+                  ? "hidden"
+                  : "visible",
+            }}
+            className={styles.profile}
+            onClick={() =>
+              cartOpen ? setProfileOpen(false) : setProfileOpen(!profileOpen)
+            }
+          >
+            <i className="fa-solid fa-user"></i>
+          </div>
+        )}
+
         <div
           onClick={() =>
             profileOpen ? setCartOpen(false) : setCartOpen(!cartOpen)

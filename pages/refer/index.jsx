@@ -21,13 +21,13 @@ const Refer = ({data,currRefs}) => {
         referrer: router.query['referrer']
       }
       bake_cookie("ref",JSON.stringify(newCookie))
-      console.log(newCookie.referrer)  
+   
     }
     const value = JSON.parse(read_cookie("ref")).referrer
     setCurrRef(value)
 
     // const interval = setInterval(() => {
-    //   console.log("getting refer count");
+
     //   getStatus()
     // }, mins);
   
@@ -36,7 +36,7 @@ const Refer = ({data,currRefs}) => {
 
   const getStatus = async ()=> {
     const cookie = JSON.parse(read_cookie("ref"))
-    console.log(cookie)
+    
     const id = cookie.referrer
     const user= await axios.get(`http://localhost:5000/users/${id}`)
     const count = user.data.refs
@@ -146,19 +146,19 @@ export const getServerSideProps = async (context) => {
 
   let url = "http://localhost:5000/referrals"
   const ref = context.query
-  // console.log(ref)
+
  
   const res = await fetch(url)
   const dat = await res.json()
   const cookie = context.req.cookies['ref']
-  // console.log(String(cookie).split("\\")[5].substring(1))
+  
   const undef = String(cookie).split("\\")[5] === undefined
   const id = undef === false ?  String(cookie).split("\\")[5].substring(1) : context.query["referrer"]
   
   const refs = await axios.get("http://localhost:5000/users/")
   const currRefs = await axios.get("http://localhost:5000/users/"+id)
 
-  console.log(currRefs.data)
+
 
   let exists = "not"
 

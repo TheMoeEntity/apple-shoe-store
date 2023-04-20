@@ -10,7 +10,6 @@ const Login = () => {
   const [loginStatus,setLoginStatus] = useState('Login')
   const router = useRouter()
   const {previous}=router.query
-  console.log(previous)
   const loginAction = async (e) => {
     setLoginStatus('Loggin in.....')
     e.preventDefault();

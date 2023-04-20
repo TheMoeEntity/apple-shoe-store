@@ -73,7 +73,7 @@ const Items = ({ item }) => {
       newItem = { ...item, images: [item.image], more: false };
       item = item.image === undefined ? item : newItem;
     }
-    console.log(item);
+   
     dispatch(addProduct({ ...item, items, price }));
     enqueueSnackbar("Successfully Added item to your cart", {
       variant: "success",

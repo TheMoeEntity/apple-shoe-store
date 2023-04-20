@@ -13,17 +13,17 @@ const Checkout = ({ data }) => {
   // const [currRef, setCurrRef] = useState("");
 
   useEffect(() => {
-    // console.log(JSON.parse(read_cookie("ref")).ref === true);
+    
     // setCurrRef(read_cookie("ref"));
   }, []);
 
   const placeorder = async () => {
-    // console.log("order placed");
+    // 
     // const cookie = JSON.parse(read_cookie("ref"));
     // const id = cookie.referrer;
     // const user = await axios.get(`http://localhost:5000/users/${id}`);
     // const count = user.data.refs;
-    // console.log(count);
+   
     // const res = await axios.put(`http://localhost:5000/users/${id}`, {
     //   id: id,
     //   refs: count + 1,
@@ -34,7 +34,7 @@ const Checkout = ({ data }) => {
     // }
 
     // router.push("/");
-    // console.log(res.status);
+
   };
 
   return (

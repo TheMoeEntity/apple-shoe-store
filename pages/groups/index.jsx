@@ -17,7 +17,7 @@ const Groups = ({group}) => {
 
   useEffect(()=> {
     const interval = setInterval(() => {
-      console.log("getting group members");
+     
       getStatus()
     }, mins);
   
@@ -102,7 +102,7 @@ const Groups = ({group}) => {
 export const getServerSideProps = async () => {
 
   let url = "http://localhost:5000/groups/shoe1"
-  // console.log(ref)
+  
  
   const res = await fetch(url)
   const data = await res.json()

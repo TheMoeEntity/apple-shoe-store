@@ -37,7 +37,6 @@ const Index = () => {
   };
   useEffect(() => {
     const query = router.query["link"];
-    console.log(query);
     hide(query);
   }, []);
 

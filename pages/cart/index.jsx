@@ -98,9 +98,9 @@ const Cart = ({}) => {
           ? `${time},`
           : time
       );
-      console.log(newTime);
+      
       const createdAt = newTime.join(" ");
-      console.log(createdAt);
+      
 
       const newUser = {
         id: groups,
@@ -110,13 +110,13 @@ const Cart = ({}) => {
       const thisgroup = await axios.get("http://localhost:5000/groups/shoe1");
       let members = thisgroup.data.members;
       members.push(newUser);
-      console.log(members);
+     
 
       const res = await axios.put(`http://localhost:5000/groups/shoe1`, {
         id: "shoe1",
         members: members,
       });
-      console.log(res.status);
+      
       setTimeout(() => {
         res.status === 200 && router.push("/groups");
       }, 3000);

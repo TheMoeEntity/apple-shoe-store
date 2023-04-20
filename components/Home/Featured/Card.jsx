@@ -16,7 +16,7 @@ const Card = ({ img, name, men = false, url }) => {
   const router = useRouter();
   const addToCart = (item, items) => {
     const price = item.price * items;
-    console.log(item);
+    
     let newItem;
     if (!("images" in item)) {
       newItem = { ...item, images: [item.image], more: false };

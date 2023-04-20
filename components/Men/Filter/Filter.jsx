@@ -41,7 +41,7 @@ const Filter = ({ items }) => {
         });
       }
     };
-    console.log(items);
+
     fetchData();
   }, []);
 

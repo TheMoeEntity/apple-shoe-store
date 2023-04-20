@@ -28,7 +28,6 @@ const Signup = () => {
     const email = e.target[1].value;
     const password = e.target[2].value;
     const confPassword = e.target[3].value;
-    console.log(name,email,password,confPassword)
     // const userDetails = {
     //   name: e.target[0].value,
     //   email: e.target[1].value,

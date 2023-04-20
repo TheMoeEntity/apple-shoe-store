@@ -7,17 +7,20 @@ import { delete_cookie, read_cookie } from "sfcookies";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
+
 const Profile = ({ profileOpen = false }) => {
   const { enqueueSnackbar } = useSnackbar();
   const router = useRouter();
+  
   const [user, setUser] = useState("");
   let name;
   const logoutAction = () => {
     const conf = confirm("Do you really want to logout?");
     if (conf) {
-      enqueueSnackbar("You have been logged out!", { variant: "info" });
       delete_cookie("userInfo");
       setUser(undefined)
+   
+      enqueueSnackbar("You have been logged out!", { variant: "info" });
     }
   };
   useEffect(() => {
