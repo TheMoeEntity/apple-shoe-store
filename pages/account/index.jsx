@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import { read_cookie } from "sfcookies";
 
-const Index = () => {
+const Index = ({useraccount}) => {
   const container = useRef(null);
   const router = useRouter();
   const displayContent = (index) => {
@@ -217,3 +217,16 @@ const Index = () => {
 };
 
 export default Index;
+export const getServerSideProps = async (context) => {
+  const userinfo = context.req.cookies["userInfo"];
+  console.log(userinfo)
+
+  if (!userinfo) {
+    return {
+      props:{},
+      redirect: {destination: '/login'}
+    }
+    
+  }
+  return {props:{useraccount:userinfo}}
+}

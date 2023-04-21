@@ -9,6 +9,14 @@ const Login = () => {
   const {enqueueSnackbar} = useSnackbar()
   const [loginStatus,setLoginStatus] = useState('Login')
   const router = useRouter()
+  useEffect(()=> {
+    const info = read_cookie('userInfo')
+    if (info.length === 0) {
+      enqueueSnackbar("You are not logged in!", {
+        variant: 'info',
+      });     
+    }
+  },[])
   const {previous}=router.query
   const loginAction = async (e) => {
     setLoginStatus('Loggin in.....')
