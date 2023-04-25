@@ -17,7 +17,7 @@ const Login = () => {
       });     
     }
   },[])
-  const {previous}=router.query
+  const {previous}=router.query ?? "/"
   const loginAction = async (e) => {
     setLoginStatus('Loggin in.....')
     e.preventDefault();
@@ -48,6 +48,7 @@ const Login = () => {
             setLoginStatus('Login')
             bake_cookie("userInfo", data);
             setTimeout(() => {
+              previous == undefined ? "/":previous
               router.push(previous)
               // location.href = '/'
             }, 2000);
