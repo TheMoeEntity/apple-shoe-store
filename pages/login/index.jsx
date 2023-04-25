@@ -11,7 +11,7 @@ const Login = () => {
   const router = useRouter()
   useEffect(()=> {
     const info = read_cookie('userInfo')
-    if (info.length === 0) {
+    if (info.length === 0 && previous === undefined) {
       enqueueSnackbar("You are not logged in!", {
         variant: 'info',
       });     
