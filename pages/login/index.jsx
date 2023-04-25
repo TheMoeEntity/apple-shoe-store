@@ -48,7 +48,7 @@ const Login = () => {
             setLoginStatus('Login')
             bake_cookie("userInfo", data);
             setTimeout(() => {
-              previous == undefined ? "/":previous
+              previous = previous === undefined ? "/":previous
               router.push(previous)
               // location.href = '/'
             }, 2000);
