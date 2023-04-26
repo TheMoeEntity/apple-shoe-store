@@ -50,7 +50,7 @@ const Login = () => {
             setTimeout(() => {
               previous = previous === undefined ? "/account?link=wishlist":previous
               router.push(previous)
-              // location.href = '/'
+             
             }, 2000);
           }
         })

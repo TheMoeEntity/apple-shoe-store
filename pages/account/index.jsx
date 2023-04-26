@@ -4,10 +4,31 @@ import girl from "../../public/assets/boy4.jpeg";
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import { read_cookie } from "sfcookies";
+import { useSnackbar } from "notistack";
 
-const Index = ({useraccount}) => {
+const Index = ({ useraccount }) => {
   const container = useRef(null);
+  const { enqueueSnackbar } = useSnackbar();
   const router = useRouter();
+  const { link } = router.query;
+
+
+  useEffect(() => {
+    if (link === "signup") {
+      enqueueSnackbar("Update your details and information", {
+        variant: 'info',
+      });   
+    }
+  }, []);
+
+  const UserInfo = read_cookie("userInfo");
+
+  useEffect(() => {
+    if (UserInfo.length === 0) {
+      router.push('/')
+    }
+  }, [user,router, UserInfo]);
+
   const displayContent = (index) => {
     let others = container.current.children;
     for (const child of others) {
@@ -24,10 +45,10 @@ const Index = ({useraccount}) => {
       case undefined:
         others[0].style.display = "block";
         break;
-      case 'order':
+      case "order":
         others[2].style.display = "block";
         break;
-      case 'wishlist':
+      case "wishlist":
         others[3].style.display = "block";
         break;
       default:
@@ -219,14 +240,12 @@ const Index = ({useraccount}) => {
 export default Index;
 export const getServerSideProps = async (context) => {
   const userinfo = context.req.cookies["userInfo"];
-  console.log(userinfo)
 
   if (!userinfo) {
     return {
-      props:{},
-      redirect: {destination: '/login'}
-    }
-    
+      props: {},
+      redirect: { destination: "/login" },
+    };
   }
-  return {props:{useraccount:userinfo}}
-}
+  return { props: { useraccount: userinfo } };
+};

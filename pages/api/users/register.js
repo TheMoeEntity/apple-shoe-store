@@ -2,6 +2,7 @@ import bcrypt from "bcryptjs";
 import axios from "axios";
 import config from "../../../sanity/sanity.config";
 import { signToken } from "../../../helpers/auth";
+import client from '../../../helpers/client'
 
 export default async function handler(req, res) {
   const projectId = config.projectId;
@@ -18,6 +19,13 @@ export default async function handler(req, res) {
       },
     },
   ];
+  const userEmail = await client.fetch(`*[_type == 'user' && email == $email][0]`, {
+    email:req.body.email
+  })
+
+  if (userEmail) {
+      return res.status(401).send({message:'Email already exists. Try another email'})
+  }
 
   const { data } = await axios.post(
     `https://${projectId}.api.sanity.io/v1/data/mutate/${dataset}?returnIds=true`,

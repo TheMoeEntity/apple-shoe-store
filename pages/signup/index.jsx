@@ -4,6 +4,7 @@ import { useSnackbar } from "notistack";
 import { useRouter } from "next/router";
 import { bake_cookie, read_cookie } from 'sfcookies'
 import { useEffect, useState } from "react";
+import { getError } from "../../helpers/error";
 
 const Signup = () => {
   const router = useRouter()
@@ -61,13 +62,13 @@ const Signup = () => {
             });
             bake_cookie('userInfo',data);
             setTimeout(() => {
-              router.push("/");
+              router.push("/account?link=signup");
             }, 3000);
           }
         })
         .catch((err) => {
           setsignupStatus('Create account')
-          enqueueSnackbar("An error occured" + ` ${err}`, { variant: "error" });
+          enqueueSnackbar("An error occured: " + err, { variant: "error" });
         });
     }
   };
@@ -76,8 +77,8 @@ const Signup = () => {
     <div className={`${styles.login} ${styles.signup}`}>
       <form onSubmit={submitAction} action="">
         <h2>Create An Account</h2>
-        <label htmlFor="">First Name</label> <br />
-        <input type="text" placeholder="Enter your first name" required />
+        <label htmlFor="">Full Name</label> <br />
+        <input type="text" placeholder="Enter your name please" required />
         <label htmlFor="">Email</label> <br />
         <input type="text" placeholder="Enter a valid email address" required />
         <label htmlFor="">Password</label> <br />
