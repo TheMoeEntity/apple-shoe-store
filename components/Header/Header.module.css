@@ -83,7 +83,7 @@
   width: 80%;
   height: 100%;
   left: -100%;
-  z-index: 200000000s;
+  z-index: 99999999;
   transition: left 0.5s;
   overflow-y: scroll;
   background-color: white;
