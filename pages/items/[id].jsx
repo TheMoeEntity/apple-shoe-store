@@ -23,7 +23,6 @@ const Items = ({ item }) => {
   const [items, setItems] = useState(1);
   const [images, setImages] = useState([]);
   const [currImage, setCurrImage] = useState(noimage);
-  const [price, setPrice] = useState("0");
   const sizeRef = useRef(null);
   const colorRef = useRef(null);
   const [sizes, setSizes] = useState([]);
@@ -66,6 +65,7 @@ const Items = ({ item }) => {
   };
 
   const addToCart = () => {
+    
     const price = item.price * items;
     let newItem;
     const specialID = nanoid(10);

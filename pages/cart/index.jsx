@@ -197,7 +197,7 @@ const Cart = ({}) => {
                       <span>Natural | XL</span>
                     </div>
                   </div>
-                  <div className={styles.quantity}>1{x.quantity}</div>
+                  <div className={styles.quantity}>{x.items}</div>
                   <div>₦{x.price.toLocaleString()}</div>
                   <div
                     onClick={() => handleMore(x.cartID)}
