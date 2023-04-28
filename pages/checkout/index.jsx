@@ -146,15 +146,20 @@ const Checkout = ({ data }) => {
                 />
               </div>
               <span>
+                <div style={{textAlign:'right'}}>
                 {x.name}
                 <br />
                 <br />
                 Size: {x.currSize}
                 <br />
                 <br />
+                Quantity: {x.items}
+                <br />
+                <br />
                 Price: ₦{x.price.toLocaleString()}
+                </div>
               </span>
-              <span>{x.items}</span>
+              <span className={styles2.qty}>{x.items}</span>
             </div>
           ))}
           <div className={styles.subtotal}>

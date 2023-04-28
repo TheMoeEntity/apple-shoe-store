@@ -23,13 +23,15 @@
   margin-top: 20px;
 }
 .checkItemImg {
-  width: 65px !important;
-  height: 65px !important;
+  width: 80px !important;
+  height: 80px !important;
   position: relative;
+  border-radius: 8px;
   background-color: green;
 }
 .checkItemImg img {
   object-fit: cover;
+  border-radius: 8px;
 }
 .formGroup {
   margin-bottom: 40px;
@@ -45,6 +47,11 @@
 @media screen and (min-width: 800px) {
   .form input {
     width: 80%;
+  }
+}
+@media screen and (max-width: 380px) {
+  .qty{
+    display: none;
   }
 }
 .contact {
