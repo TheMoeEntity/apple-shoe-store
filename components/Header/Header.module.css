@@ -158,7 +158,7 @@
   right: 0px;
   transition: 0.6s;
   bottom: 100px;
-  z-index: 999;
+  z-index: 99999997;
   box-shadow: 5px 9px 30px 0 rgb(0 0 0 / 20%);
   border-radius: 25px;
   overflow: scroll;
@@ -317,6 +317,7 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  z-index: 99999997;
 }
 .profile i {
   font-size:22px;
