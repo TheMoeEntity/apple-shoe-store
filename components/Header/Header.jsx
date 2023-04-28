@@ -25,6 +25,7 @@ const Header = () => {
     <div className={styles.header}>
       <Profile forceClose={()=> setProfileOpen(false)} profileOpen={profileOpen} />
       <CartModal
+      forceClose={()=> setCartOpen(false)}
         profileOpen={profileOpen}
         closeCart={() => setCartOpen(false)}
         cartOpen={cartOpen}

@@ -14,9 +14,6 @@ import Image from "next/image";
 const Checkout = ({ data }) => {
   const router = useRouter();
   const cart = useSelector((state) => state.cart);
-  useEffect(() => {
-    console.log(cart.products);
-  }, []);
   const [user, setUser] = useState("");
   const [email, setMail] = useState("");
   let name;
@@ -91,7 +88,7 @@ const Checkout = ({ data }) => {
           <div className={styles2.formGroup}>
             <label htmlFor="">First Name:</label>
             <input
-              value={user}
+              defaultValue={user}
               type="text"
               placeholder="Enter your first name"
             />
@@ -142,7 +139,7 @@ const Checkout = ({ data }) => {
                   layout="fill"
                   src={urlForThumbnail(x.images[0], noimage)}
                   alt="product image"
-                  priority
+                  priority={true}
                 />
               </div>
               <span>

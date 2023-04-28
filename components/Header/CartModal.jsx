@@ -6,10 +6,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { removeProduct } from "../../helpers/Redux/cart";
 import noimage from "../../public/assets/noimage.png";
 import { urlForThumbnail } from "../../helpers/image";
+import { read_cookie } from "sfcookies";
 
-const CartModal = ({ cartOpen, closeCart, profileOpen }) => {
+const CartModal = ({ cartOpen, closeCart, forceClose}) => {
   const router = useRouter();
   const dispatch = useDispatch();
+  const userinfo = read_cookie("userInfo");
   const cart = useSelector((state) => state.cart);
 
   const CalculateTotal = (cart) => {
@@ -23,6 +25,14 @@ const CartModal = ({ cartOpen, closeCart, profileOpen }) => {
   const removeCartItem = (product, item_id, price, packs) => {
     dispatch(removeProduct({ ...product, item_id, price, packs }));
   };
+  const checkoutAction = () => {
+    if (userinfo.length === 0) {
+      router.push('/login?previous=cartmodal')
+    } else {
+      router.push('/checkout')
+    }
+    forceClose()
+  }
   return (
     <div
       style={{
@@ -83,9 +93,7 @@ const CartModal = ({ cartOpen, closeCart, profileOpen }) => {
           <Link href={"/cart"}>
             <button onClick={closeCart}>View cart</button>
           </Link>
-          <Link href={"/checkout"}>
-            <button className={styles.checkBtn}>Check out</button>
-          </Link>
+            <button onClick={checkoutAction} className={styles.checkBtn}>Check out</button>
         </div>
       </div>
     </div>

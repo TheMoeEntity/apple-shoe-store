@@ -11,7 +11,7 @@ const Login = () => {
   const router = useRouter()
   useEffect(()=> {
     const info = read_cookie('userInfo')
-    if (info.length === 0 && previous === undefined) {
+    if ((info.length === 0 && previous === undefined) || previous === "cartmodal") {
       enqueueSnackbar("You are not logged in!", {
         variant: 'info',
       });     
@@ -48,7 +48,9 @@ const Login = () => {
             setLoginStatus('Login')
             bake_cookie("userInfo", data);
             setTimeout(() => {
-              previous = previous === undefined ? "/account?link=wishlist":previous
+              previous = previous === undefined ? "/account?link=wishlist":
+              previous === 'cartmodal' ? '/checkout' :
+              previous
               router.push(previous)
              
             }, 2000);
