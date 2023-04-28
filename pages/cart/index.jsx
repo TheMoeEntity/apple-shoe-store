@@ -12,6 +12,7 @@ import noimage from "../../public/assets/noimage.png";
 import { urlForThumbnail } from "../../helpers/image";
 import Link from "next/link";
 import { useEffect } from "react";
+import { isMobile } from "react-device-detect";
 
 const Cart = ({}) => {
   const router = useRouter();
@@ -194,7 +195,9 @@ const Cart = ({}) => {
                     </div>
                     <div>
                       <h3>{x.name}</h3>
-                      <span>Natural | XL</span>
+                      <span>Natural | {!x.currSize ? 'N/A':x.currSize}</span> <br /> <br />
+                      <span className={styles.itemCount}>Quantity: {x.items}</span>
+                      
                     </div>
                   </div>
                   <div className={styles.quantity}>{x.items}</div>

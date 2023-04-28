@@ -22,6 +22,15 @@
   color: black;
   margin-top: 20px;
 }
+.checkItemImg {
+  width: 65px !important;
+  height: 65px !important;
+  position: relative;
+  background-color: green;
+}
+.checkItemImg img {
+  object-fit: cover;
+}
 .formGroup {
   margin-bottom: 40px;
 }

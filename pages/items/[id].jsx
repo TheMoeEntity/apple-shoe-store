@@ -26,7 +26,7 @@ const Items = ({ item }) => {
   const sizeRef = useRef(null);
   const colorRef = useRef(null);
   const [sizes, setSizes] = useState([]);
-  const [currSize, setCurrSize] = useState("");
+  const [currSize, setCurrSize] = useState(item.sizes[0]);
   const dispatch = useDispatch();
   useEffect(() => {
     const imgArray = [];
@@ -44,15 +44,8 @@ const Items = ({ item }) => {
       allSizes.push(element);
     });
     setSizes(allSizes);
-
-    // setPrice(() => {
-    //   const pr = `${item.price}`;
-    //   return pr.tolocaleString();
-    // });
   }, []);
-  const coma = (price) => {
-    return price.toLocaleString();
-  };
+
   const handleSize = (e, type) => {
     const parent = type === "size" ? sizeRef.current : colorRef.current;
     const selected =
@@ -62,19 +55,19 @@ const Items = ({ item }) => {
     });
     e.target.classList.toggle(selected);
     setCurrSize(e.target.innerHTML);
+    console.log(currSize)
   };
 
   const addToCart = () => {
     
     const price = item.price * items;
     let newItem;
-    const specialID = nanoid(10);
     if (!("images" in item)) {
       newItem = { ...item, images: [item.image], more: false };
       item = item.image === undefined ? item : newItem;
     }
    
-    dispatch(addProduct({ ...item, items, price }));
+    dispatch(addProduct({ ...item, items, price,currSize }));
     enqueueSnackbar("Successfully Added item to your cart", {
       variant: "success",
     });
@@ -135,9 +128,6 @@ const Items = ({ item }) => {
           </div>
         )}
         <h3>{item.name}</h3>
-        {/* <h4>
-          {item.reviews} {item.reviews > 1 ? "reviews" : "review"}
-        </h4> */}
         <h3
           style={{
             color: "green",

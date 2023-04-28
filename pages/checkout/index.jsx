@@ -6,35 +6,51 @@ import { useRouter } from "next/router";
 import { delete_cookie, read_cookie } from "sfcookies";
 import axios from "axios";
 import Head from "next/head";
+import { useSelector } from "react-redux";
+import { urlForThumbnail } from "../../helpers/image";
+import noimage from "../../public/assets/noimage.png";
+import Image from "next/image";
 
 const Checkout = ({ data }) => {
-  // const router = useRouter();
-
-  // const [currRef, setCurrRef] = useState("");
-
+  const router = useRouter();
+  const cart = useSelector((state) => state.cart);
   useEffect(() => {
-    
-    // setCurrRef(read_cookie("ref"));
+    console.log(cart.products);
   }, []);
+  const [user, setUser] = useState("");
+  const [email, setMail] = useState("");
+  let name;
+  let mail;
+  useEffect(() => {
+    const userinfo = read_cookie("userInfo");
+    name = userinfo.name;
+    mail = userinfo.email;
+    setUser(name);
+    setMail(mail);
+  }, [user, router]);
+  const CalculateTotal = (cart) => {
+    let total = 0;
+    for (let index = 0; index < cart.length; index++) {
+      total += cart[index].price;
+    }
+    return total;
+  };
+  const total = CalculateTotal(cart.products);
 
   const placeorder = async () => {
-    // 
+    //
     // const cookie = JSON.parse(read_cookie("ref"));
     // const id = cookie.referrer;
     // const user = await axios.get(`http://localhost:5000/users/${id}`);
     // const count = user.data.refs;
-   
     // const res = await axios.put(`http://localhost:5000/users/${id}`, {
     //   id: id,
     //   refs: count + 1,
     // });
-
     // if (cookie.ref === true) {
     //   delete_cookie("ref");
     // }
-
     // router.push("/");
-
   };
 
   return (
@@ -61,7 +77,7 @@ const Checkout = ({ data }) => {
               <span> CONTACT INFO</span> <i className="fa-solid fa-check"></i>
               <br />
               <br />
-              <strong>Moses Nwigberi,</strong> 08075489362
+              <strong>{user},</strong> 08075489362
             </div>
           </div>
 
@@ -74,13 +90,17 @@ const Checkout = ({ data }) => {
           <h3>Billing Details</h3>
           <div className={styles2.formGroup}>
             <label htmlFor="">First Name:</label>
-            <input type="text" placeholder="Enter your first name" />
+            <input
+              value={user}
+              type="text"
+              placeholder="Enter your first name"
+            />
           </div>
 
-          <div className={styles2.formGroup}>
+          {/* <div className={styles2.formGroup}>
             <label htmlFor="">Last Name:</label>
             <input type="text" placeholder="Last Name" />
-          </div>
+          </div> */}
 
           <div className={styles2.formGroup}>
             <label htmlFor="">Phone:</label>
@@ -115,21 +135,35 @@ const Checkout = ({ data }) => {
       <div>
         <div className={styles.total}>
           <h3>Your Order</h3>
-          <div className={styles.totalpr}>
-            <span>Hoodie and Jeans</span>
-            <span>1</span>
-          </div>
-          <div className={styles.totalpr}>
-            <span>Nike Airforce 2</span>
-            <span>1</span>
-          </div>
+          {cart.products.map((x, i) => (
+            <div key={i} className={styles.totalpr}>
+              <div className={styles2.checkItemImg}>
+                <Image
+                  layout="fill"
+                  src={urlForThumbnail(x.images[0], noimage)}
+                  alt="product image"
+                  priority
+                />
+              </div>
+              <span>
+                {x.name}
+                <br />
+                <br />
+                Size: {x.currSize}
+                <br />
+                <br />
+                Price: ₦{x.price.toLocaleString()}
+              </span>
+              <span>{x.items}</span>
+            </div>
+          ))}
           <div className={styles.subtotal}>
             <span>Subtotal</span>
-            <span>$12.300</span>
+            <span>₦{total.toLocaleString()}</span>
           </div>
           <div className={styles.totalpr}>
             <span>Total</span>
-            <span>$12.300</span>
+            <span>₦{total.toLocaleString()}</span>
           </div>
           <br />
 

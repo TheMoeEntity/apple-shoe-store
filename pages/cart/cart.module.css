@@ -10,6 +10,9 @@
     margin:0 20px;
     
 }
+.itemCount {
+    display: none;
+}
 .cart > div:nth-child(1) {
     padding-top: 40px;
     flex-grow: 2;
@@ -67,6 +70,14 @@
     .moreOptions {
         right:-10px !important;
         top: -40px !important;
+    }
+}
+@media screen and (max-width:394px) {
+    .quantity {
+        visibility: hidden;
+    }
+    .itemCount {
+        display: inherit;
     }
 }
 
