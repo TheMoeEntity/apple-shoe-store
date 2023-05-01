@@ -12,7 +12,7 @@ import noimage from "../../public/assets/noimage.png";
 import { urlForThumbnail } from "../../helpers/image";
 import Link from "next/link";
 import { useEffect } from "react";
-import { isMobile } from "react-device-detect";
+import { Helpers } from "../../helpers";
 
 const Cart = ({}) => {
   const router = useRouter();
@@ -42,7 +42,7 @@ const Cart = ({}) => {
     for (let index = 0; index < cart.length; index++) {
       total += cart[index].price;
     }
-    return total;
+    return total + (0.20*total);
   };
   const total = CalculateTotal(cart.products);
   const removeCartItem = (product, item_id, price, packs) => {
@@ -230,6 +230,10 @@ const Cart = ({}) => {
           <div className={styles.subtotal}>
             <span>Subtotal</span>
             <span>₦{total.toLocaleString()}</span>
+          </div>
+          <div className={styles.subtotal}>
+            <span>Shipping fees</span>
+            <span>₦{Helpers.coma((0.20*total))}</span>
           </div>
           <div className={styles.totalpr}>
             <span>Total</span>

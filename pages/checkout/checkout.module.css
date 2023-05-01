@@ -33,6 +33,11 @@
   object-fit: cover;
   border-radius: 8px;
 }
+.counter {
+  height: fit-content !important;
+  padding-bottom: 50px !important;
+
+}
 .formGroup {
   margin-bottom: 40px;
 }
@@ -67,6 +72,28 @@
   flex-flow: row wrap;
   align-items: center;
   justify-content: space-between;
+}
+.contact2 {
+  width: 100%;
+  height: auto;
+  min-height: 100px;
+  border: 1px solid #33425560;
+  color: #334255;
+  margin-top: 40px;
+  border-radius: 13px;
+  padding: 20px 30px;
+  
+  display: block !important;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+.contact i {
+  margin-left: 5px;
+}
+
+.paypal {
+  width: 60px !important;
 }
 .contact button {
   padding: 8px;

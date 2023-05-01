@@ -1,6 +1,4 @@
 import bcrypt from "bcryptjs";
-import axios from "axios";
-import config from "../../../sanity/sanity.config";
 import { signToken } from "../../../helpers/auth";
 import client from "../../../helpers/client";
 

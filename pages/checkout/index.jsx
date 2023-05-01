@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from "react";
 import styles from "../cart/cart.module.css";
 import styles2 from "./checkout.module.css";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { delete_cookie, read_cookie } from "sfcookies";
-import axios from "axios";
 import Head from "next/head";
 import { useSelector } from "react-redux";
 import { urlForThumbnail } from "../../helpers/image";
 import noimage from "../../public/assets/noimage.png";
 import Image from "next/image";
+import { PayPalButton } from "react-paypal-button-v2";
 
 const Checkout = ({ data }) => {
   const router = useRouter();
   const cart = useSelector((state) => state.cart);
   const [user, setUser] = useState("");
   const [email, setMail] = useState("");
+  const [scriptLoaded, setScriptLoaded] = useState(false);
+
   let name;
   let mail;
   useEffect(() => {
@@ -33,6 +34,26 @@ const Checkout = ({ data }) => {
     return total;
   };
   const total = CalculateTotal(cart.products);
+  const payPalScript = () => {
+    if (cart.products.length === 0) {
+      return;
+    }
+    if (window.paypal) {
+      setScriptLoaded(true);
+      return;
+    }
+    const script = document.createElement("script");
+    script.src =
+      "https://www.paypal.com/sdk/js?client-id=Ae7GP2fWATOAu1gLmTXRVqN6jcavIMnjQK74Xoe0N0BPpywgLnjZAjokoLl1vDyKYYEd3pWgRI_K7yCK";
+    script.type = "text/javascript";
+    script.async = true;
+    script.onload = () => setScriptLoaded(true);
+    document.body.appendChild(script);
+  };
+
+  useEffect(() => {
+    payPalScript();
+  }, []);
 
   const placeorder = async () => {
     //
@@ -59,7 +80,7 @@ const Checkout = ({ data }) => {
       </Head>
       <div>
         <div className={styles.free}>
-          Add $125.45 more and win free shipping!
+          Add ₦4,000.45 more and win free shipping!
           <div className={styles.bar}>
             <div className={styles.width}></div>
           </div>
@@ -94,10 +115,10 @@ const Checkout = ({ data }) => {
             />
           </div>
 
-          {/* <div className={styles2.formGroup}>
+          <div className={styles2.formGroup}>
             <label htmlFor="">Last Name:</label>
             <input type="text" placeholder="Last Name" />
-          </div> */}
+          </div>
 
           <div className={styles2.formGroup}>
             <label htmlFor="">Phone:</label>
@@ -108,9 +129,19 @@ const Checkout = ({ data }) => {
             <label htmlFor="">Delivery Address:</label>
             <input type="text" placeholder="Enter Address" name="" id="" />
           </div>
+
+          <div className={styles2.formGroup}>
+            <label htmlFor="">City:</label>
+            <input type="text" placeholder="Enter city" name="" id="" />
+          </div>
+
+          <div className={styles2.formGroup}>
+            <label htmlFor="">State:</label>
+            <input type="text" placeholder="State" name="" id="" />
+          </div>
         </form>
 
-        <div className={styles2.contact}>
+        <div className={`${styles2.contact} ${styles2.contact2}`}>
           <div>
             <div>
               <i className="fa-solid fa-credit-card"></i>
@@ -121,16 +152,44 @@ const Checkout = ({ data }) => {
               <br />
               <strong>Mastercard,</strong> xxx - xxx - xx34
             </div>
-          </div>
+          </div>{" "}
 
+          <div style={{marginTop:'30px', marginBottom:'30px'}}>
+            <div>
+            <div>
+              <i className="fa-solid fa-credit-card"></i>
+            </div>
+              <span>PayPal</span>{" "}
+              <i className="fa-brands fa-paypal"></i>
+            </div>
+          </div> <br />
+          <div className={styles.paypal}>
+            {scriptLoaded ? (
+              <PayPalButton
+                amount={total}
+                onSuccess={(details, data) => {
+                  console.log(details);
+                  const shippingDetails = details.purchase_units[0].shipping;
+                  createOrder({
+                    customer: shippingDetails.name.full_name,
+                    address: shippingDetails.address.address_line_1,
+                    total: cart.total,
+                    paymentMethod: 1,
+                  });
+                }}
+              />
+            ) : (
+              <span>Loading...</span>
+            )}
+          </div>
           <div>
             <button>Change</button>
           </div>
         </div>
       </div>
 
-      <div>
-        <div className={styles.total}>
+      <div className={styles2.counter}>
+        <div className={`${styles.total} ${styles2.counter}`}>
           <h3>Your Order</h3>
           {cart.products.map((x, i) => (
             <div key={i} className={styles.totalpr}>
@@ -143,17 +202,17 @@ const Checkout = ({ data }) => {
                 />
               </div>
               <span>
-                <div style={{textAlign:'right'}}>
-                {x.name}
-                <br />
-                <br />
-                Size: {x.currSize}
-                <br />
-                <br />
-                Quantity: {x.items}
-                <br />
-                <br />
-                Price: ₦{x.price.toLocaleString()}
+                <div style={{ textAlign: "right" }}>
+                  {x.name}
+                  <br />
+                  <br />
+                  Size: {x.currSize}
+                  <br />
+                  <br />
+                  Quantity: {x.items}
+                  <br />
+                  <br />
+                  Price: ₦{x.price.toLocaleString()}
                 </div>
               </span>
               <span className={styles2.qty}>{x.items}</span>
