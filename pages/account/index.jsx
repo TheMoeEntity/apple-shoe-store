@@ -5,12 +5,25 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import { read_cookie } from "sfcookies";
 import { useSnackbar } from "notistack";
+import { useDispatch } from "react-redux";
+import { updateShipping } from "../../helpers/Redux/cart";
+import { useSelector } from "react-redux";
 
 const Index = ({}) => {
   const container = useRef(null);
+  const ship = useSelector((state)=> state.cart.shippingAddress)
+  const dispatch = useDispatch()
   const { enqueueSnackbar } = useSnackbar();
   const router = useRouter();
   const { link } = router.query;
+  const [shipping,setShipping] = useState({
+      phone:ship.phone,
+      address:ship.address ?? null,
+      city:ship.city ?? null,
+      state:ship.state ?? null,
+      zip:ship.zip ?? null
+
+  })
 
 
   useEffect(() => {
@@ -73,6 +86,19 @@ const Index = ({}) => {
     setMail(mail);
   }, [user, router]);
 
+  const submitAction = e => {
+    e.preventDefault()
+    console.log(shipping)
+    dispatch(updateShipping(shipping))
+    enqueueSnackbar("Successfully updated your details", {
+      variant: "success",
+    });
+
+    if (link && link === 'update') {
+      router.push('/checkout')
+    }
+  }
+
   return (
     <div className={styles.account}>
       <div>
@@ -89,7 +115,7 @@ const Index = ({}) => {
         </div>
         <div className={styles.content} ref={container}>
           <div className={styles.acc}>
-            <form action="">
+            <form onSubmit={submitAction}>
               <h3>Account Information</h3>
               <div className={styles.pic}>
                 <Image priority layout="fill" src={girl} alt="product image" />
@@ -99,9 +125,15 @@ const Index = ({}) => {
               <label htmlFor="">Email</label>
               <input type="text" placeholder="Enter email" value={email} />
               <label htmlFor="">Phone Number</label>
-              <input type="text" placeholder="Enter phone" />
+              <input required type="text" value={shipping.phone} onChange={(e)=> setShipping(x => {return {...x,phone:e.target.value} })} placeholder="Enter phone" />
               <label htmlFor="">Address</label>
-              <input type="text" placeholder="Enter a new address" />
+              <input required type="text" value={shipping.address} onChange={(e)=> setShipping(x => {return {...x,address:e.target.value} })} placeholder="Enter a new address" />
+              <label htmlFor="">City</label>
+              <input required type="text" value={shipping.city} onChange={(e)=> setShipping(x => {return {...x,city:e.target.value} })} placeholder="Enter City" />
+              <label htmlFor="">State:</label>
+              <input required type="text" value={shipping.state} onChange={(e)=> setShipping(x => {return {...x,state:e.target.value} })} placeholder="Enter state" />
+              <label htmlFor="">Zip code:</label>
+              <input required type="text" value={shipping.zip} onChange={(e)=> setShipping(x => {return {...x,zip:e.target.value} })} placeholder="Zip code" />
               <button type="submit">Update info</button>
             </form>
           </div>

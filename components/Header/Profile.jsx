@@ -6,10 +6,13 @@ import { useSnackbar } from "notistack";
 import { delete_cookie, read_cookie } from "sfcookies";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
+import { reset } from "../../helpers/Redux/cart";
 
 const Profile = ({ profileOpen = false, forceClose }) => {
   const { enqueueSnackbar } = useSnackbar();
   const router = useRouter();
+  const dispatch = useDispatch()
 
   const [user, setUser] = useState("");
   let name;
@@ -20,6 +23,7 @@ const Profile = ({ profileOpen = false, forceClose }) => {
       setUser(undefined);
       forceClose();
       enqueueSnackbar("You have been logged out!", { variant: "info" });
+      dispatch(reset())
       window.location.href = '/'
     }
   };

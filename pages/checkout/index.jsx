@@ -2,22 +2,34 @@ import React, { useEffect, useState } from "react";
 import styles from "../cart/cart.module.css";
 import styles2 from "./checkout.module.css";
 import { useRouter } from "next/router";
-import { delete_cookie, read_cookie } from "sfcookies";
+import { read_cookie } from "sfcookies";
 import Head from "next/head";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { urlForThumbnail } from "../../helpers/image";
 import noimage from "../../public/assets/noimage.png";
 import Image from "next/image";
 import { PayPalButton } from "react-paypal-button-v2";
 import { Helpers } from "../../helpers";
+import { useSnackbar } from "notistack";
+
 
 const Checkout = ({ data }) => {
   const router = useRouter();
   const cart = useSelector((state) => state.cart);
+  const { enqueueSnackbar } = useSnackbar();
   const [user, setUser] = useState("");
   const [email, setMail] = useState("");
+  const ship = useSelector((state)=> state.cart.shippingAddress)
   const [scriptLoaded, setScriptLoaded] = useState(false);
+  const [shipping,setShipping] = useState({
+    phone:ship.phone,
+    address:ship.address ?? null,
+    city:ship.city ?? null,
+    state:ship.state ?? null,
+    zip:ship.zip ?? null
 
+})
+console.log(ship)
   let name;
   let mail;
   useEffect(() => {
@@ -54,6 +66,20 @@ const Checkout = ({ data }) => {
 
   useEffect(() => {
     payPalScript();
+    let time
+    if (Object.keys(ship).length === 0) {
+      enqueueSnackbar("Please update shipping details!", {
+        variant: 'error',
+      });   
+
+     time = setTimeout(() => {
+        router.push('/account?link=update')
+      }, 3500);
+    }
+
+    return () => {
+      clearTimeout(time)
+    }
   }, []);
 
   const placeorder = async () => {
@@ -123,22 +149,27 @@ const Checkout = ({ data }) => {
 
           <div className={styles2.formGroup}>
             <label htmlFor="">Phone:</label>
-            <input type="phone" placeholder="Enter your phone" />
+            <input value={shipping.phone} onChange={(e)=> setShipping(x => {return {...x,phone:e.target.value} })}  type="phone" placeholder="Enter your phone" />
           </div>
 
           <div className={styles2.formGroup}>
             <label htmlFor="">Delivery Address:</label>
-            <input type="text" placeholder="Enter Address" name="" id="" />
+            <input value={shipping.address} onChange={(e)=> setShipping(x => {return {...x,address:e.target.value} })}  type="text" placeholder="Enter Address" name="" id="" />
           </div>
 
           <div className={styles2.formGroup}>
             <label htmlFor="">City:</label>
-            <input type="text" placeholder="Enter city" name="" id="" />
+            <input value={shipping.city} onChange={(e)=> setShipping(x => {return {...x,city:e.target.value} })}  type="text" placeholder="Enter city" name="" id="" />
           </div>
 
           <div className={styles2.formGroup}>
             <label htmlFor="">State:</label>
-            <input type="text" placeholder="State" name="" id="" />
+            <input value={shipping.state} onChange={(e)=> setShipping(x => {return {...x,state:e.target.value} })}  type="text" placeholder="State" name="" id="" />
+          </div>
+
+          <div className={styles2.formGroup}>
+            <label htmlFor="">Zip code:</label>
+            <input value={shipping.zip} onChange={(e)=> setShipping(x => {return {...x,zip:e.target.value} })}  type="text" placeholder="Zip code" name="" id="" />
           </div>
         </form>
 
@@ -205,7 +236,7 @@ const Checkout = ({ data }) => {
           <button onClick={placeorder} id={styles.checkout}>
             Place order
           </button>
-            <div style={{textAlign:'center',padding:'20px'}}> or pay with PayPal               <span>PayPal</span>{" "}
+            <div style={{textAlign:'center',padding:'20px'}}> or pay with <span>PayPal</span>{" "}
               <i className="fa-brands fa-paypal"></i></div>
           {scriptLoaded ? (
               <PayPalButton

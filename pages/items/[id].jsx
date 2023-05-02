@@ -3,9 +3,7 @@ import styles2 from "../../components/Nav/Nav.module.css";
 import Image from "next/image";
 import { useRef, useState } from "react";
 import Head from "next/head";
-import boy from "../../public/assets/boy.jpeg";
 import NavStyles from "../../components/Nav/Nav.module.css";
-import { useRouter } from "next/router";
 import { useEffect } from "react";
 import client from "../../helpers/client";
 import { urlForThumbnail } from "../../helpers/image";
@@ -14,7 +12,6 @@ import { addProduct } from "../../helpers/Redux/cart";
 import { useDispatch } from "react-redux";
 import { useSnackbar } from "notistack";
 import Link from "next/link";
-import { nanoid } from "nanoid";
 import { Helpers } from "../../helpers";
 import Overview from "../../components/Overview";
 
