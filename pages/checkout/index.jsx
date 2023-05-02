@@ -9,6 +9,7 @@ import { urlForThumbnail } from "../../helpers/image";
 import noimage from "../../public/assets/noimage.png";
 import Image from "next/image";
 import { PayPalButton } from "react-paypal-button-v2";
+import { Helpers } from "../../helpers";
 
 const Checkout = ({ data }) => {
   const router = useRouter();
@@ -152,38 +153,6 @@ const Checkout = ({ data }) => {
               <br />
               <strong>Mastercard,</strong> xxx - xxx - xx34
             </div>
-          </div>{" "}
-
-          <div style={{marginTop:'30px', marginBottom:'30px'}}>
-            <div>
-            <div>
-              <i className="fa-solid fa-credit-card"></i>
-            </div>
-              <span>PayPal</span>{" "}
-              <i className="fa-brands fa-paypal"></i>
-            </div>
-          </div> <br />
-          <div className={styles.paypal}>
-            {scriptLoaded ? (
-              <PayPalButton
-                amount={total}
-                onSuccess={(details, data) => {
-                  console.log(details);
-                  const shippingDetails = details.purchase_units[0].shipping;
-                  createOrder({
-                    customer: shippingDetails.name.full_name,
-                    address: shippingDetails.address.address_line_1,
-                    total: cart.total,
-                    paymentMethod: 1,
-                  });
-                }}
-              />
-            ) : (
-              <span>Loading...</span>
-            )}
-          </div>
-          <div>
-            <button>Change</button>
           </div>
         </div>
       </div>
@@ -222,9 +191,13 @@ const Checkout = ({ data }) => {
             <span>Subtotal</span>
             <span>₦{total.toLocaleString()}</span>
           </div>
+          <div className={styles.subtotal}>
+            <span>Shipping fees: </span>
+            <span>₦{Helpers.coma((0.20*total))}</span>
+          </div>
           <div className={styles.totalpr}>
             <span>Total</span>
-            <span>₦{total.toLocaleString()}</span>
+            <span>₦{(total+ (0.20*total)).toLocaleString() }</span>
           </div>
           <br />
 
@@ -232,6 +205,25 @@ const Checkout = ({ data }) => {
           <button onClick={placeorder} id={styles.checkout}>
             Place order
           </button>
+            <div style={{textAlign:'center',padding:'20px'}}> or pay with PayPal               <span>PayPal</span>{" "}
+              <i className="fa-brands fa-paypal"></i></div>
+          {scriptLoaded ? (
+              <PayPalButton
+                amount={total}
+                onSuccess={(details, data) => {
+                  console.log(details);
+                  const shippingDetails = details.purchase_units[0].shipping;
+                  createOrder({
+                    customer: shippingDetails.name.full_name,
+                    address: shippingDetails.address.address_line_1,
+                    total: cart.total,
+                    paymentMethod: 1,
+                  });
+                }}
+              />
+            ) : (
+              <span>Loading...</span>
+            )}
         </div>
       </div>
     </div>

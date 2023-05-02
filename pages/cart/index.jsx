@@ -20,6 +20,7 @@ const Cart = ({}) => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   const [currCart,setCurrCart] = useState(cart.products)
+  const userinfo = read_cookie("userInfo");
 
   const modifyCart = ()=> {
     setCurrCart((currentCart)=> {
@@ -152,6 +153,14 @@ const Cart = ({}) => {
 
   }
 
+  const checkoutAction = () => {
+    if (userinfo.length === 0) {
+      router.push('/login?previous=cartmodal')
+    } else {
+      router.push('/checkout')
+    }
+  }
+
   return (
     <div className={styles.cart}>
       <Head>
@@ -237,7 +246,7 @@ const Cart = ({}) => {
           </div>
           <div className={styles.totalpr}>
             <span>Total</span>
-            <span>₦{total.toLocaleString()}</span>
+            <span>₦{(total+ (0.20*total)).toLocaleString() }</span>
           </div>
           <div className={styles.totalpr}>
             <span>Pay less</span>
@@ -245,9 +254,9 @@ const Cart = ({}) => {
               ₦{(total - 0.7 * total).toLocaleString()}
             </span>
           </div>
-          <Link href={`/checkout`}>
-            <button className={styles.totalbutton}>Proceed to checkout</button>
-          </Link>
+          {/* <Link href={`/checkout`}> */}
+            <button onClick={checkoutAction} className={styles.totalbutton}>Proceed to checkout</button>
+          {/* </Link> */}
           <button
             style={{ maxHeight: less ? "60px" : "0" }}
             onClick={ProceedToRefer}

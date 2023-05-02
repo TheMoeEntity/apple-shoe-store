@@ -20,6 +20,7 @@ const Profile = ({ profileOpen = false, forceClose }) => {
       setUser(undefined);
       forceClose();
       enqueueSnackbar("You have been logged out!", { variant: "info" });
+      window.location.href = '/'
     }
   };
   useEffect(() => {
