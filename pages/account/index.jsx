@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { read_cookie } from "sfcookies";
 import { useSnackbar } from "notistack";
 
-const Index = ({ useraccount }) => {
+const Index = ({}) => {
   const container = useRef(null);
   const { enqueueSnackbar } = useSnackbar();
   const router = useRouter();
@@ -247,5 +247,5 @@ export const getServerSideProps = async (context) => {
       redirect: { destination: "/login" },
     };
   }
-  return { props: { useraccount: userinfo } };
+  return { props: {} };
 };

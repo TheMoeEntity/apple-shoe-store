@@ -4,14 +4,15 @@ import { useSnackbar } from "notistack";
 import { bake_cookie, read_cookie } from 'sfcookies'
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router"; 
+import user from "../../sanity/schemas/user";
 
-const Login = () => {
+const Login = ({userinfo}) => {
   const {enqueueSnackbar} = useSnackbar()
   const [loginStatus,setLoginStatus] = useState('Login')
   const router = useRouter()
   useEffect(()=> {
-    const info = read_cookie('userInfo')
-    if ((info.length === 0 && previous === undefined) || previous === "cartmodal") {
+    
+    if ((!(userinfo) && previous === undefined) || previous === "cartmodal") {
       enqueueSnackbar("You are not logged in!", {
         variant: 'info',
       });     
@@ -90,3 +91,17 @@ const Login = () => {
 };
 
 export default Login;
+export const getServerSideProps = async (context) => {
+  const userinfo = context.req.cookies["userInfo"] ?? null;
+  console.log(userinfo)
+
+  if (userinfo) {
+    return {
+      props: {},
+      redirect: { destination: "/" },
+    };
+  } else {
+    return { props: {userinfo}};
+  }
+  
+};

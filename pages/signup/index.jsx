@@ -10,18 +10,7 @@ const Signup = () => {
   const router = useRouter()
   const [signupStatus,setsignupStatus] = useState('Create account');
   const {enqueueSnackbar} = useSnackbar()
-  useEffect(() => {
-    const userInfo = read_cookie("userInfo");
 
-    if (userInfo.length != 0) {
-      enqueueSnackbar("Already logged in!", { variant: 'info' });
-      setTimeout(() => {
-        router.push("/");
-      }, 3000);
-      
-    }
-
-  }, []);
   const submitAction = async (e) => {
     e.preventDefault();
     setsignupStatus('sending credentials...')
@@ -102,3 +91,17 @@ const Signup = () => {
 };
 
 export default Signup;
+export const getServerSideProps = async (context) => {
+  const userinfo = context.req.cookies["userInfo"] ?? null;
+  console.log(userinfo)
+
+  if (userinfo) {
+    return {
+      props: {},
+      redirect: { destination: "/" },
+    };
+  } else {
+    return { props: {}};
+  }
+  
+};
