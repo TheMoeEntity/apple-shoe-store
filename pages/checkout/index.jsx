@@ -29,7 +29,6 @@ const Checkout = ({ data }) => {
     zip:ship.zip ?? null
 
 })
-console.log(ship)
   let name;
   let mail;
   useEffect(() => {

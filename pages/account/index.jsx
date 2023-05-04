@@ -88,7 +88,6 @@ const Index = ({}) => {
 
   const submitAction = e => {
     e.preventDefault()
-    console.log(shipping)
     dispatch(updateShipping(shipping))
     enqueueSnackbar("Successfully updated your details", {
       variant: "success",
