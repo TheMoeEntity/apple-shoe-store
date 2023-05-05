@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { nanoid } from "nanoid";
 import { useRouter } from "next/router";
-import { bake_cookie, read_cookie, delete_cookie } from "sfcookies";
+import { bake_cookie, read_cookie} from "sfcookies";
 import axios from "axios";
 import Head from "next/head";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,7 +13,7 @@ import { urlForThumbnail } from "../../helpers/image";
 import { useEffect } from "react";
 import { Helpers } from "../../helpers";
 
-const Cart = ({}) => {
+const Cart = () => {
   const router = useRouter();
   const [less, setLess] = useState(false);
   const dispatch = useDispatch();

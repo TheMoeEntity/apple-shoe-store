@@ -1,7 +1,6 @@
 import banner from '../../../public/assets/slider-11.jpeg'
 import Image from 'next/image'
 import styles from './Hero.module.css'
-import { Dots } from '../../Dots/Dots'
 
 const Hero = () => {
   return (

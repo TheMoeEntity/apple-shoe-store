@@ -6,18 +6,16 @@ import banner from "../../../public/assets/banner-22.jpeg";
 import banner3 from "../../../public/assets/banner.jpeg";
 import banner2 from "../../../public/assets/banner-23.jpeg";
 import slider from "../../../public/assets/slider-14.jpeg";
-import client from "../../../helpers/client";
 import  Loader  from "../../Loader/Loader";
 
  const Featured = ({ heading, prods }) => {
   const ref = useRef(null);
   const [state, setState] = useState({
     products: [],
-    error: "",
     loading: true,
   });
 
-  const { loading, error, products } = state;
+  const { loading, products } = state;
   const carousel = useRef(null);
 
   useEffect(() => {
@@ -26,13 +24,11 @@ import  Loader  from "../../Loader/Loader";
         
         setState({
           products:prods,
-          error: false,
           loading: false,
         });
       } catch (err) {
         setState({
           products: undefined,
-          error: err.message,
           loading: true,
         });
 

@@ -2,9 +2,9 @@ import styles from "../login/login.module.css";
 import Link from "next/link";
 import { useSnackbar } from "notistack";
 import { useRouter } from "next/router";
-import { bake_cookie, read_cookie } from 'sfcookies'
-import { useEffect, useState } from "react";
-import { getError } from "../../helpers/error";
+import { bake_cookie} from 'sfcookies'
+import { useState } from "react";
+
 
 const Signup = () => {
   const router = useRouter()

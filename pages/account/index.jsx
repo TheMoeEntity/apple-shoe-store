@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 import { updateShipping } from "../../helpers/Redux/cart";
 import { useSelector } from "react-redux";
 
-const Index = ({}) => {
+const Index = () => {
   const container = useRef(null);
   const ship = useSelector((state)=> state.cart.shippingAddress)
   const dispatch = useDispatch()
@@ -32,7 +32,7 @@ const Index = ({}) => {
         variant: 'info',
       });   
     }
-  }, []);
+  }, [enqueueSnackbar,link]);
 
   const UserInfo = read_cookie("userInfo");
 

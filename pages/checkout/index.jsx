@@ -4,7 +4,7 @@ import styles2 from "./checkout.module.css";
 import { useRouter } from "next/router";
 import { read_cookie } from "sfcookies";
 import Head from "next/head";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { urlForThumbnail } from "../../helpers/image";
 import noimage from "../../public/assets/noimage.png";
 import Image from "next/image";
@@ -13,12 +13,11 @@ import { Helpers } from "../../helpers";
 import { useSnackbar } from "notistack";
 
 
-const Checkout = ({ data }) => {
+const Checkout = () => {
   const router = useRouter();
   const cart = useSelector((state) => state.cart);
   const { enqueueSnackbar } = useSnackbar();
   const [user, setUser] = useState("");
-  const [email, setMail] = useState("");
   const ship = useSelector((state)=> state.cart.shippingAddress)
   const [scriptLoaded, setScriptLoaded] = useState(false);
   const [shipping,setShipping] = useState({
@@ -30,13 +29,11 @@ const Checkout = ({ data }) => {
 
 })
   let name;
-  let mail;
   useEffect(() => {
     const userinfo = read_cookie("userInfo");
     name = userinfo.name;
-    mail = userinfo.email;
     setUser(name);
-    setMail(mail);
+    
   }, [user, router]);
   const CalculateTotal = (cart) => {
     let total = 0;
@@ -97,6 +94,9 @@ const Checkout = ({ data }) => {
     // router.push("/");
   };
 
+  const createOrder = ()=>{
+
+  }
   return (
     <div className={styles.cart}>
       <Head>
@@ -243,7 +243,7 @@ const Checkout = ({ data }) => {
           {scriptLoaded ? (
               <PayPalButton
                 amount={total}
-                onSuccess={(details, data) => {
+                onSuccess={(details) => {
                   console.log(details);
                   const shippingDetails = details.purchase_units[0].shipping;
                   createOrder({

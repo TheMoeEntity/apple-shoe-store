@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+
 import styles from "./Card.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { urlFor, urlForThumbnail } from "../../../helpers/image";
+import { urlFor} from "../../../helpers/image";
 import loading from "../../../public/assets/loading.jpeg";
 import { addProduct } from "../../../helpers/Redux/cart";
 import { useDispatch } from "react-redux";

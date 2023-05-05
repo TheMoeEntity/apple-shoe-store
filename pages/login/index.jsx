@@ -1,10 +1,9 @@
 import styles from "./login.module.css";
 import Link from "next/link";
 import { useSnackbar } from "notistack";
-import { bake_cookie, read_cookie } from 'sfcookies'
+import { bake_cookie } from 'sfcookies'
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router"; 
-import user from "../../sanity/schemas/user";
 
 const Login = ({userinfo}) => {
   const {enqueueSnackbar} = useSnackbar()
@@ -18,7 +17,7 @@ const Login = ({userinfo}) => {
       });     
     }
   },[])
-  const {previous}=router.query ?? "/"
+  let {previous}=router.query ?? "/"
   const loginAction = async (e) => {
     setLoginStatus('Loggin in.....')
     e.preventDefault();

@@ -4,23 +4,18 @@ import Card from "../../Home/Featured/Card";
 import client from "../../../helpers/client";
 import { useSnackbar } from "notistack";
 import Loader  from "../../Loader/Loader";
-import { useState, useRef, useEffect } from "react";
-import imageUrlBuilder from "@sanity/image-url";
+import { useState, useEffect } from "react";
 
 const Filter = ({ items }) => {
   const [show, setShow] = useState(false);
   const {enqueueSnackbar} = useSnackbar();
   const [state, setState] = useState({
     products: [],
-    error: "",
     loading: true,
   });
 
-  const { loading, error, products } = state;
-  const builder = imageUrlBuilder(client);
-  function urlForAsset(source) {
-    return builder.image(source);
-  }
+  const { loading} = state;
+
   useEffect(() => {
     const fetchData = async () => {
       try {

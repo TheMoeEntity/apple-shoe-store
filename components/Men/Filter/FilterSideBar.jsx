@@ -1,5 +1,4 @@
 import styles from './Filter.module.css'
-import Link from 'next/link'
 
 const FilterSideBar = ({show,close}) => {
   return (

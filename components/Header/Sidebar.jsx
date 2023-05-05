@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import styles from "./Header.module.css";
 import Link from "next/link";
-import { delete_cookie, read_cookie } from "sfcookies";
+import { read_cookie } from "sfcookies";
 import { useRouter } from "next/router";
-import { useSnackbar } from "notistack";
 
 export const Sidebar = ({ sidebar, set }) => {
-  const { enqueueSnackbar } = useSnackbar();
+  
   const [greeting, setGreeting] = useState("");
   const router = useRouter();
   const [user, setUser] = useState("");

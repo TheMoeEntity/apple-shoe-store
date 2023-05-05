@@ -1,4 +1,3 @@
-import axios from "axios"
 
 export default async function handler(req, res) {
     const {method} = req
@@ -11,7 +10,7 @@ export default async function handler(req, res) {
             res.status(200).json(res)
                 
         } catch (error) {
-            res.status(500).json(err)
+            res.status(500).json(error)
         }
     }
   }

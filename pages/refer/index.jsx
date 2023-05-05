@@ -6,7 +6,7 @@ import { bake_cookie, read_cookie } from 'sfcookies'
 import axios from 'axios'
 import Head from 'next/head'
 
-const mins = 30000
+
 const Refer = ({data,currRefs}) => {
   const router = useRouter()
   const referral = router.query['referrer']
@@ -144,12 +144,11 @@ const Refer = ({data,currRefs}) => {
 
 export const getServerSideProps = async (context) => {
 
-  let url = "http://localhost:5000/referrals"
+  // let url = "http://localhost:5000/referrals"
   const ref = context.query
 
  
-  const res = await fetch(url)
-  const dat = await res.json()
+  // const res = await fetch(url)
   const cookie = context.req.cookies['ref']
   
   const undef = String(cookie).split("\\")[5] === undefined
