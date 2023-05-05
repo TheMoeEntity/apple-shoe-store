@@ -232,8 +232,11 @@ const Checkout = ({ data }) => {
           <br />
 
           <br />
-          <button onClick={placeorder} id={styles.checkout}>
+          <button className={styles2.paybtns} onClick={placeorder} id={styles.checkout}>
             Place order
+          </button> <br />
+          <button className={styles2.paybtns} onClick={placeorder} id={styles.checkout}>
+            Stripe
           </button>
             <div style={{textAlign:'center',padding:'20px'}}> or pay with <span>PayPal</span>{" "}
               <i className="fa-brands fa-paypal"></i></div>

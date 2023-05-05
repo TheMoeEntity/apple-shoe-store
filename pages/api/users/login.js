@@ -22,7 +22,19 @@ export default async function handler(req, res) {
         token
       })
     } else {
-
+      let isEmpty = false
+      for (const key in req.body) {
+        if (Object.hasOwnProperty.call(req.body, key)) {
+          const element = req.body[key];
+          if (element == '') {
+            isEmpty = true
+          }
+        }
+      }
+      if (isEmpty) {
+        return res.status(400).send({message:": Data is missing"})
+      }
+      console.log(req.body)
       res.status(401).send({
         message:'Invalid email/password! Try again'
       });

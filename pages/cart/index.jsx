@@ -7,10 +7,9 @@ import { bake_cookie, read_cookie, delete_cookie } from "sfcookies";
 import axios from "axios";
 import Head from "next/head";
 import { useDispatch, useSelector } from "react-redux";
-import { removeProduct, reset } from "../../helpers/Redux/cart";
+import { removeProduct} from "../../helpers/Redux/cart";
 import noimage from "../../public/assets/noimage.png";
 import { urlForThumbnail } from "../../helpers/image";
-import Link from "next/link";
 import { useEffect } from "react";
 import { Helpers } from "../../helpers";
 
