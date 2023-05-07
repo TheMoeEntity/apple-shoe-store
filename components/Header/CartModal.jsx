@@ -54,9 +54,13 @@ const CartModal = ({ cartOpen, closeCart, forceClose}) => {
                 <div className={styles.image}>
                   <div>
                     <Image
-                      layout="fill"
                       src={urlForThumbnail(x.images[0], noimage)}
                       alt="product image"
+                      layout="fill"
+                      quality={100}
+                     
+                      priority={true}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                   </div>
                 </div>

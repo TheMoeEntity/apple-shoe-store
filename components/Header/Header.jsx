@@ -20,12 +20,14 @@ const Header = () => {
   const { menuOpen, setMenuOpen } = useContext(menu);
   const UserInfo = read_cookie("userInfo");
 
-
   return (
     <div className={styles.header}>
-      <Profile forceClose={()=> setProfileOpen(false)} profileOpen={profileOpen} />
+      <Profile
+        forceClose={() => setProfileOpen(false)}
+        profileOpen={profileOpen}
+      />
       <CartModal
-      forceClose={()=> setCartOpen(false)}
+        forceClose={() => setCartOpen(false)}
         profileOpen={profileOpen}
         closeCart={() => setCartOpen(false)}
         cartOpen={cartOpen}
@@ -75,7 +77,14 @@ const Header = () => {
           }}
           className={styles.cart}
         >
-          <Image src={cart} alt="cart image" />
+          <Image
+            src={cart}
+            alt="cart image"
+            layout="fill"
+            quality={100}
+            priority={true}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
           <div className={styles.cartCount}>{items}</div>
         </div>
       </div>

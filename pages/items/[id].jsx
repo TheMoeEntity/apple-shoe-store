@@ -52,19 +52,18 @@ const Items = ({ item }) => {
     });
     e.target.classList.toggle(selected);
     setCurrSize(e.target.innerHTML);
-    console.log(currSize)
+    console.log(currSize);
   };
 
   const addToCart = () => {
-    
     const price = item.price * items;
     let newItem;
     if (!("images" in item)) {
       newItem = { ...item, images: [item.image], more: false };
       item = item.image === undefined ? item : newItem;
     }
-   
-    dispatch(addProduct({ ...item, items, price,currSize }));
+
+    dispatch(addProduct({ ...item, items, price, currSize }));
     enqueueSnackbar("Successfully Added item to your cart", {
       variant: "success",
     });
@@ -104,14 +103,29 @@ const Items = ({ item }) => {
         </div>
         <h3>{item.name}</h3>
         <div className={styles.banner}>
-          <Image objectFit="cover" src={currImage} layout={"fill"} priority />
+          <Image
+            alt="card-image"
+            quality={100}
+            priority={true}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            objectFit="cover"
+            src={currImage}
+            layout="fill"
+          />
         </div>
 
         {item.images ? (
           <div className={styles.flex}>
             {images.map((item, key) => (
               <div onClick={() => setCurrImage(item)} key={key}>
-                <Image objectFit="cover" src={item} layout={"fill"} />
+                <Image
+                  objectFit="cover"
+                  src={item}
+                  alt="card-image"
+                  layout="fill"
+                  quality={100}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
               </div>
             ))}
           </div>
@@ -119,7 +133,15 @@ const Items = ({ item }) => {
           <div className={styles.flex}>
             {[...Array(4)].map((_item, key) => (
               <div key={key}>
-                <Image objectFit="cover" src={noimage} layout={"fill"} />
+                <Image
+                  objectFit="cover"
+                  src={noimage}
+                  alt="card-image"
+                  layout="fill"
+                  quality={100}
+                  priority={true}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
               </div>
             ))}
           </div>

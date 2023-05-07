@@ -12,7 +12,7 @@ import { reset } from "../../helpers/Redux/cart";
 const Profile = ({ profileOpen = false, forceClose }) => {
   const { enqueueSnackbar } = useSnackbar();
   const router = useRouter();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const [user, setUser] = useState("");
   let name;
@@ -23,8 +23,8 @@ const Profile = ({ profileOpen = false, forceClose }) => {
       setUser(undefined);
       forceClose();
       enqueueSnackbar("You have been logged out!", { variant: "info" });
-      dispatch(reset())
-      window.location.href = '/'
+      dispatch(reset());
+      window.location.href = "/";
     }
   };
   useEffect(() => {
@@ -43,7 +43,14 @@ const Profile = ({ profileOpen = false, forceClose }) => {
     >
       <div className={styles.userheader}>
         <div className="">
-          <Image layout="fill" src={boy} alt="user image" />
+          <Image
+            src={boy}
+            alt="user image"
+            layout="fill"
+            quality={100}
+            priority={true}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
         </div>
         <div className={styles.details}>
           <div>

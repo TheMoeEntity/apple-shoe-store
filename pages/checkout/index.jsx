@@ -194,10 +194,12 @@ const Checkout = () => {
             <div key={i} className={styles.totalpr}>
               <div className={styles2.checkItemImg}>
                 <Image
-                  layout="fill"
                   src={urlForThumbnail(x.images[0], noimage)}
                   alt="product image"
                   priority={true}
+                  layout="fill"
+                  quality={100}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
               <span>

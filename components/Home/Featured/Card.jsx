@@ -36,7 +36,10 @@ const Card = ({ img, name, men = false, url }) => {
             objectFit="cover"
             alt="card-image"
             layout="fill"
-            
+            quality={100}
+
+            priority={true}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </Link>
         <div className={styles.tag}>-17%</div>
@@ -72,6 +75,10 @@ const Card = ({ img, name, men = false, url }) => {
               objectFit="cover"
               alt="card-image"
               layout="fill"
+              quality={100}
+  
+              priority={true}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
             <div className={styles.tag}>-17%</div>
             <div className={styles.like}>
@@ -97,6 +104,10 @@ const Card = ({ img, name, men = false, url }) => {
               objectFit="cover"
               alt="card-image"
               layout="fill"
+              quality={100}
+ 
+              priority={true}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
             <div className={styles.tag}>-17%</div>
             <div className={styles.like}>
@@ -122,6 +133,9 @@ const Card = ({ img, name, men = false, url }) => {
               objectFit="cover"
               alt="card-image"
               layout="fill"
+              quality={100}
+              priority={true}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
             <div className={styles.tag}>-17%</div>
             <div className={styles.like}>

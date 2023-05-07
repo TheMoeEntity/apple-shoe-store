@@ -122,8 +122,11 @@ import  Loader  from "../../Loader/Loader";
               <Image
                 src={banner}
                 objectFit="cover"
-                layout="fill"
                 alt="Collection banner"
+                layout="fill"
+                quality={100}
+                priority={true}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
               <div className={styles.caption}>
                 <h3>NEW SEASON</h3>
@@ -142,8 +145,11 @@ import  Loader  from "../../Loader/Loader";
               <Image
                 src={banner2}
                 objectFit="cover"
-                layout="fill"
                 alt="Collection banner"
+                layout="fill"
+                quality={100}
+                priority={true}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
               <div className={styles.caption}>
                 <h3>NEW SEASON</h3>
@@ -165,8 +171,12 @@ import  Loader  from "../../Loader/Loader";
                 <Image
                   src={slider}
                   objectFit="cover"
-                  layout="fill"
                   alt="Collection banner"
+                  layout="fill"
+                  quality={100}
+
+                  priority={true}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
                 <div className={styles.caption}>
                   <span>Our winter Collection</span>
@@ -182,8 +192,11 @@ import  Loader  from "../../Loader/Loader";
                 <Image
                   src={banner3}
                   objectFit="cover"
-                  layout="fill"
                   alt="Collection banner"
+                  layout="fill"
+                  quality={100}
+                  priority={true}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
                 <div className={styles.caption}>
                   <span>Our winter Collection</span>
