@@ -1,6 +1,6 @@
 .hero {
     width: 100%;
-    min-height: 400px;
+    min-height: 440px;
     position: relative;
 }
 @media screen and (min-width:850px) {
@@ -37,7 +37,7 @@
     height: 100%;
     position: absolute;
     z-index: 10;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0.45);
     top: 0;
     left: 0;
 }
@@ -48,7 +48,7 @@
     font-size: 15px;
     cursor:pointer;
 }
-.page {
+/* .page {
     position: absolute;
     bottom:-35px;
     left: 50%;
@@ -57,7 +57,7 @@
     height: fit-content;
     display: flex;
     justify-content: space-between;
-}
+} */
 .page > div {
     width: 10px;
     height: 10px;
