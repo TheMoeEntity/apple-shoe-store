@@ -3,7 +3,7 @@ import styles from "./Header.module.css";
 import Image from "next/image";
 import cart from "../../public/assets/cart.png";
 import { Sidebar } from "./Sidebar";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import Link from "next/link";
 import CartModal from "./CartModal";
 import { useRouter } from "next/router";
@@ -17,11 +17,26 @@ const Header = () => {
   const [cartOpen, setCartOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const items = useSelector((state) => state.cart.quantity);
+  const [sticky, setSticky] = useState("");
   const { menuOpen, setMenuOpen } = useContext(menu);
   const UserInfo = read_cookie("userInfo");
+  useEffect(() => {
+    window.addEventListener("scroll", isSticky);
+
+    return () => {
+      window.removeEventListener("scroll", isSticky);
+    };
+  }, []);
+
+  const isSticky = () => {
+    const scrollTop = window.scrollY;
+    let number = 120
+    const stickyClass = scrollTop >= number ? styles.isSticky : "";
+    setSticky(stickyClass);
+  };
 
   return (
-    <div className={styles.header}>
+    <div className={`${styles.header} ${sticky}`}>
       <Profile
         forceClose={() => setProfileOpen(false)}
         profileOpen={profileOpen}
