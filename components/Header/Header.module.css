@@ -19,7 +19,7 @@
   position: fixed;
   top:0;
   left: 0;
-  z-index: 111111;
+  z-index:  999999999999999909999999;
   animation: 500ms ease-in 0s normal none 1 running fadeInDown;
   animation: bounce2 1.2s;
 }
