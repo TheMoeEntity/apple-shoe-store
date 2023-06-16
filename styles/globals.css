@@ -81,6 +81,9 @@ a {
   margin: 0px auto 20px;
   z-index: -1;
 }
+.notistack-SnackbarContainer.z-alert {
+  z-index: 99999999999 !important;
+}
 
 .notfound .notfound-404 h1 {
   font-family: 'Montserrat', sans-serif;

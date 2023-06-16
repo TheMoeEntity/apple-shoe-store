@@ -13,6 +13,7 @@ function MyApp({ Component, pageProps }) {
         <Context>
           <Layout>
             <SnackbarProvider
+            classes={{containerRoot: 'z-alert'}}
               anchorOrigin={{ horizontal: "left", vertical: "top" }}
             >
               <Component {...pageProps} />
