@@ -12,14 +12,15 @@
   border-bottom: 1px solid lightgray;
   position: relative;
   padding-right: 30px;
-  z-index: 999999999999999909999999;
+  z-index: 9999999999999999999999999999999999999999999999;
   background-color: white;
 }
 .isSticky {
   position: fixed;
   top:0;
   left: 0;
-  z-index:  999999999999999909999999;
+  z-index:  999999999999999999999999999999999999999999999;
+  background-color: white;
   animation: 500ms ease-in 0s normal none 1 running fadeInDown;
   animation: bounce2 1.2s;
 }
