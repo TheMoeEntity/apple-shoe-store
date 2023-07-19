@@ -1,6 +1,6 @@
 import styles from "./cart.module.css";
 import Image from "next/image";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { nanoid } from "nanoid";
 import { useRouter } from "next/router";
 import { bake_cookie, read_cookie} from "sfcookies";
@@ -44,7 +44,7 @@ const Cart = () => {
     }
     return total + (0.20*total);
   };
-  const total = CalculateTotal(cart.products);
+  const total = useMemo(() => CalculateTotal(cart.products), [currCart]) 
   const removeCartItem = (product, item_id, price, packs) => {
     dispatch(removeProduct({ ...product, item_id, price, packs }));
   };

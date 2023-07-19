@@ -46,7 +46,8 @@ const Login = ({userinfo}) => {
               variant: "success",
             });
             setLoginStatus('Login')
-            bake_cookie("userInfo", data);
+            bake_cookie("userInfo", data,{});
+            console.log(data)
             setTimeout(() => {
               previous = previous === undefined ? "/account?link=wishlist":
               previous === 'cartmodal' ? '/checkout' :

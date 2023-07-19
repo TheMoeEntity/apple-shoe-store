@@ -50,6 +50,7 @@ const Signup = () => {
               variant: "success",
             });
             bake_cookie('userInfo',data);
+            console.log(data)
             setTimeout(() => {
               router.push("/account?link=signup");
             }, 3000);
