@@ -1,4 +1,4 @@
-import { configureStore,getDefaultMiddleware } from "@reduxjs/toolkit";
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import cartReducer from "./cart";
 import storage from "redux-persist/lib/storage";
 import {
@@ -11,7 +11,6 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
-import thunk from "redux-thunk";
 
 const persistConfig = {
   key: "root",
@@ -25,9 +24,9 @@ export const store = configureStore({
     devTools: process.env.NODE_ENV !== "production",
     middleware: getDefaultMiddleware({
       serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
-      }
-    })
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
   },
 });
 export const persistor = persistStore(store);

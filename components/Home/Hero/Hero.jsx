@@ -23,7 +23,7 @@ const Hero = () => {
             layout="fill"
             quality={100}
             priority={true}
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            sizes="(max-width: 1924px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
           <div className={styles.caption}>
             <span>Our Summer Collection</span>
@@ -43,11 +43,11 @@ const Hero = () => {
             layout="fill"
             quality={100}
             priority={true}
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            sizes="(max-width: 950px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
           <div className={styles.caption}>
             <span>Our Winter Collection</span>
-            <h1 style={{fontSize:'40px'}}>WINTER ESSENTIALS</h1>
+            <h1 style={{ fontSize: "40px" }}>WINTER ESSENTIALS</h1>
             <span>Our winter collection is great, try them</span>
             <button>
               Shop collection <i>&#10230;</i>
